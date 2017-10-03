@@ -189,7 +189,7 @@ export default class Sorter {
         // (In MongoDB it seems to be OK to have {a: 1, 'a.x.y': 1} where 'a'
         // and 'a.x.y' are both arrays, but we don't allow this for now.
         // #NestedArraySort
-        // XXX achieve full compatibility here
+        // XXX achieve full compatibility here id:632 gh:633
         if (knownPaths && !hasOwn.call(knownPaths, path)) {
           throw Error('cannot index parallel arrays');
         }
@@ -347,7 +347,7 @@ export default class Sorter {
 
     // If we are only sorting by distance, then we're not going to bother to
     // build a key filter.
-    // XXX figure out how geoqueries interact with this stuff
+    // XXX figure out how geoqueries interact with this stuff id:242 gh:243
     if (!this._sortSpecParts.length) {
       return;
     }
@@ -369,13 +369,13 @@ export default class Sorter {
     Object.keys(selector).forEach(key => {
       const subSelector = selector[key];
 
-      // XXX support $and and $or
+      // XXX support $and and $or id:224 gh:225
       const constraints = constraintsByPath[key];
       if (!constraints) {
         return;
       }
 
-      // XXX it looks like the real MongoDB implementation isn't "does the
+      // XXX it looks like the real MongoDB implementation isn't "does the id:455 gh:456
       // regexp match" but "does the value fall into a range named by the
       // literal prefix of the regexp", ie "foo" in /^foo(bar|baz)+/  But
       // "does the regexp match" is a good approximation.
@@ -399,7 +399,7 @@ export default class Sorter {
           const operand = subSelector[operator];
 
           if (['$lt', '$lte', '$gt', '$gte'].includes(operator)) {
-            // XXX this depends on us knowing that these operators don't use any
+            // XXX this depends on us knowing that these operators don't use any id:237 gh:238
             // of the arguments to compileElementSelector other than operand.
             constraints.push(
               ELEMENT_OPERATORS[operator].compileElementSelector(operand)
@@ -416,7 +416,7 @@ export default class Sorter {
             );
           }
 
-          // XXX support {$exists: true}, $mod, $type, $in, $elemMatch
+          // XXX support {$exists: true}, $mod, $type, $in, $elemMatch id:634 gh:635
         });
 
         return;

@@ -5,7 +5,7 @@ var catalog = require('../packaging/catalog/catalog.js');
 
 var DEFAULT_RELEASE_TRACK = catalog.DEFAULT_TRACK;
 
-// XXX: Why is this an internet using test? Because our warehouse is a
+// XXX: Why is this an internet using test? Because our warehouse is a id:631 gh:632
 // hackhackhack. If we clean up the hackhackhackhack, then this does not need
 // the internets. (Or, to be more specific: our warehouse code tries to fetch
 // the packages from the internet. If we could fool it into using local packages
@@ -59,7 +59,7 @@ selftest.define("springboard", ['checkout', 'net', 'custom-warehouse'], function
 
   // Suppose you're offline and you ask for a release you don't have
   // cached.
-  // XXX On the refreshpolicy branch, we removed some of the support
+  // XXX On the refreshpolicy branch, we removed some of the support id:774 gh:775
   // code for this test. Make sure we get it to pass before merging.
   s.set('METEOR_TEST_FAIL_RELEASE_DOWNLOAD', 'offline');
   run = s.run("--release", "weird");
@@ -116,11 +116,11 @@ selftest.define("springboard", ['checkout', 'net', 'custom-warehouse'], function
     run.matchErr("release file which is empty");
     run.expectExit(1);
 
-    // XXX Test springboard to pre-0.9.0 release
+    // XXX Test springboard to pre-0.9.0 release id:718 gh:719
   });
 });
 
-// XXX: Why is this an internet using test? Because our warehouse is a
+// XXX: Why is this an internet using test? Because our warehouse is a id:531 gh:532
 // hackhackhack. If we clean up the hackhackhackhack, then this does not need
 // the internets. (Or, to be more specific: our warehouse code tries to fetch
 // the packages from the internet. If we could fool it into using local packages

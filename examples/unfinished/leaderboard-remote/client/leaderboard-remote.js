@@ -1,6 +1,6 @@
 Leaderboard = DDP.connect("http://leader2.meteor.com/sockjs");
 
-// XXX I'd rather this be Leaderboard.Players.. can this API be easier?
+// XXX I'd rather this be Leaderboard.Players.. can this API be easier? id:28 gh:29
 Players = new Mongo.Collection("players", {manager: Leaderboard});
 
 Template.main.events = {

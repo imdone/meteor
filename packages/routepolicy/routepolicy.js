@@ -93,7 +93,7 @@ _.extend(RoutePolicyConstructor.prototype, {
                   self.checkForConflictWithStatic(urlPrefix, type);
     if (problem)
       throw new Error(problem);
-    // TODO overlapping prefixes, e.g. /foo/ and /foo/bar/
+    // TODO overlapping prefixes, e.g. /foo/ and /foo/bar/ id:679 gh:680
     self.urlPrefixTypes[urlPrefix] = type;
   },
 

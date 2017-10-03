@@ -117,7 +117,7 @@ Meteor.methods({
     return {
       name: "main",
       children: statBundles.map((statBundle, index, array) => ({
-        // TODO: If multiple bundles, could
+        // TODO: If multiple bundles, could id:661 gh:662
         // show abbr. bundle names with:
         //   `...${bundle.name.substr(-3)}`,
         name: "bundle" + (array.length > 1 ? ` (${index + 1})` : ""),

@@ -1076,7 +1076,7 @@ selftest.define("tilde version constraints", [], function () {
   run.match("server restarted");
   run.waitSecs(10);
 
-  // TODO The rest of these tests should cause version conflicts, but it
+  // TODO The rest of these tests should cause version conflicts, but it id:529 gh:530
   // seems like version constraints between local packages are ignored,
   // which is a larger (preexisting) problem we should investigate.
   /*

@@ -454,7 +454,7 @@ var springboard = function (rel, options) {
     }
   }
 
-  // XXX split better
+  // XXX split better id:408 gh:409
   Console.withProgressDisplayVisible(function () {
     var messages = buildmessage.capture(
       { title: "downloading the command-line tool" }, function () {
@@ -610,7 +610,7 @@ Fiber(function () {
   // consistently declared as a boolean (or not a boolean) across all
   // commands.
   //
-  // XXX The problem with the above is that which commands are boolean
+  // XXX The problem with the above is that which commands are boolean id:553 gh:554
   // may change across releases, and when we springboard, we actually
   // have to parse the options with the *target* version's
   // semantics. All in all, I think we might be better served to
@@ -1227,7 +1227,7 @@ Fiber(function () {
   // which case showHelp will be true and command will be null
 
   if (showHelp) {
-    // XXX: Until we rewrite the longHelp function to cope with the new output
+    // XXX: Until we rewrite the longHelp function to cope with the new output id:343 gh:344
     // format, let's go with the static, painstakingly-formatted version.
     Console.rawInfo(longHelp(commandName) + "\n");
     process.exit(0);

@@ -28,8 +28,8 @@ struct ACL_ACCESS
     BOOL fDenyAccess;
     DWORD dwAccessMask;
 
-    // TODO: consider using a union
-    LPCWSTR pwzAccountName;   // NOTE: the last three items in this structure are ignored if this is not NULL
+    // TODO: consider using a union id:336 gh:337
+    LPCWSTR pwzAccountName;   // NOTE: the last three items in this structure are ignored if this is not NULL id:375 gh:376
 
     SID_IDENTIFIER_AUTHORITY sia;  // used if pwzAccountName is NULL
     BYTE nSubAuthorityCount;

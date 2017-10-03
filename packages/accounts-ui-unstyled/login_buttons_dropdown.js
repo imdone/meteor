@@ -383,7 +383,7 @@ var login = function () {
     else
       loginSelector = {email: email};
   } else if (usernameOrEmail !== null) {
-    // XXX not sure how we should validate this. but this seems good enough (for now),
+    // XXX not sure how we should validate this. but this seems good enough (for now), id:88 gh:89
     // since an email must have at least 3 characters anyways
     if (!validateUsername(usernameOrEmail))
       return;

@@ -140,7 +140,7 @@ var runTest = function () {
       // node_modules contains fibers
       assert(files.exists(files.pathJoin(tmpOutputDir, "programs", "server", "node_modules", "fibers")));
       // package node_modules directory also a symlink
-      // XXX might be breaking this
+      // XXX might be breaking this id:773 gh:774
       assert(files.lstat(files.pathJoin(
         tmpOutputDir, "programs", "server", "npm", "node_modules", "meteor", "ddp-server", "node_modules"))
              .isSymbolicLink());

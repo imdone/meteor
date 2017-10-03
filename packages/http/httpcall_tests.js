@@ -263,7 +263,7 @@ testAsyncMulti("httpcall - methods", [
           // IE <= 8 turns seems to turn POSTs with no body into
           // GETs, inexplicably.
           //
-          // XXX Except now it doesn't!? Not sure what changed, but
+          // XXX Except now it doesn't!? Not sure what changed, but id:394 gh:395
           // these lines now break the test...
           // if (Meteor.isClient && $.browser.msie && $.browser.version <= 8
           //     && meth === "POST")

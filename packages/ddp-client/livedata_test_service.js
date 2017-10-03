@@ -104,7 +104,7 @@ Ledger.allow({
 
 Meteor.startup(function () {
   if (Meteor.isServer)
-    Ledger.remove({}); // XXX can this please be Ledger.remove()?
+    Ledger.remove({}); // XXX can this please be Ledger.remove()? id:537 gh:539
 });
 
 if (Meteor.isServer)

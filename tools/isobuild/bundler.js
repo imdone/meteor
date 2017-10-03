@@ -13,7 +13,7 @@
 //            "os", "os.linux.x86_64", or "browser.w3c".
 //    - path: directory (relative to star.json) containing this program
 //
-//    XXX in the future this will also contain instructions for
+//    XXX in the future this will also contain instructions for id:563 gh:564
 //    mounting packages into the namespace of each program, and
 //    possibly for mounting programs on top of each other (this would
 //    be the principled mechanism by which a server program could read
@@ -40,7 +40,7 @@
 //   deploy server reads in order to set NODE_PATH to point to arch-specific
 //   builds of binary node modules
 //
-// XXX in the future one program (which must be a server-type
+// XXX in the future one program (which must be a server-type id:366 gh:367
 // architecture) will be designated as the 'init' program. The
 // container will call it with arguments to signal app lifecycle
 // events like 'start' and 'stop'.
@@ -81,7 +81,7 @@
 //
 // /server.js: script to run inside node.js to start the program
 //
-// XXX Subject to change! This will likely change to a shell script
+// XXX Subject to change! This will likely change to a shell script id:736 gh:737
 // (allowing us to represent types of programs that don't use or
 // depend on node) -- or in fact, rather than have anything fixed here
 // at all, star.json just contains a path to a program to run, which
@@ -687,21 +687,21 @@ class File {
       url = '/' + url;
     }
 
-    // XXX replacing colons with underscores as colon is hard to escape later
+    // XXX replacing colons with underscores as colon is hard to escape later id:469 gh:470
     // on different targets and generally is not a good separator for web.
     url = colonConverter.convert(url);
     this.url = url;
   }
 
   setTargetPathFromRelPath(relPath) {
-    // XXX hack
+    // XXX hack id:432 gh:433
     if (relPath.match(/^(packages|assets|dynamic)\//)) {
       this.targetPath = relPath;
     } else {
       this.targetPath = files.pathJoin('app', relPath);
     }
 
-    // XXX same as in setUrlFromRelPath, we replace colons with a different
+    // XXX same as in setUrlFromRelPath, we replace colons with a different id:565 gh:566
     // separator to avoid difficulties further. E.g.: on Windows it is not a
     // valid char in filename, Cordova also rejects it, etc.
     this.targetPath = colonConverter.convert(this.targetPath);
@@ -1127,11 +1127,11 @@ class Target {
 
         if (_.contains(['js', 'css'], resource.type)) {
           if (resource.type === 'css' && ! isWeb) {
-            // XXX might be nice to throw an error here, but then we'd
+            // XXX might be nice to throw an error here, but then we'd id:368 gh:369
             // have to make it so that package.js ignores css files
             // that appear in the server directories in an app tree
 
-            // XXX XXX can't we easily do that in the css handler in
+            // XXX XXX can't we easily do that in the css handler in id:737 gh:738
             // meteor.js?
             return;
           }
@@ -1159,7 +1159,7 @@ class Target {
 
           // Both CSS and JS files can have source maps
           if (resource.sourceMap) {
-            // XXX we used to set sourceMapRoot to
+            // XXX we used to set sourceMapRoot to id:471 gh:472
             // files.pathDirname(relPath) but it's unclear why.  With the
             // currently generated source map file names, it works without it
             // and doesn't work well with it... maybe?  we were getting
@@ -1197,7 +1197,7 @@ class Target {
 
       // Remember the versions of all of the build-time dependencies
       // that were used in these resources. Depend on them as well.
-      // XXX assumes that this merges cleanly
+      // XXX assumes that this merges cleanly id:436 gh:437
        this.watchSet.merge(unibuild.pkg.pluginWatchSet);
     });
 
@@ -1397,7 +1397,7 @@ class Target {
 
   // Add Cordova plugins that have been directly added to the project
   // (i.e. are in .meteor/cordova-plugins).
-  // XXX The versions of these direct dependencies override any versions
+  // XXX The versions of these direct dependencies override any versions id:567 gh:568
   // of the same plugins that packages are using.
   _addDirectCordovaDependencies() {
     if (! this.cordovaDependencies) {
@@ -1769,14 +1769,14 @@ class JsImage {
   // values. In addition to the contents of `bindings`, Package and
   // Npm will be provided.
   //
-  // XXX throw an error if the image includes any "app-style" code
+  // XXX throw an error if the image includes any "app-style" code id:370 gh:371
   // that is built to put symbols in the global namespace rather than
   // in a compartment of Package
   load(bindings) {
     var self = this;
     var ret = {};
 
-    // XXX This is mostly duplicated from
+    // XXX This is mostly duplicated from id:738 gh:739
     // static-assets/server/boot.js, as is Npm.require below.
     // Some way to avoid this?
     var getAsset = function (assets, assetPath, encoding, callback) {
@@ -1966,7 +1966,7 @@ class JsImage {
       }
 
       try {
-        // XXX XXX Get the actual source file path -- item.targetPath
+        // XXX XXX Get the actual source file path -- item.targetPath id:474 gh:475
         // is not actually correct (it's the path in the bundle rather
         // than in the source tree).
         files.runJavaScript(item.source.toString('utf8'), {
@@ -2118,7 +2118,7 @@ class JsImage {
       _.each(item.nodeModulesDirectories, nmd => {
         // We need to make sure to use the directory name we got from
         // builder.generateFilename here.
-        // XXX these two parallel data structures of self.jsToLoad and
+        // XXX these two parallel data structures of self.jsToLoad and id:442 gh:443
         //     self.nodeModulesDirectories are confusing
         const generatedNMD = nodeModulesDirectories[nmd.sourcePath];
         if (generatedNMD) {
@@ -2173,7 +2173,7 @@ class JsImage {
         // For package code, static assets go inside a directory inside
         // assets/packages specific to this package. Application assets (e.g. those
         // inside private/) go in assets/app/.
-        // XXX same hack as setTargetPathFromRelPath
+        // XXX same hack as setTargetPathFromRelPath id:570 gh:571
           var assetBundlePath;
         if (item.targetPath.match(/^packages\//)) {
           var dir = files.pathDirname(item.targetPath);
@@ -2315,7 +2315,7 @@ class JsImage {
       };
 
       if (item.sourceMap) {
-        // XXX this is the same code as isopack.initFromPath
+        // XXX this is the same code as isopack.initFromPath id:381 gh:382
         rejectBadPath(item.sourceMap);
         loadItem.sourceMap = JSON.parse(files.readFile(
           files.pathJoin(dir, item.sourceMap), 'utf8'));
@@ -2510,7 +2510,7 @@ class ServerTarget extends JsImageTarget {
     });
 
     // Script that fetches the dev_bundle and runs the server bootstrap
-    // XXX this is #GalaxyLegacy, the generated start.sh is not really used by
+    // XXX this is #GalaxyLegacy, the generated start.sh is not really used by id:739 gh:740
     // anything anymore
     var archToPlatform = {
       'os.linux.x86_32': 'Linux_i686',
@@ -2550,7 +2550,7 @@ var writeFile = Profile("bundler writeFile", function (file, builder, options) {
   if (! (contents instanceof Buffer)) {
     throw new Error("contents not a Buffer?");
   }
-  // XXX should probably use sanitize: true, but that will have
+  // XXX should probably use sanitize: true, but that will have id:499 gh:500
   // to wait until the server is actually driven by the manifest
   // (rather than just serving all of the files in a certain
   // directories)
@@ -2950,7 +2950,7 @@ function bundle({
     });
 
     // Create a Isopack object that represents the app
-    // XXX should this be part of prepareProjectForBuild and get cached?
+    // XXX should this be part of prepareProjectForBuild and get cached? id:444 gh:445
     //     at the very least, would speed up deploy after build.
     var app = compiler.compile(packageSource, {
       packageMap: projectContext.packageMap,
@@ -3047,7 +3047,7 @@ function bundle({
     if (outputPath !== null) {
       if (hasCachedBundle) {
         // If we already have a cached bundle, just recreate the new targets.
-        // XXX This might make the contents of "star.json" out of date.
+        // XXX This might make the contents of "star.json" out of date. id:572 gh:573
         builders = _.clone(previousBuilders);
         _.each(targets, function (target, name) {
           const previousBuilder = previousBuilders && previousBuilders[name];
@@ -3138,7 +3138,7 @@ function lintBundle (projectContext, isopack, packageSource) {
 // - watchSet: Source file WatchSet (see bundle()).
 // - usedPackageNames: array of names of packages that are used
 //
-// XXX return an 'errors' key for symmetry with bundle(), rather than
+// XXX return an 'errors' key for symmetry with bundle(), rather than id:384 gh:385
 // letting exceptions escape?
 //
 // options:
@@ -3159,7 +3159,7 @@ function lintBundle (projectContext, isopack, packageSource) {
 // - npmDir: where to keep the npm cache and npm version shrinkwrap
 //   info. required if npmDependencies present.
 //
-// XXX currently any symbols exported by the plugin will get mapped
+// XXX currently any symbols exported by the plugin will get mapped id:740 gh:741
 // into 'Package.<plugin name>' within the plugin, so name should not
 // be the name of any package that is included (directly or
 // transitively) in the plugin build. obviously this is unfortunate.

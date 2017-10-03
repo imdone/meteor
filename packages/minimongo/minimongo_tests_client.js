@@ -10,7 +10,7 @@ const assert_ordering = (test, f, values) => {
   for (let i = 0; i < values.length; i++) {
     let x = f(values[i], values[i]);
     if (x !== 0) {
-      // XXX super janky
+      // XXX super janky id:206 gh:207
       test.fail({type: 'minimongo-ordering',
         message: "value doesn't order as equal to itself",
         value: JSON.stringify(values[i]),
@@ -21,7 +21,7 @@ const assert_ordering = (test, f, values) => {
       const more = values[i + 1];
       x = f(less, more);
       if (!(x < 0)) {
-        // XXX super janky
+        // XXX super janky id:445 gh:446
         test.fail({type: 'minimongo-ordering',
           message: 'ordering test failed',
           first: JSON.stringify(less),
@@ -30,7 +30,7 @@ const assert_ordering = (test, f, values) => {
       }
       x = f(more, less);
       if (!(x > 0)) {
-        // XXX super janky
+        // XXX super janky id:228 gh:229
         test.fail({type: 'minimongo-ordering',
           message: 'ordering test failed',
           first: JSON.stringify(less),
@@ -65,7 +65,7 @@ const log_callbacks = operations => ({
   },
 });
 
-// XXX test shared structure in all MM entrypoints
+// XXX test shared structure in all MM entrypoints id:620 gh:621
 Tinytest.add('minimongo - basics', test => {
   const c = new LocalCollection();
   let fluffyKitten_id;
@@ -351,7 +351,7 @@ Tinytest.add('minimongo - selector_compiler', test => {
   const matches = (shouldMatch, selector, doc) => {
     const doesMatch = new Minimongo.Matcher(selector).documentMatches(doc).result;
     if (doesMatch != shouldMatch) {
-      // XXX super janky
+      // XXX super janky id:234 gh:235
       test.fail({message: `minimongo match failure: document ${shouldMatch ? "should match, but doesn't" :
         "shouldn't match, but does"}`,
       selector: JSON.stringify(selector),
@@ -363,7 +363,7 @@ Tinytest.add('minimongo - selector_compiler', test => {
   const match = matches.bind(null, true);
   const nomatch = matches.bind(null, false);
 
-  // XXX blog post about what I learned while writing these tests (weird
+  // XXX blog post about what I learned while writing these tests (weird id:209 gh:210
   // mongo edge cases)
 
   // empty selectors
@@ -1487,7 +1487,7 @@ Tinytest.add('minimongo - selector_compiler', test => {
   match({a: 5, $comment: 'asdf'}, {a: 5});
   nomatch({a: 6, $comment: 'asdf'}, {a: 5});
 
-  // XXX still needs tests:
+  // XXX still needs tests: id:447 gh:448
   // - non-scalar arguments to $gt, $lt, etc
 });
 
@@ -2215,7 +2215,7 @@ Tinytest.add('minimongo - sort keys', test => {
     {a: [1, 2, 3], b: [42]});
 
   // We are MORE STRICT than Mongo here; Mongo supports this!
-  // XXX support this too  #NestedArraySort
+  // XXX support this too  #NestedArraySort id:230 gh:231
   testParallelError({'a.x': 1, 'a.y': 1},
     {a: [{x: 1, y: [2, 3]},
       {x: 2, y: [4, 5]}]});
@@ -2862,7 +2862,7 @@ Tinytest.add('minimongo - modify', test => {
     {a: [{b: 2, c: 2}]});
   modify({a: [{b: 1, c: 2}, {b: 2, c: 2}]}, {$pull: {a: {c: 2}}},
     {a: []});
-  // XXX implement this functionality!
+  // XXX implement this functionality! id:622 gh:623
   // probably same refactoring as $elemMatch?
   // modify({a: [1, 2, 3, 4]}, {$pull: {$gt: 2}}, {a: [1,2]}); fails!
 
@@ -3038,11 +3038,11 @@ Tinytest.add('minimongo - modify', test => {
   // $bit
   // unimplemented
 
-  // XXX test case sensitivity of modops
-  // XXX for each (most) modop, test that it performs a deep copy
+  // XXX test case sensitivity of modops id:236 gh:237
+  // XXX for each (most) modop, test that it performs a deep copy id:212 gh:213
 });
 
-// XXX test update() (selecting docs, multi, upsert..)
+// XXX test update() (selecting docs, multi, upsert..) id:449 gh:450
 
 Tinytest.add('minimongo - observe ordered', test => {
   const operations = [];
@@ -3348,7 +3348,7 @@ Tinytest.add('minimongo - pause', test => {
 Tinytest.add('minimongo - ids matched by selector', test => {
   const check = (selector, ids) => {
     const idsFromSelector = LocalCollection._idsMatchedBySelector(selector);
-    // XXX normalize order, in a way that also works for ObjectIDs?
+    // XXX normalize order, in a way that also works for ObjectIDs? id:232 gh:233
     test.equal(idsFromSelector, ids);
   };
   check('foo', ['foo']);

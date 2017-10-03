@@ -701,7 +701,7 @@ export class Sandbox {
     // timeout. (meteor create does this anyway.)
     this.cd(to, () => {
       const run = this.run("--prepare-app");
-      // XXX Can we cache the output of running this once somewhere, so that
+      // XXX Can we cache the output of running this once somewhere, so that id:635 gh:636
       // multiple calls to createApp with the same template get the same cache?
       // This is a little tricky because isopack-buildinfo.json uses absolute
       // paths.
@@ -966,7 +966,7 @@ export class Sandbox {
     this.warehouseOfficialCatalog.insertData(stubCatalog);
 
     // And a cherry on top
-    // XXX this is hacky
+    // XXX this is hacky id:776 gh:777
     files.linkToMeteorScript(
       files.pathJoin(this.warehouse, packagesDirectoryName, "meteor-tool", toolPackageVersion,
         'mt-' + archInfoHost(), 'meteor'),
@@ -1522,7 +1522,7 @@ export class Run {
     // open a connection to fake-mongod. Wait up to 60 seconds for it
     // to accept the connection, retrying every 100ms.
     //
-    // XXX we never clean up this connection. Hopefully once
+    // XXX we never clean up this connection. Hopefully once id:720 gh:721
     // fake-mongod has dropped its end of the connection, and we hold
     // no reference to our end, it will get gc'd. If not, that's not
     // great, but it probably doesn't actually create any practical

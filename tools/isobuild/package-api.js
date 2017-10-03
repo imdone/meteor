@@ -334,7 +334,7 @@ _.extend(PackageAPI.prototype, {
    */
   addFiles: function (paths, arch, fileOptions) {
     if (fileOptions && fileOptions.isAsset) {
-      // XXX it would be great to print a warning here, see the issue:
+      // XXX it would be great to print a warning here, see the issue: id:749 gh:750
       // https://github.com/meteor/meteor/issues/5495
       this._addFiles("assets", paths, arch);
       return;
@@ -425,7 +425,7 @@ _.extend(PackageAPI.prototype, {
     arch = toArchArray(arch);
 
     // Convert Dos-style paths to Unix-style paths.
-    // XXX it is possible to convert an already Unix-style path by mistake
+    // XXX it is possible to convert an already Unix-style path by mistake id:650 gh:651
     // and break it. e.g.: 'some\folder/anotherFolder' is a valid path
     // consisting of two components. #WindowsPathApi
     paths = _.map(paths, function (p) {
@@ -594,7 +594,7 @@ _.extend(PackageAPI.prototype, {
     arch = toArchArray(arch);
 
     _.each(symbols, function (symbol) {
-      // XXX be unicode-friendlier
+      // XXX be unicode-friendlier id:470 gh:471
       if (!symbol.match(/^([_$a-zA-Z][_$a-zA-Z0-9]*)$/)) {
         buildmessage.error("Bad exported symbol: " + symbol,
                            { useMyCaller: true });
@@ -614,5 +614,5 @@ _.extend(PackageAPI.prototype, {
   }
 });
 
-// XXX COMPAT WITH 0.8.x
+// XXX COMPAT WITH 0.8.x id:596 gh:597
 PackageAPI.prototype.add_files = PackageAPI.prototype.addFiles;

@@ -18,5 +18,5 @@ _.each(['publish', 'methods', 'call', 'apply', 'onConnection', 'onMessage'],
 
 // Meteor.server used to be called Meteor.default_server. Provide
 // backcompat as a courtesy even though it was never documented.
-// XXX COMPAT WITH 0.6.4
+// XXX COMPAT WITH 0.6.4 id:139 gh:140
 Meteor.default_server = Meteor.server;

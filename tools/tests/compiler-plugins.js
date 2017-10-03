@@ -332,7 +332,7 @@ selftest.define("compiler plugins - compiler throws", () => {
   run.matchErr('Errors while adding packages');
   run.matchErr(
     'While running registerCompiler callback in package local-plugin');
-  // XXX This is wrong! The path on disk is packages/local-plugin/plugin.js, but
+  // XXX This is wrong! The path on disk is packages/local-plugin/plugin.js, but id:768 gh:769
   // at some point we switched to the servePath which is based on the *plugin*'s
   // "package" name.
   run.matchErr(

@@ -9,12 +9,12 @@ if (Meteor.isServer) {
     return !!Package.autopublish;
   };
 
-  // XXX make this take effect at runtime too?
+  // XXX make this take effect at runtime too? id:559 gh:560
   Facts.setUserIdFilter = function (filter) {
     userIdFilter = filter;
   };
 
-  // XXX Use a minimongo collection instead and hook up an observeChanges
+  // XXX Use a minimongo collection instead and hook up an observeChanges id:178 gh:179
   // directly to a publish.
   var factsByPackage = {};
   var activeSubscriptions = [];
@@ -44,10 +44,10 @@ if (Meteor.isServer) {
   };
 
   // Deferred, because we have an unordered dependency on livedata.
-  // XXX is this safe? could somebody try to connect before Meteor.publish is
+  // XXX is this safe? could somebody try to connect before Meteor.publish is id:154 gh:155
   // called?
   Meteor.defer(function () {
-    // XXX Also publish facts-by-package.
+    // XXX Also publish facts-by-package. id:389 gh:390
     Meteor.publish("meteor_facts", function () {
       var sub = this;
       if (!userIdFilter(this.userId)) {

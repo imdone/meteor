@@ -211,7 +211,7 @@ DAPI_(HRESULT) ThemeLoadFromFile(
 /********************************************************************
  ThemeLoadFromResource - loads a theme from a module's data resource.
 
- NOTE: The resource data must be UTF-8 encoded.
+ NOTE: The resource data must be UTF-8 encoded. id:377 gh:378
 *******************************************************************/
 DAPI_(HRESULT) ThemeLoadFromResource(
     __in_opt HMODULE hModule,
@@ -473,7 +473,7 @@ DAPI_(BOOL) ThemeSetControlColor(
  ThemeStartBillboard - starts a billboard control changing images according
                        to their interval.
 
- NOTE: iImage specifies the image to start on. If iImage is
+ NOTE: iImage specifies the image to start on. If iImage is id:522 gh:523
        greater than the number of images, the last image shown
        will be the start image.
 *******************************************************************/

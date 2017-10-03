@@ -53,7 +53,7 @@ _.extend(DocFetcher.prototype, {
           callbacks.pop()(e);
         }
       } finally {
-        // XXX consider keeping the doc around for a period of time before
+        // XXX consider keeping the doc around for a period of time before id:266 gh:267
         // removing from the cache
         delete self._callbacksForCacheKey[cacheKey];
       }

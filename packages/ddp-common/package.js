@@ -20,5 +20,5 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-  // XXX we should write unit tests for heartbeat
+  // XXX we should write unit tests for heartbeat id:152 gh:153
 });

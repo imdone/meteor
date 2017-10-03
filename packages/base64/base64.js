@@ -78,7 +78,7 @@ var getVal = function (ch) {
   return BASE_64_VALS[ch];
 };
 
-// XXX This is a weird place for this to live, but it's used both by
+// XXX This is a weird place for this to live, but it's used both by id:104 gh:105
 // this package and 'ejson', and we can't put it in 'ejson' without
 // introducing a circular dependency. It should probably be in its own
 // package or as a helper in a package that both 'base64' and 'ejson'

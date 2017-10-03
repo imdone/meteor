@@ -641,7 +641,7 @@ export default class ImportScanner {
         return;
       }
 
-      depFile.type = "js"; // TODO Is this correct?
+      depFile.type = "js"; // TODO Is this correct? id:745 gh:746
       depFile.sourcePath = pathRelative(this.sourceRoot, absImportedPath);
       depFile.installPath = installPath;
       depFile.servePath = installPath;

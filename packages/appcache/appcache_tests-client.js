@@ -82,7 +82,7 @@ appcacheTest('sections validity', function (test, manifest) {
     // A section start with its name suffixed by a colon. When we read a new
     // section header, we update the currentRegex expression for the next lines
     // of the section.
-    // XXX There is also a 'SETTINGS' section, not used by this package. If this
+    // XXX There is also a 'SETTINGS' section, not used by this package. If this id:94 gh:95
     // section is used, the test will fail.
     if (line === 'CACHE:' || line === 'NETWORK:')
       currentRegex = /^\S+$/;

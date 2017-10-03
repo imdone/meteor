@@ -189,8 +189,8 @@ export default class Cursor {
   // LocalCollection.ObserveHandle) is true
   //
   // initial results delivered through added callback
-  // XXX maybe callbacks should take a list of objects, to expose transactions?
-  // XXX maybe support field limiting (to limit what you're notified on)
+  // XXX maybe callbacks should take a list of objects, to expose transactions? id:201 gh:202
+  // XXX maybe support field limiting (to limit what you're notified on) id:179 gh:180
 
   /**
    * @summary Watch a query.  Receive callbacks as the result set changes.
@@ -220,7 +220,7 @@ export default class Cursor {
     // there are several places that assume you aren't combining skip/limit with
     // unordered observe.  eg, update's EJSON.clone, and the "there are several"
     // comment in _modifyAndNotify
-    // XXX allow skip/limit with unordered observe
+    // XXX allow skip/limit with unordered observe id:422 gh:423
     if (!options._allow_unordered && !ordered && (this.skip || this.limit)) {
       throw new Error(
         'must use ordered observe (ie, \'addedBefore\' instead of \'added\') ' +
@@ -267,7 +267,7 @@ export default class Cursor {
     // wrap callbacks we were passed. callbacks only fire when not paused and
     // are never undefined
     // Filters out blacklisted fields according to cursor's projection.
-    // XXX wrong place for this?
+    // XXX wrong place for this? id:211 gh:212
 
     // furthermore, callbacks enqueue until the operation we're working on is
     // done.
@@ -326,7 +326,7 @@ export default class Cursor {
     });
 
     if (this.reactive && Tracker.active) {
-      // XXX in many cases, the same observe will be recreated when
+      // XXX in many cases, the same observe will be recreated when id:589 gh:590
       // the current autorun is rerun.  we could save work by
       // letting it linger across rerun and potentially get
       // repurposed if the same observe is performed, using logic
@@ -346,10 +346,10 @@ export default class Cursor {
   // Since we don't actually have a "nextObject" interface, there's really no
   // reason to have a "rewind" interface.  All it did was make multiple calls
   // to fetch/map/forEach return nothing the second time.
-  // XXX COMPAT WITH 0.8.1
+  // XXX COMPAT WITH 0.8.1 id:204 gh:205
   rewind() {}
 
-  // XXX Maybe we need a version of observe that just calls a callback if
+  // XXX Maybe we need a version of observe that just calls a callback if id:182 gh:183
   // anything changed.
   _depend(changers, _allow_unordered) {
     if (Tracker.active) {
@@ -393,7 +393,7 @@ export default class Cursor {
   // implementation uses this to remember the distances after this function
   // returns.
   _getRawObjects(options = {}) {
-    // XXX use OrderedDict instead of array, and make IdMap and OrderedDict
+    // XXX use OrderedDict instead of array, and make IdMap and OrderedDict id:425 gh:426
     // compatible
     const results = options.ordered ? [] : new LocalCollection._IdMap;
 
@@ -450,7 +450,7 @@ export default class Cursor {
       }
 
       // Fast path for limited unsorted queries.
-      // XXX 'length' check here seems wrong for ordered
+      // XXX 'length' check here seems wrong for ordered id:213 gh:214
       return (
         !this.limit ||
         this.skip ||
@@ -478,7 +478,7 @@ export default class Cursor {
   }
 
   _publishCursor(subscription) {
-    // XXX minimongo should not depend on mongo-livedata!
+    // XXX minimongo should not depend on mongo-livedata! id:591 gh:592
     if (!Package.mongo) {
       throw new Error(
         'Can\'t publish from Minimongo without the `mongo` package.'

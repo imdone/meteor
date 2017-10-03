@@ -62,7 +62,7 @@ selftest.define("login", ['net'], function () {
   run.matchErr("Logged in as test.");
   run.expectExit(0);
 
-  // XXX test login by email
+  // XXX test login by email id:678 gh:679
 
   run = s.run("whoami");
   run.read("test\n");

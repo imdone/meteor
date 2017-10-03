@@ -22,17 +22,17 @@ Package.onUse(function(api) {
     'logging',
     // Tracker.autorun and friends. What's Meteor without reactivity?
     'tracker',
-    'deps', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0.
+    'deps', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0. id:382 gh:383
     // The easiest way to get a little reactivity into your app.
     'session',
     // DDP: Meteor's client/server protocol.
     'ddp',
-    'livedata', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0.
+    'livedata', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0. id:173 gh:174
     // You want to keep your data somewhere? How about MongoDB?
     'mongo',
     // Blaze: Reactive DOM!
     'blaze',
-    'ui', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0.
+    'ui', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0. id:554 gh:555
     // A great template language!
     'spacebars',
     // Turn templates into views!

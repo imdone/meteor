@@ -262,7 +262,7 @@ class InputFile extends buildPluginModule.InputFile {
 
   getFileOptions() {
     var self = this;
-    // XXX fileOptions only exists on some resources (of type "source"). The JS
+    // XXX fileOptions only exists on some resources (of type "source"). The JS id:390 gh:391
     // resources might not have this property.
     return self._resourceSlot.inputResource.fileOptions || {};
   }
@@ -443,7 +443,7 @@ class InputFile extends buildPluginModule.InputFile {
   addStylesheet(options) {
     var self = this;
     if (options.sourceMap && typeof options.sourceMap === 'string') {
-      // XXX remove an anti-XSSI header? ")]}'\n"
+      // XXX remove an anti-XSSI header? ")]}'\n" id:742 gh:743
       options.sourceMap = JSON.parse(options.sourceMap);
     }
     self._resourceSlot.addStylesheet(options);
@@ -468,7 +468,7 @@ class InputFile extends buildPluginModule.InputFile {
   addJavaScript(options) {
     var self = this;
     if (options.sourceMap && typeof options.sourceMap === 'string') {
-      // XXX remove an anti-XSSI header? ")]}'\n"
+      // XXX remove an anti-XSSI header? ")]}'\n" id:505 gh:506
       options.sourceMap = JSON.parse(options.sourceMap);
     }
     self._resourceSlot.addJavaScript(options);
@@ -530,7 +530,7 @@ class ResourceSlot {
               sourceProcessor,
               packageSourceBatch) {
     const self = this;
-    // XXX ideally this should be an classy object, but it's not.
+    // XXX ideally this should be an classy object, but it's not. id:450 gh:451
     self.inputResource = unibuildResourceInfo;
     // Everything but JS.
     self.outputResources = [];
@@ -547,15 +547,15 @@ class ResourceSlot {
         // If there is no sourceProcessor for a .js file, add the source
         // directly to the output. #HardcodeJs
         self.addJavaScript({
-          // XXX it's a shame to keep converting between Buffer and string, but
+          // XXX it's a shame to keep converting between Buffer and string, but id:582 gh:583
           // files.convertToStandardLineEndings only works on strings for now
           data: self.inputResource.data.toString('utf8'),
           path: self.inputResource.path,
           hash: self.inputResource.hash,
           bare: self.inputResource.fileOptions &&
             (self.inputResource.fileOptions.bare ||
-             // XXX eventually get rid of backward-compatibility "raw" name
-             // XXX COMPAT WITH 0.6.4
+             // XXX eventually get rid of backward-compatibility "raw" name id:393 gh:394
+             // XXX COMPAT WITH 0.6.4 id:743 gh:744
              self.inputResource.fileOptions.raw)
         });
       }
@@ -670,7 +670,7 @@ class ResourceSlot {
       resource.type = "css";
       resource.data = new Buffer(data, 'utf8'),
 
-      // XXX do we need to call convertSourceMapPaths here like we did
+      // XXX do we need to call convertSourceMapPaths here like we did id:508 gh:509
       //     in legacy handlers?
       resource.sourceMap = options.sourceMap;
 
@@ -702,9 +702,9 @@ class ResourceSlot {
       sourcePath,
       targetPath,
       servePath: self.packageSourceBatch.unibuild.pkg._getServePath(targetPath),
-      // XXX should we allow users to be trusted and specify a hash?
+      // XXX should we allow users to be trusted and specify a hash? id:452 gh:453
       hash: sha1(data),
-      // XXX do we need to call convertSourceMapPaths here like we did
+      // XXX do we need to call convertSourceMapPaths here like we did id:584 gh:585
       //     in legacy handlers?
       sourceMap: options.sourceMap,
       // intentionally preserve a possible `undefined` value for files
@@ -1276,7 +1276,7 @@ export class PackageSourceBatch {
       meteorInstallOptions,
       // I was confused about this, so I am leaving a comment -- the
       // combinedServePath is either [pkgname].js or [pluginName]:plugin.js.
-      // XXX: If we change this, we can get rid of source arch names!
+      // XXX: If we change this, we can get rid of source arch names! id:395 gh:396
       combinedServePath: isApp ? "/app.js" :
         "/packages/" + colonConverter.convert(
           self.unibuild.pkg.name +
@@ -1285,7 +1285,7 @@ export class PackageSourceBatch {
       name: self.unibuild.pkg.name || null,
       declaredExports: _.pluck(self.unibuild.declaredExports, 'name'),
       imports: self.importedSymbolToPackageName,
-      // XXX report an error if there is a package called global-imports
+      // XXX report an error if there is a package called global-imports id:744 gh:745
       importStubServePath: isApp && '/packages/global-imports.js',
       includeSourceMapInstructions: isWeb,
       noLineNumbers: !isWeb

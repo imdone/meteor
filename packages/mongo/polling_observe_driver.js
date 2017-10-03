@@ -31,7 +31,7 @@ PollingObserveDriver = function (options) {
     self._unthrottledEnsurePollIsScheduled,
     self._cursorDescription.options.pollingThrottleMs || 50 /* ms */);
 
-  // XXX figure out if we still need a queue
+  // XXX figure out if we still need a queue id:482 gh:483
   self._taskQueue = new Meteor._SynchronousQueue();
 
   var listenersHandle = listenAll(
@@ -138,7 +138,7 @@ _.extend(PollingObserveDriver.prototype, {
     var oldResults = self._results;
     if (!oldResults) {
       first = true;
-      // XXX maybe use OrderedDict instead?
+      // XXX maybe use OrderedDict instead? id:284 gh:285
       oldResults = self._ordered ? [] : new LocalCollection._IdMap;
     }
 

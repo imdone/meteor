@@ -8,10 +8,10 @@ Deps.autorun(function () {
   if (room_id) Meteor.subscribe('room-detail', room_id);
 });
 
-// XXX would be nice to eliminate this function and have people just
+// XXX would be nice to eliminate this function and have people just id:1 gh:2
 // call Session.set("current_room", foo) directly instead
 var selectRoom = function (room_id) {
-  // XXX pushstate
+  // XXX pushstate id:27 gh:28
   var room = Rooms.find(room_id);
   Session.set('current_room', room_id);
 };
@@ -21,20 +21,20 @@ Meteor.startup(function () {
 });
 
 Template.room_list.rooms = function () {
-  // XXX it would be nice if this were find instead of findLive (ie,
+  // XXX it would be nice if this were find instead of findLive (ie, id:7 gh:8
   // if they were unified in some sane way)
   return Rooms.findLive({}, {sort: {name: 1}});
 };
 
 Template.add_room.events = {
   'click': function () {
-    // XXX should put up dialog to get name
-    // XXX should support automatically set created/updated timestamps
+    // XXX should put up dialog to get name id:6 gh:7
+    // XXX should support automatically set created/updated timestamps id:4 gh:5
     var room_id = Rooms.insert({name: "New room",
-                                // XXX horrid syntax
+                                // XXX horrid syntax id:5 gh:6
                                 created: (new Date()).getTime()});
     selectRoom(room_id);
-    // XXX XXX XXX this fails to work -- it leaves edit mode after
+    // XXX XXX XXX this fails to work -- it leaves edit mode after id:29 gh:30
     // 1RTT. what happens is, the server echos the insert back to us,
     // and that is currently wired up to trigger a changed event on
     // the findlive, which redraws the element, which triggers blur,
@@ -62,7 +62,7 @@ Template.room.events = {
   },
   'dblclick': function (evt) {
     Session.set('editing_room_name', true);
-    // XXX XXX doesn't generalize.. the element might very reasonably
+    // XXX XXX doesn't generalize.. the element might very reasonably id:8 gh:9
     // not have a unique id. may need a different strategy..
     Deps.flush();
     $('#room_name_input').focus();
@@ -71,8 +71,8 @@ Template.room.events = {
     Session.set('editing_room_name', false);
   },
   'keypress input': function (evt) {
-    // XXX should really have a binding/validator-based pattern
-    // XXX check to see this pattern works if you are saving
+    // XXX should really have a binding/validator-based pattern id:18 gh:19
+    // XXX check to see this pattern works if you are saving id:11 gh:12
     // continuously (on every keystroke)
     var value = $(evt.target).val();
     if (evt.which === 13 && value.length)

@@ -41,7 +41,7 @@ Package.onUse(function (api) {
   api.addFiles('test_environment.js', ['client', 'server']);
   
   // dynamic variables, bindEnvironment
-  // XXX move into a separate package?
+  // XXX move into a separate package? id:192 gh:193
   api.addFiles('dynamics_browser.js', 'client');
   api.addFiles('dynamics_nodejs.js', 'server');
 

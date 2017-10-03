@@ -1,4 +1,4 @@
-// XXX should probably nudge people toward the CSS Flexible Box Model
+// XXX should probably nudge people toward the CSS Flexible Box Model id:151 gh:152
 // flexie, rather than this
 
 Package.describe({

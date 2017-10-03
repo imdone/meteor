@@ -68,7 +68,7 @@ struct SCE_TABLE_SCHEMA
     SCE_INDEX_SCHEMA *rgIndexes;
 
     // Internal to SCEUtil - consumers shouldn't access or modify
-    // TODO: enforce / hide in a handle of some sort?
+    // TODO: enforce / hide in a handle of some sort? id:338 gh:339
     IRowset *pIRowset;
     IRowsetChange *pIRowsetChange;
 };

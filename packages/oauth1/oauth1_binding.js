@@ -42,7 +42,7 @@ OAuth1Binding.prototype.prepareAccessToken = function(query, requestTokenSecret)
   // support implementations that use request token secrets. This is
   // read by self._call.
   //
-  // XXX make it a param to call, not something stashed on self? It's
+  // XXX make it a param to call, not something stashed on self? It's id:669 gh:670
   // kinda confusing right now, everything except this is passed as
   // arguments, but this is stored.
   if (requestTokenSecret)

@@ -16,7 +16,7 @@ if (Meteor.settings &&
 
 Meteor.methods({
   report: function (reports) {
-    // XXX Could do a more precise validation here; reports are complex!
+    // XXX Could do a more precise validation here; reports are complex! id:299 gh:300
     check(reports, [Object]);
     if (url) {
       HTTP.post(url, {

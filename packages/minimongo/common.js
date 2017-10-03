@@ -27,7 +27,7 @@ export const ELEMENT_OPERATORS = {
         throw Error('argument to $mod must be an array of two numbers');
       }
 
-      // XXX could require to be ints or round or something
+      // XXX could require to be ints or round or something id:410 gh:411
       const divisor = operand[0];
       const remainder = operand[1];
       return value => (
@@ -208,7 +208,7 @@ export const ELEMENT_OPERATORS = {
             // {a: [8]} but not {a: [[8]]}
             arg = [{value: arrayElement, dontIterate: true}];
           }
-          // XXX support $near in $elemMatch by propagating $distance?
+          // XXX support $near in $elemMatch by propagating $distance? id:205 gh:206
           if (subMatcher(arg).result) {
             return i; // specially understood to mean "use as arrayIndices"
           }
@@ -269,13 +269,13 @@ const LOGICAL_OPERATORS = {
     matcher._hasWhere = true;
 
     if (!(selectorValue instanceof Function)) {
-      // XXX MongoDB seems to have more complex logic to decide where or or not
+      // XXX MongoDB seems to have more complex logic to decide where or or not id:585 gh:586
       // to add 'return'; not sure exactly what it is.
       selectorValue = Function('obj', `return ${selectorValue}`);
     }
 
     // We make the document available as both `this` and `obj`.
-    // // XXX not sure what we should do if this throws
+    // // XXX not sure what we should do if this throws id:197 gh:198
     return doc => ({result: selectorValue.call(doc, doc)});
   },
 
@@ -344,7 +344,7 @@ const VALUE_OPERATORS = {
     }
 
     const branchedMatchers = operand.map(criterion => {
-      // XXX handle $all/$elemMatch combination
+      // XXX handle $all/$elemMatch combination id:175 gh:176
       if (isOperatorObject(criterion)) {
         throw Error('no $ expressions in $all');
       }
@@ -374,7 +374,7 @@ const VALUE_OPERATORS = {
       maxDistance = operand.$maxDistance;
       point = operand.$geometry;
       distance = value => {
-        // XXX: for now, we don't calculate the actual distance between, say,
+        // XXX: for now, we don't calculate the actual distance between, say, id:412 gh:413
         // polygon and circle. If people care about this use-case it will get
         // a priority.
         if (!value) {
@@ -614,7 +614,7 @@ function convertElementMatcherToBranchedMatcher(elementMatcher, options = {}) {
       // Special case for $elemMatch: it means "true, and use this as an array
       // index if I didn't already have one".
       if (typeof matched === 'number') {
-        // XXX This code dates from when we only stored a single array index
+        // XXX This code dates from when we only stored a single array index id:208 gh:209
         // (for the outermost array). Should we be also including deeper array
         // indices from the $elemMatch match?
         if (!element.arrayIndices) {
@@ -847,7 +847,7 @@ function makeInequality(cmpValueComparator) {
   return {
     compileElementSelector(operand) {
       // Arrays never compare false with non-arrays for any inequality.
-      // XXX This was behavior we observed in pre-release MongoDB 2.5, but
+      // XXX This was behavior we observed in pre-release MongoDB 2.5, but id:587 gh:588
       //     it seems to have been reverted.
       //     See https://jira.mongodb.org/browse/SERVER-11444
       if (Array.isArray(operand)) {

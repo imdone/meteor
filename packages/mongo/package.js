@@ -1,4 +1,4 @@
-// XXX We should revisit how we factor MongoDB support into (1) the
+// XXX We should revisit how we factor MongoDB support into (1) the id:260 gh:261
 // server-side node.js driver [which you might use independently of
 // livedata, after all], (2) minimongo [ditto], and (3) Collection,
 // which is the class that glues the two of them to Livedata, but also
@@ -83,7 +83,7 @@ Package.onTest(function (api) {
   api.use('check');
   api.use(['tinytest', 'underscore', 'test-helpers', 'ejson', 'random',
            'ddp', 'base64']);
-  // XXX test order dependency: the allow_tests "partial allow" test
+  // XXX test order dependency: the allow_tests "partial allow" test id:281 gh:282
   // fails if it is run before mongo_livedata_tests.
   api.addFiles('mongo_livedata_tests.js', ['client', 'server']);
   api.addFiles('upsert_compatibility_test.js', 'server');

@@ -45,7 +45,7 @@ DAPI_(HRESULT) BalConditionsParseFromXml(
 /*******************************************************************
  BalConditionEvaluate - evaluates condition against the provided IBurnCore.
 
- NOTE: psczMessage is optional.
+ NOTE: psczMessage is optional. id:520 gh:521
 ********************************************************************/
 DAPI_(HRESULT) BalConditionEvaluate(
     __in BAL_CONDITION* pCondition,

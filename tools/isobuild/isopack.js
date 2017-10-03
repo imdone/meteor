@@ -161,7 +161,7 @@ var Isopack = function () {
   // isopack-buildinfo.json file). They are not set for Isopacks read from
   // the tropohouse.
 
-  // XXX this is likely to change once we have build versions
+  // XXX this is likely to change once we have build versions id:456 gh:457
   //
   // A WatchSet for the full transitive dependencies for all plugins in this
   // package, as well as this package's package.js. If any of these dependencies
@@ -223,7 +223,7 @@ Isopack.knownFormats = ["unipackage-pre2", "isopack-1", "isopack-2"];
 // they were before.
 Isopack.convertOneStepForward = function (data, fromFormat) {
   var convertedData = _.clone(data);
-  // XXX COMPAT WITH 0.9.3
+  // XXX COMPAT WITH 0.9.3 id:588 gh:589
   if (fromFormat === "unipackage-pre2") {
     convertedData.builds = convertedData.unibuilds;
     delete convertedData.unibuilds;
@@ -303,7 +303,7 @@ Isopack.readMetadataFromDirectory =
     }
   } else if (files.exists(unipackageJsonPath)) {
     // super old version with different file name
-    // XXX COMPAT WITH 0.9.3
+    // XXX COMPAT WITH 0.9.3 id:401 gh:402
     if (files.exists(unipackageJsonPath)) {
       metadata = JSON.parse(files.readFile(unipackageJsonPath));
 
@@ -329,7 +329,7 @@ Isopack.readMetadataFromDirectory =
 
 _.extend(Isopack.prototype, {
   // Make a dummy (empty) package that contains nothing of interest.
-  // XXX used?
+  // XXX used? id:746 gh:747
   initEmpty: function (name) {
     var self = this;
     self.name = name;
@@ -521,7 +521,7 @@ _.extend(Isopack.prototype, {
         buildmessage.error("package `" + name + "` is built for incompatible " +
                            "architecture");
         // Recover by ignoring plugin
-        // XXX does this recovery work?
+        // XXX does this recovery work? id:645 gh:646
         return;
       }
 
@@ -588,7 +588,7 @@ _.extend(Isopack.prototype, {
        * @memberOf Plugin
        * @locus Build Plugin
        * @deprecated since 1.2
-       * XXX COMPAT WITH 1.1
+       * XXX COMPAT WITH 1.1 id:458 gh:459
        */
       registerSourceHandler: function (extension, options, handler) {
         if (!handler) {
@@ -921,7 +921,7 @@ _.extend(Isopack.prototype, {
         throw Error("can't merge isopacks with buildinfo");
       }
 
-      // XXX should comprehensively sanitize (eg, typecheck) everything
+      // XXX should comprehensively sanitize (eg, typecheck) everything id:590 gh:591
       // read from json files
 
       // Read the watch sets for each unibuild
@@ -1120,7 +1120,7 @@ _.extend(Isopack.prototype, {
 
     _.each(mainJson.tools, function (toolMeta) {
       toolMeta.rootDir = dir;
-      // XXX check for overlap
+      // XXX check for overlap id:403 gh:405
       self.toolsOnDisk.push(toolMeta);
     });
 
@@ -1234,7 +1234,7 @@ _.extend(Isopack.prototype, {
         };
       }
 
-      // XXX COMPAT WITH 0.9.3
+      // XXX COMPAT WITH 0.9.3 id:747 gh:748
       builder.reserve("unipackage.json");
 
       builder.reserve("isopack.json");
@@ -1261,7 +1261,7 @@ _.extend(Isopack.prototype, {
       // 0.6.4.  (Specifically, warehouse.packageExistsInWarehouse used to check
       // to see if package.js exists instead of just looking for the package
       // directory.)
-      // XXX Remove this once we can.
+      // XXX Remove this once we can. id:647 gh:648
       builder.write("package.js", {
         data: new Buffer(
           ("// This file is included for compatibility with the Meteor " +
@@ -1458,7 +1458,7 @@ _.extend(Isopack.prototype, {
       // Plugins
       _.each(self.plugins, function (pluginsByArch, name) {
         _.each(pluginsByArch, function (plugin) {
-          // XXX the name of the plugin doesn't typically contain a colon, but
+          // XXX the name of the plugin doesn't typically contain a colon, but id:463 gh:464
           // escape it just in case.
           var pluginDir = builder.generateFilename(
             'plugin.' + colonConverter.convert(name) + '.' + plugin.arch,
@@ -1480,7 +1480,7 @@ _.extend(Isopack.prototype, {
         mainJson.tools = toolsJson;
       }
       // Next, what about other tools we may be merging from other isopacks?
-      // XXX check for overlap
+      // XXX check for overlap id:592 gh:593
       _.each(self.toolsOnDisk, function (toolMeta) {
         toolMeta = _.clone(toolMeta);
         var rootDir = toolMeta.rootDir;
@@ -1547,7 +1547,7 @@ _.extend(Isopack.prototype, {
             // place! So this source file is already the output of prelink,
             // and we don't need to reprocess it.
             prelinkFile = jsResourcesForLegacyPrelink[0];
-            // XXX It's weird that the type of object going in and out of
+            // XXX It's weird that the type of object going in and out of id:406 gh:407
             // linker.prelink is different (so that this prelinkData
             // assignment differs from that below), ah well.
             prelinkData = prelinkFile.data;
@@ -1575,7 +1575,7 @@ _.extend(Isopack.prototype, {
                 inputFiles: jsResourcesForLegacyPrelink,
                 // I was confused about this, so I am leaving a comment -- the
                 // combinedServePath is either [pkgname].js or [pluginName]:plugin.js.
-                // XXX: If we change this, we can get rid of source arch names!
+                // XXX: If we change this, we can get rid of source arch names! id:748 gh:749
                 combinedServePath: (
                   "/packages/" + colonConverter.convert(
                     unibuild.pkg.name +
@@ -1651,7 +1651,7 @@ _.extend(Isopack.prototype, {
 
         // old unipackage.json format/filename.  no point to save this if
         // we can't even support isopack-1.
-        // XXX COMPAT WITH 0.9.3
+        // XXX COMPAT WITH 0.9.3 id:648 gh:649
         builder.writeJson(
           "unipackage.json",
           Isopack.convertIsopackFormat(
@@ -1935,7 +1935,7 @@ _.extend(Isopack.prototype, {
     return colonConverter.convert(
       files.pathJoin(
         serveRoot,
-        // XXX or should everything in this API use slash already?
+        // XXX or should everything in this API use slash already? id:467 gh:468
         files.convertToStandardPath(pathInPackage, true)));
   },
 

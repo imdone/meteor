@@ -1,5 +1,5 @@
 // options.connection, if given, is a LivedataClient or LivedataServer
-// XXX presently there is no way to destroy/clean up a Collection
+// XXX presently there is no way to destroy/clean up a Collection id:244 gh:245
 
 /**
  * @summary Namespace for MongoDB-related items
@@ -45,7 +45,7 @@ Mongo.Collection = function (name, options) {
     // Backwards compatibility hack with original signature (which passed
     // "connection" directly instead of in options. (Connections must have a "methods"
     // method.)
-    // XXX remove before 1.0
+    // XXX remove before 1.0 id:264 gh:265
     options = {connection: options};
   }
   // Backwards compatibility: "connection" used to be called "manager".
@@ -89,7 +89,7 @@ Mongo.Collection = function (name, options) {
     self._connection = Meteor.server;
 
   if (!options._driver) {
-    // XXX This check assumes that webapp is loaded so that Meteor.server !==
+    // XXX This check assumes that webapp is loaded so that Meteor.server !== id:457 gh:458
     // null. We should fully support the case of "want to use a Mongo-backed
     // collection from Node code without webapp", but we don't yet.
     // #MeteorServerNull
@@ -114,7 +114,7 @@ Mongo.Collection = function (name, options) {
       // Called at the beginning of a batch of updates. batchSize is the number
       // of update calls to expect.
       //
-      // XXX This interface is pretty janky. reset probably ought to go back to
+      // XXX This interface is pretty janky. reset probably ought to go back to id:239 gh:240
       // being its own function, and callers shouldn't have to calculate
       // batchSize. The optimization of not calling pause/remove should be
       // delayed until later: the first call to update() should buffer its
@@ -135,7 +135,7 @@ Mongo.Collection = function (name, options) {
       },
 
       // Apply an update.
-      // XXX better specify this interface (not in terms of a wire message)?
+      // XXX better specify this interface (not in terms of a wire message)? id:636 gh:637
       update: function (msg) {
         var mongoId = MongoID.idParse(msg.id);
         var doc = self._collection.findOne(mongoId);
@@ -151,7 +151,7 @@ Mongo.Collection = function (name, options) {
           } else if (!doc) {
             self._collection.insert(replace);
           } else {
-            // XXX check that replace has no $ ops
+            // XXX check that replace has no $ ops id:247 gh:248
             self._collection.update(mongoId, replace);
           }
           return;
@@ -216,7 +216,7 @@ Mongo.Collection = function (name, options) {
     if (!ok) {
       const message = `There is already a collection named "${name}"`;
       if (options._suppressSameNameError === true) {
-        // XXX In theory we do not have to throw when `ok` is falsy. The store is already defined
+        // XXX In theory we do not have to throw when `ok` is falsy. The store is already defined id:265 gh:266
         // for this collection name, but this will simply be another reference to it and everything
         // should work. However, we have historically thrown an error here, so for now we will
         // skip the error only when `_suppressSameNameError` is `true`, allowing people to opt in
@@ -228,7 +228,7 @@ Mongo.Collection = function (name, options) {
     }
   }
 
-  // XXX don't define these until allow or deny is actually used for this
+  // XXX don't define these until allow or deny is actually used for this id:459 gh:460
   // collection. Could be hard if the security rules are only defined on the
   // server.
   if (options.defineMutationMethods !== false) {
@@ -461,7 +461,7 @@ Mongo.Collection.prototype.insert = function insert(doc, callback) {
       return doc._id;
     }
 
-    // XXX what is this for??
+    // XXX what is this for?? id:241 gh:242
     // It's some iteraction between the callback to _callMutatorMethod and
     // the return value conversion
     doc._id = result;
@@ -595,7 +595,7 @@ Mongo.Collection.prototype.remove = function remove(selector, callback) {
 // Determine if this collection is simply a minimongo representation of a real
 // database on another server
 Mongo.Collection.prototype._isRemoteCollection = function _isRemoteCollection() {
-  // XXX see #MeteorServerNull
+  // XXX see #MeteorServerNull id:638 gh:639
   return this._connection && this._connection !== Meteor.server;
 };
 

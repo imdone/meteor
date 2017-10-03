@@ -49,7 +49,7 @@ var LEVEL_COLORS = {
 
 var META_COLOR = 'blue';
 
-// XXX package
+// XXX package id:185 gh:186
 var RESTRICTED_KEYS = ['time', 'timeInexact', 'level', 'file', 'line',
                         'program', 'originApp', 'satellite', 'stderr'];
 
@@ -58,13 +58,13 @@ var FORMATTED_KEYS = RESTRICTED_KEYS.concat(['app', 'message']);
 var logInBrowser = function (obj) {
   var str = Log.format(obj);
 
-  // XXX Some levels should be probably be sent to the server
+  // XXX Some levels should be probably be sent to the server id:162 gh:163
   var level = obj.level;
 
   if ((typeof console !== 'undefined') && console[level]) {
     console[level](str);
   } else {
-    // XXX Uses of Meteor._debug should probably be replaced by Log.debug or
+    // XXX Uses of Meteor._debug should probably be replaced by Log.debug or id:399 gh:400
     //     Log.info, and we should have another name for "do your best to
     //     call call console.log".
     Meteor._debug(str);
@@ -113,8 +113,8 @@ Log._getCallerDetails = function () {
   details.line = match[2].split(':')[0];
 
   // Possible format: https://foo.bar.com/scripts/file.js?random=foobar
-  // XXX: if you can write the following in better way, please do it
-  // XXX: what about evals?
+  // XXX: if you can write the following in better way, please do it id:193 gh:194
+  // XXX: what about evals? id:576 gh:577
   details.file = match[1].split('/').slice(-1)[0].split('?')[0];
 
   return details;
@@ -149,7 +149,7 @@ _.each(['debug', 'info', 'warn', 'error'], function (level) {
     obj.time = new Date();
     obj.level = level;
 
-    // XXX allow you to enable 'debug', probably per-package
+    // XXX allow you to enable 'debug', probably per-package id:187 gh:188
     if (level === 'debug')
       return;
 
@@ -176,7 +176,7 @@ Log.parse = function (line) {
     try { obj = EJSON.parse(line); } catch (e) {}
   }
 
-  // XXX should probably check fields other than 'time'
+  // XXX should probably check fields other than 'time' id:164 gh:165
   if (obj && obj.time && (obj.time instanceof Date))
     return obj;
   else

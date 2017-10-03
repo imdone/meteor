@@ -18,7 +18,7 @@ function Xd(b,e,f){b=b|0;e=e|0;f=f|0;var g=0,h=0,j=0,k=0,l=0,m=0,n=0,o=0,p=0,q=0
 // This "midamble" is hacked into the output JS in a place
 // where it has access to the inner function generated
 // by Emscripten, the one that starts with "use asm".
-// NOTE: This doesn't work with minification on!
+// NOTE: This doesn't work with minification on! id:196 gh:197
 /////setInnerMalloc = function (hookedMalloc) {
 /////  _malloc = hookedMalloc;
 /////};

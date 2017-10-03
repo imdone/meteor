@@ -1,6 +1,6 @@
 // Hold launch screen on app load. This reflects the fact that Meteor
 // mobile apps that use this package always start with a launch screen
-// visible. (see XXX comment at the top of package.js for more
+// visible. (see XXX comment at the top of package.js for more id:183 gh:184
 // details)
 var handle = LaunchScreen.hold();
 
@@ -10,7 +10,7 @@ Meteor.startup(function () {
   if (! Template) {
     handle.release();
   } else if (Package['iron:router']) {
-    // XXX Instead of doing this here, this code should be in
+    // XXX Instead of doing this here, this code should be in id:158 gh:159
     // iron:router directly. Note that since we're in a
     // `Meteor.startup` block it's ok that we don't have a
     // weak dependency on iron:router in package.js.

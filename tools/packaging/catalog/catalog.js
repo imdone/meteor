@@ -66,7 +66,7 @@ catalog.refreshOrWarn = function (options) {
     if (err.errorType !== 'DDP.ConnectionError')
       throw err;
 
-    // XXX is throwing correct for SQLite errors too? probably.
+    // XXX is throwing correct for SQLite errors too? probably. id:489 gh:490
 
     Console.warn("Unable to update package catalog (are you offline?)");
     Console.warn();
@@ -74,7 +74,7 @@ catalog.refreshOrWarn = function (options) {
       "If you are using Meteor behind a proxy, set HTTP_PROXY and HTTPS_PROXY environment variables or see this page for more details: ",
       Console.url("https://github.com/meteor/meteor/wiki/Using-Meteor-behind-a-proxy"));
 
-    // XXX: Make this Console.debug(err)
+    // XXX: Make this Console.debug(err) id:613 gh:614
     if (Console.isDebugEnabled()) {
       Console.printError(err);
     }
@@ -115,7 +115,7 @@ catalog.runAndRetryWithRefreshIfHelpful = function (attempt) {
   }
 
   // Refresh!
-  // XXX This is a little hacky, as it shares a bunch of code with
+  // XXX This is a little hacky, as it shares a bunch of code with id:577 gh:579
   // catalog.refreshOrWarn, which is a higher-level function that's allowed to
   // log.
   catalog.triedToRefreshRecently = true;

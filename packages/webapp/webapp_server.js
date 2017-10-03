@@ -31,10 +31,10 @@ WebAppInternals.NpmModules = {
 
 WebApp.defaultArch = 'web.browser';
 
-// XXX maps archs to manifests
+// XXX maps archs to manifests id:315 gh:316
 WebApp.clientPrograms = {};
 
-// XXX maps archs to program path on filesystem
+// XXX maps archs to program path on filesystem id:512 gh:513
 var archPath = {};
 
 var bundledJsCssUrlRewriteHook = function (url) {
@@ -108,7 +108,7 @@ var identifyBrowser = function (userAgentString) {
   };
 };
 
-// XXX Refactor as part of implementing real routing.
+// XXX Refactor as part of implementing real routing. id:312 gh:313
 WebAppInternals.identifyBrowser = identifyBrowser;
 
 WebApp.categorizeRequest = function (req) {
@@ -143,7 +143,7 @@ var appUrl = function (url) {
   if (url === '/favicon.ico' || url === '/robots.txt')
     return false;
 
-  // NOTE: app.manifest is not a web standard like favicon.ico and
+  // NOTE: app.manifest is not a web standard like favicon.ico and id:703 gh:704
   // robots.txt. It is a file name we have chosen to use for HTML5
   // appcache URLs. It is included here to prevent using an appcache
   // then removing it from poisoning an app permanently. Eventually,
@@ -223,7 +223,7 @@ WebApp._timeoutAdjustmentRequestCallback = function (req, res) {
   // Insert our new finish listener to run BEFORE the existing one which removes
   // the response from the socket.
   var finishListeners = res.listeners('finish');
-  // XXX Apparently in Node 0.12 this event was called 'prefinish'.
+  // XXX Apparently in Node 0.12 this event was called 'prefinish'. id:327 gh:328
   // https://github.com/joyent/node/commit/7c9b6070
   // But it has switched back to 'finish' in Node v4:
   // https://github.com/nodejs/node/pull/1411
@@ -238,8 +238,8 @@ WebApp._timeoutAdjustmentRequestCallback = function (req, res) {
 // Will be updated by main before we listen.
 // Map from client arch to boilerplate object.
 // Boilerplate object has:
-//   - func: XXX
-//   - baseData: XXX
+//   - func: XXX id:316 gh:317
+//   - baseData: XXX id:515 gh:516
 var boilerplateByArch = {};
 
 // Register a callback function that can selectively modify boilerplate
@@ -272,7 +272,7 @@ WebAppInternals.registerBoilerplateDataCallback = function (key, callback) {
 // returns the boilerplate with that content patched in otherwise
 // memoizes on HTML attributes (used by, eg, appcache) and whether inline
 // scripts are currently allowed.
-// XXX so far this function is always called with arch === 'web.browser'
+// XXX so far this function is always called with arch === 'web.browser' id:313 gh:314
 var memoizedBoilerplate = {};
 
 function getBoilerplate(request, arch) {
@@ -481,7 +481,7 @@ WebAppInternals.staticFilesMiddleware = function (staticFiles, req, res, next) {
 };
 
 var getUrlPrefixForArch = function (arch) {
-  // XXX we rely on the fact that arch names don't contain slashes
+  // XXX we rely on the fact that arch names don't contain slashes id:704 gh:705
   // in that case we would need to uri escape it
 
   // We add '__' to the beginning of non-standard archs to "scope" the url
@@ -569,7 +569,7 @@ function runWebAppServer() {
         WebApp.clientPrograms[arch] = program;
 
         // Serve the program as a string at /foo/<arch>/manifest.json
-        // XXX change manifest.json -> program.json
+        // XXX change manifest.json -> program.json id:329 gh:330
         staticFiles[urlPrefix + getItemPathname('/manifest.json')] = {
           content: JSON.stringify(program),
           cacheable: false,
@@ -602,7 +602,7 @@ function runWebAppServer() {
     var defaultOptionsForArch = {
       'web.cordova': {
         runtimeConfigOverrides: {
-          // XXX We use absoluteUrl() here so that we serve https://
+          // XXX We use absoluteUrl() here so that we serve https:// id:317 gh:318
           // URLs to cordova clients if force-ssl is in use. If we were
           // to use __meteor_runtime_config__.ROOT_URL instead of
           // absoluteUrl(), then Cordova clients would immediately get a
@@ -632,7 +632,7 @@ function runWebAppServer() {
       memoizedBoilerplate = {};
 
       // Configure CSS injection for the default arch
-      // XXX implement the CSS injection for all archs?
+      // XXX implement the CSS injection for all archs? id:517 gh:518
       var cssFiles = boilerplateByArch[WebApp.defaultArch].baseData.css;
       // Rewrite all CSS files (which are written directly to <style> tags)
       // by autoupdate_client to use the CDN prefix/etc

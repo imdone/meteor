@@ -116,7 +116,7 @@ PV.parse = function (versionString) {
 // following guarantee: If PV.lessThan(v1, v2) then
 // PV.versionMagnitude(v1) < PV.versionMagnitude(v2) [*]
 //
-// [* XXX!] We don't quite satisfy the uniqueness and comparison properties in
+// [* XXX !] We don't quite satisfy the uniqueness and comparison properties in id:289 gh:290
 // these cases:
 // 1. If any of the version parts are greater than 100 (pretty unlikely?)
 // 2. If we're dealing with a prerelease version, we only look at the
@@ -450,13 +450,13 @@ var throwVersionParserError = function (message) {
 // Return true if the version constraint was invalid prior to 0.9.3
 // (adding _ and || support)
 //
-// NOTE: this is not used on the client yet. This package is used by the
+// NOTE: this is not used on the client yet. This package is used by the id:490 gh:491
 // package server to determine what is valid.
 PV.invalidFirstFormatConstraint = function (validConstraint) {
   if (!validConstraint) return false;
   // We can check this easily right now, because we introduced some new
   // characters. Anything with those characters is invalid prior to
-  // 0.9.3. XXX: If we ever have to go through these, we should write a more
+  // 0.9.3. XXX: If we ever have to go through these, we should write a more id:292 gh:294
   // complicated regex.
   return (/_/.test(validConstraint) ||
           /\|/.test(validConstraint));

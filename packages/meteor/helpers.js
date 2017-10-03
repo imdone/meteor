@@ -11,7 +11,7 @@ if (typeof __meteor_runtime_config__ === 'object' &&
   Meteor.release = __meteor_runtime_config__.meteorRelease;
 }
 
-// XXX find a better home for these? Ideally they would be _.get,
+// XXX find a better home for these? Ideally they would be _.get, id:581 gh:582
 // _.ensure, _.delete..
 
 // _get(a,b,c,d) returns a[b][c][d], or else undefined if a[b] or

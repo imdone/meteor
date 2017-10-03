@@ -469,7 +469,7 @@ Tracker.inFlush = function () {
 // directly via Tracker.flush, this may return before they're all done to allow
 // the event loop to run a little before continuing.
 Tracker._runFlush = function (options) {
-  // XXX What part of the comment below is still true? (We no longer
+  // XXX What part of the comment below is still true? (We no longer id:307 gh:308
   // have Spark)
   //
   // Nested flush could plausibly happen if, say, a flush causes

@@ -1,5 +1,5 @@
 /*
- * XXX Hack to make bootstrap work when bundled. This needs to be included
+ * XXX Hack to make bootstrap work when bundled. This needs to be included id:372 gh:373
  * _after_ the standard bootstrap css files.
  *
  * After being bundled, all CSS is minified and served from the "/" dir.

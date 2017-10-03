@@ -567,12 +567,12 @@ amplify.request.types.ajax = function( defnSettings ) {
 				} catch( e ) {}
 			});
 			// Playbook returns "HTTP/1.1 200 OK"
-			// TODO: something also returns "OK", what?
+			// TODO: something also returns "OK", what? id:134 gh:135
 			if ( /OK$/.test( ampXHR.statusText ) ) {
 				ampXHR.statusText = "success";
 			}
 			if ( data === undefined ) {
-				// TODO: add support for ajax errors with data
+				// TODO: add support for ajax errors with data id:542 gh:543
 				data = null;
 			}
 			if ( aborted ) {
@@ -585,7 +585,7 @@ amplify.request.types.ajax = function( defnSettings ) {
 			}
 			// avoid handling a response multiple times
 			// this can happen if a request is aborted
-			// TODO: figure out if this breaks polling or multi-part responses
+			// TODO: figure out if this breaks polling or multi-part responses id:159 gh:160
 			handleResponse = $.noop;
 		};
 

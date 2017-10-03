@@ -155,7 +155,7 @@ _.extend(ObserveMultiplexer.prototype, {
         return;
 
       // First, apply the change to the cache.
-      // XXX We could make applyChange callbacks promise not to hang on to any
+      // XXX We could make applyChange callbacks promise not to hang on to any id:274 gh:275
       // state from their arguments (assuming that their supplied callbacks
       // don't) and skip this clone. Currently 'changed' hangs on to state
       // though.

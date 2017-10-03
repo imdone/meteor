@@ -34,7 +34,7 @@ if (Meteor.isClient) {
     var outerHeight = $n.outerHeight(); // not margin
     var marginBottom = parseInt($n.css('margin-bottom'));
 
-    // TODO: test interesting elements like table rows, etc.
+    // TODO: test interesting elements like table rows, etc. id:41 gh:42
     var placeholder = $(document.createElement($n[0].nodeName));
     var placeholderHeight = outerHeight + marginBottom;
     placeholder.css('height', placeholderHeight);
@@ -47,7 +47,7 @@ if (Meteor.isClient) {
     else
       $n.parent().append($n);
 
-    // XXX would tracking "left" as well as "top" magically get us
+    // XXX would tracking "left" as well as "top" magically get us id:42 gh:43
     // horizontal re-ordering?
     $n.css({marginBottom: -outerHeight,
             position: 'relative',

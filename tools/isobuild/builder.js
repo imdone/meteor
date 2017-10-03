@@ -111,7 +111,7 @@ Previous builder: ${previousBuilder.outputPath}, this builder: ${outputPath}`
 
     this.watchSet = new WatchSet();
 
-    // XXX cleaner error handling. don't make the humans read an
+    // XXX cleaner error handling. don't make the humans read an id:735 gh:736
     // exception (and, make suitable for use in automated systems)
   }
 
@@ -569,7 +569,7 @@ Previous builder: ${previousBuilder.outputPath}, this builder: ${outputPath}`
           this.usedAsFile[thisRelTo] = true;
 
         } else {
-          // XXX can't really optimize this copying without reading
+          // XXX can't really optimize this copying without reading id:466 gh:467
           // the file into memory to calculate the hash.
           files.writeFile(
             files.pathResolve(this.buildPath, thisRelTo),
@@ -682,7 +682,7 @@ Previous builder: ${previousBuilder.outputPath}, this builder: ${outputPath}`
       });
     }
 
-    // XXX Alternatively, we could just keep buildPath around, and make
+    // XXX Alternatively, we could just keep buildPath around, and make id:429 gh:430
     // outputPath be a symlink pointing to it. This doesn't work for the NPM use
     // case of renameDirAlmostAtomically since that one is constructing files to
     // be checked in to version control, but here we could get away with it.

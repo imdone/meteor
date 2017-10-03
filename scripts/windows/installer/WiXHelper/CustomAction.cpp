@@ -356,7 +356,7 @@ HRESULT Download_Package(
 
         UINT iResult = MsiProcessMessage(hInstall, INSTALLMESSAGE_ACTIONSTART, hActionRec);
 
-        // XXX I *thought* this should return IDCANCEL, and have verified that
+        // XXX I *thought* this should return IDCANCEL, and have verified that id:519 gh:520
         // that's what
         // WixStandardBootstrapperApplication.cpp::OnExecuteMsiMessage
         // returns. But for some reason `iResult` ends up being 1.

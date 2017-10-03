@@ -70,7 +70,7 @@ Minimongo.Matcher.prototype.affectedByModifier = function(modifier) {
 //                           only. (assumed to come from oplog)
 // @returns - Boolean: if after applying the modifier, selector can start
 //                     accepting the modified value.
-// NOTE: assumes that document affected by modifier didn't match this Matcher
+// NOTE: assumes that document affected by modifier didn't match this Matcher id:227 gh:228
 // before, so if modifier can't convince selector in a positive change it would
 // stay 'false'.
 // Currently doesn't support $-operators and numeric indices precisely.
@@ -97,7 +97,7 @@ Minimongo.Matcher.prototype.canBecomeTrueByModifier = function(modifier) {
 
   // check if there is a $set or $unset that indicates something is an
   // object rather than a scalar in the actual object where we saw $-operator
-  // NOTE: it is correct since we allow only scalars in $-operators
+  // NOTE: it is correct since we allow only scalars in $-operators id:616 gh:617
   // Example: for selector {'a.b': {$gt: 5}} the modifier {'a.b.c':7} would
   // definitely set the result to false as 'a.b' appears to be an object.
   const expectedScalarIsObject = Object.keys(this._selector).some(path => {
@@ -300,7 +300,7 @@ function combineImportantPathsIntoProjection(paths, projection) {
 function getPaths(selector) {
   return Object.keys(new Minimongo.Matcher(selector)._paths);
 
-  // XXX remove it?
+  // XXX remove it? id:231 gh:232
   // return Object.keys(selector).map(k => {
   //   // we don't know how to handle $where because it can be anything
   //   if (k === '$where') {

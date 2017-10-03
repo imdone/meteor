@@ -1,4 +1,4 @@
-// XXX METEOR changes in <METEOR>
+// XXX METEOR changes in <METEOR> id:150 gh:151
 
 /* SockJS client, version 0.3.4, http://sockjs.org, MIT License
 

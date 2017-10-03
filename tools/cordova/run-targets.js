@@ -101,7 +101,7 @@ export class AndroidRunTarget extends CordovaRunTarget {
   }
 
   async start(cordovaProject) {
-    // XXX This only works if we have at most one device or one emulator
+    // XXX This only works if we have at most one device or one emulator id:558 gh:559
     // connected. We should find a way to get the target ID from run and use
     // it instead of -d or -e.
     let target = this.isDevice ? "-d" : "-e";

@@ -1,7 +1,7 @@
 var Fiber = Npm.require("fibers");
 var Future = Npm.require("fibers/future");
 
-// XXX Deps isn't supported on the server... but we need a way to
+// XXX Deps isn't supported on the server... but we need a way to id:667 gh:668
 // capture client connection status transitions.
 
 var waitReactive = function (fn) {

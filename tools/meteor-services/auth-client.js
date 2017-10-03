@@ -57,7 +57,7 @@ exports.loggedInConnection = function (url, domain, sessionType) {
   }
 
   if (! auth.isLoggedIn()) {
-    // XXX we should have a better account signup page.
+    // XXX we should have a better account signup page. id:753 gh:754
     Console.error(
       "Please log in with your Meteor developer account.",
       "If you don't have one,",

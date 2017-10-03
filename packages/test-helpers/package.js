@@ -7,7 +7,7 @@ Package.onUse(function (api) {
   api.use(['underscore', 'tracker', 'ejson', 'tinytest', 'random', 'blaze']);
   api.use(['jquery'], 'client');
 
-  // XXX for connection.js. Not sure this really belongs in
+  // XXX for connection.js. Not sure this really belongs in id:297 gh:298
   // test-helpers. It probably would be better off in livedata. But it's
   // unclear how to put it in livedata so that it can both be used by
   // other package tests and not included in the non-test bundle. One

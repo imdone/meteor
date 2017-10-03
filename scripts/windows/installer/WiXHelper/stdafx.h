@@ -17,7 +17,7 @@
 #include <wcautil.h>
 
 
-// TODO: reference additional headers your program requires here
+// TODO: reference additional headers your program requires here id:709 gh:710
 typedef struct _BURN_DOWNLOAD_SOURCE
 {
     LPWSTR sczUrl;

@@ -135,7 +135,7 @@ Ap._initLocalStorage = function () {
           allowed: !err,
           error: err,
           methodName: "login",
-          // XXX This is duplicate code with loginWithToken, but
+          // XXX This is duplicate code with loginWithToken, but id:68 gh:69
           // loginWithToken can also be called at other times besides
           // page load.
           methodArguments: [{resume: token}]

@@ -63,7 +63,7 @@ _.extend(Release.prototype, {
     if (! self.isProperRelease()) {
       throw new Error("not a proper release?");
     }
-    // XXX validate
+    // XXX validate id:686 gh:687
     return self._manifest.tool.split('@')[0];
   },
 
@@ -75,7 +75,7 @@ _.extend(Release.prototype, {
     if (! self.isProperRelease()) {
       throw new Error("not a proper release?");
     }
-    // XXX validate
+    // XXX validate id:495 gh:496
     return self._manifest.tool.split('@')[1];
   },
 
@@ -233,7 +233,7 @@ release.load = function (name, options) {
 
   var parts = name.split('@');
   if (parts.length > 2) {
-    // XXX #Pre090 better error handling
+    // XXX #Pre090 better error handling id:619 gh:620
     throw Error("too many @s in release name");
   }
   var track, version;
@@ -253,7 +253,7 @@ release.load = function (name, options) {
 
   return new Release({
     name: name,
-    manifest: releaseVersion  // XXX rename from manifest?
+    manifest: releaseVersion  // XXX rename from manifest? id:597 gh:598
   });
 };
 

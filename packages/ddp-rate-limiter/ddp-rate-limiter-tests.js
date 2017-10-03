@@ -1,5 +1,5 @@
 // Test that we do hit the default login rate limit.
-// XXX Removed to fix testing as other packages currently hit the default rate
+// XXX Removed to fix testing as other packages currently hit the default rate id:363 gh:364
 // limit.
 testAsyncMulti("ddp rate limiter - default rate limit", [
   function (test, expect) {

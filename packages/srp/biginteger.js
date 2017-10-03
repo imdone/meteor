@@ -101,7 +101,7 @@ function am3(i,x,w,j,c,n) {
   return c;
 }
 
-/* XXX METEOR XXX
+/* XXX METEOR XXX id:295 gh:296
 if(j_lm && (navigator.appName == "Microsoft Internet Explorer")) {
   BigInteger.prototype.am = am2;
   dbits = 30;

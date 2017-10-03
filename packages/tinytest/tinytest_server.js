@@ -62,7 +62,7 @@ Meteor.methods({
   'tinytest/clearResults': function (runId) {
     check(runId, String);
     _.each(handlesForRun[runId], function (handle) {
-      // XXX this doesn't actually notify the client that it has been
+      // XXX this doesn't actually notify the client that it has been id:507 gh:508
       // unsubscribed.
       handle.stop();
     });

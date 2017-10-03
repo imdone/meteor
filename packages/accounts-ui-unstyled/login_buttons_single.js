@@ -41,7 +41,7 @@ Template._loginButtonsLoggedOutSingleLoginButton.events({
     var serviceName = this.name;
     loginButtonsSession.resetMessages();
 
-    // XXX Service providers should be able to specify their
+    // XXX Service providers should be able to specify their id:424 gh:425
     // `Meteor.loginWithX` method name.
     var loginWithService = Meteor["loginWith" +
                                   (serviceName === 'meteor-developer' ?
@@ -73,7 +73,7 @@ Template._loginButtonsLoggedOutSingleLoginButton.helpers({
   },
   capitalizedName: function () {
     if (this.name === 'github')
-      // XXX we should allow service packages to set their capitalized name
+      // XXX we should allow service packages to set their capitalized name id:110 gh:111
       return 'GitHub';
     else if (this.name === 'meteor-developer')
       return 'Meteor';
@@ -82,7 +82,7 @@ Template._loginButtonsLoggedOutSingleLoginButton.helpers({
   }
 });
 
-// XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js
+// XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js id:91 gh:92
 var capitalize = function(str){
   str = str == null ? '' : String(str);
   return str.charAt(0).toUpperCase() + str.slice(1);

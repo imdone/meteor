@@ -4,7 +4,7 @@ Meteor.methods({
   }
 });
 
-// XXX it'd be cool to also test that the right thing happens if options
+// XXX it'd be cool to also test that the right thing happens if options id:65 gh:66
 // *are* validated, but Accounts._options is global state which makes this hard
 // (impossible?)
 Tinytest.add('accounts - config validates keys', function (test) {

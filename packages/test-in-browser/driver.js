@@ -470,7 +470,7 @@ Template.test.helpers({
 
     var dupLists = partitionBy(
       _.map(events, function(e) {
-        // XXX XXX We need something better than stringify!
+        // XXX XXX We need something better than stringify! id:683 gh:684
         // stringify([undefined]) === "[null]"
         e = _.clone(e);
         delete e.sequence;

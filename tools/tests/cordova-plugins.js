@@ -8,8 +8,8 @@ var _ = require('underscore');
 // want to switch contents of package.js files. It is more legible to copy in
 // the backup file rather than trying to write into it manually.
 //
-// XXX: Surely there is a function for this in fs?
-// XXX: In which case, perhaps move this to sandbox.
+// XXX: Surely there is a function for this in fs? id:516 gh:517
+// XXX: In which case, perhaps move this to sandbox. id:672 gh:673
 var copyFile = function(from, to, sand) {
   var contents = sand.read(from);
   if (!contents) {
@@ -55,7 +55,7 @@ var checkCordovaPlugins = selftest.markStack(function(sand, plugins) {
     if (!line || line === '') {
       return;
     }
-    // XXX should check for the version as well?
+    // XXX should check for the version as well? id:625 gh:626
     selftest.expectEqual(line.split(' ')[0], plugins[i]);
     i++;
   });

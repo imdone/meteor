@@ -35,7 +35,7 @@ import {
   optimisticReadMeteorIgnore,
 } from "../fs/optimistic.js";
 
-// XXX: This is a medium-term hack, to avoid having the user set a package name
+// XXX: This is a medium-term hack, to avoid having the user set a package name id:415 gh:416
 // & test-name in package.describe. We will change this in the new control file
 // world in some way.
 var AUTO_TEST_PREFIX = "local-test:";
@@ -77,7 +77,7 @@ var loadOrderSort = function (sourceProcessorSet, arch) {
   });
 
   return function (a, b) {
-    // XXX MODERATELY SIZED HACK --
+    // XXX MODERATELY SIZED HACK -- id:751 gh:752
     // push template files ahead of everything else. this is
     // important because the user wants to be able to say
     //   Template.foo.events = { ... }
@@ -138,7 +138,7 @@ var loadOrderSort = function (sourceProcessorSet, arch) {
 };
 
 var splitConstraint = function (c) {
-  // XXX print error better (w/ buildmessage?)?
+  // XXX print error better (w/ buildmessage?)? id:653 gh:654
   var parsed = utils.parsePackageConstraint(c);
   return { package: parsed.package,
            constraint: parsed.constraintString || null };
@@ -195,7 +195,7 @@ var getExcerptFromReadme = function (text) {
   var textLines = text.split("\n");
   var start = relevantNodes[0].start_line - 1;
   var stop = _.last(relevantNodes).end_line;
-  // XXX: There is a bug in commonmark that happens when processing the last
+  // XXX: There is a bug in commonmark that happens when processing the last id:477 gh:478
   // node in the document. Here is the github issue:
   // https://github.com/jgm/CommonMark/issues/276
   // Remove this workaround when the issue is fixed.
@@ -274,7 +274,7 @@ var PackageSource = function () {
 
   // Package version as a meteor-version string. Optional; not all packages
   // (for example, the app) have versions.
-  // XXX when we have names, maybe we want to say that all packages
+  // XXX when we have names, maybe we want to say that all packages id:600 gh:601
   // with names have versions? certainly the reverse is true
   self.version = null;
   self.versionExplicitlyProvided = false;
@@ -343,14 +343,14 @@ var PackageSource = function () {
   // core packages do not need to specify their versions at publication (since
   // there isn't likely to be any exciting version skew yet), but we will
   // specify the correct restrictions at 0.90.
-  // XXX: 0.90 package versions.
+  // XXX: 0.90 package versions. id:420 gh:421
   self.isCore = false;
 };
 
 
 _.extend(PackageSource.prototype, {
   // Make a dummy (empty) packageSource that contains nothing of interest.
-  // XXX: Do we need this
+  // XXX: Do we need this id:752 gh:753
   initEmpty: function (name) {
     var self = this;
     self.name = name;
@@ -621,7 +621,7 @@ _.extend(PackageSource.prototype, {
       try {
         buildmessage.markBoundary(Package._fileAndDepLoader)(api);
       } catch (e) {
-        console.log(e.stack); // XXX should we keep this here -- or do we want broken
+        console.log(e.stack); // XXX should we keep this here -- or do we want broken id:656 gh:657
                               // packages to fail silently?
         buildmessage.exception(e);
 
@@ -722,7 +722,7 @@ _.extend(PackageSource.prototype, {
     // the package's own NPM dependencies go in .npm/package and build
     // plugin X's goes in .npm/plugin/X. Notably, the former is NOT an
     // ancestor of the latter, so that a build plugin does NOT see the
-    // package's node_modules.  XXX maybe there should be separate NPM
+    // package's node_modules.  XXX maybe there should be separate NPM id:479 gh:480
     // dirs for use vs test?
     self.npmCacheDirectory =
       files.pathResolve(files.pathJoin(self.sourceRoot, '.npm', 'package'));
@@ -1430,7 +1430,7 @@ _.extend(PackageSource.prototype, {
   // If dependencies aren't consistent across unibuilds, return false and
   // also log a buildmessage error if inside a buildmessage job. Else
   // return true.
-  // XXX: Check that this is used when refactoring is done.
+  // XXX: Check that this is used when refactoring is done. id:441 gh:442
   _checkCrossUnibuildVersionConstraints: function () {
     var self = this;
     return !! self._computeDependencyMetadata({ logError: true });

@@ -64,7 +64,7 @@ PORT=9100
 $METEOR -p $PORT >> $OUTPUT 2>&1 &
 METEOR_PID=$!
 
-sleep 5 # XXX XXX lame
+sleep 5 # XXX XXX lame id:680 gh:681
 
 test -d .meteor/local/db
 ps ax | grep -e "$MONGOMARK" | grep -v grep >> $OUTPUT
@@ -75,7 +75,7 @@ echo "show collections" | $METEOR mongo
 # kill meteor, see mongo is still running
 kill $METEOR_PID
 
-sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive!
+sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive! id:629 gh:630
 
 ! ps ax | grep "$METEOR_PID" | grep -v grep >> $OUTPUT
 ps ax | grep -e "$MONGOMARK"  | grep -v grep >> $OUTPUT
@@ -86,13 +86,13 @@ echo "... rerun"
 $METEOR -p $PORT >> $OUTPUT 2>&1 &
 METEOR_PID=$!
 
-sleep 10 # XXX XXX lame
+sleep 10 # XXX XXX lame id:772 gh:773
 
 ps ax | grep -e "$MONGOMARK" | grep -v grep >> $OUTPUT
 curl -s "http://localhost:$PORT" >> $OUTPUT
 
 kill $METEOR_PID
-sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive!
+sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive! id:714 gh:715
 
 ps ax | grep -e "$MONGOMARK" | grep -v grep | awk '{print $1}' | xargs kill || true
 sleep 2 # need to make sure these kills take effect
@@ -103,13 +103,13 @@ $METEOR test-packages -p $PORT >> $OUTPUT 2>&1 &
 
 METEOR_PID=$!
 
-sleep 10 # XXX XXX lame
+sleep 10 # XXX XXX lame id:527 gh:528
 
 ps ax | grep -e "$MONGOMARK" | grep -v grep >> $OUTPUT
 curl -s "http://localhost:$PORT" >> $OUTPUT
 
 kill $METEOR_PID
-sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive!
+sleep 10 # XXX XXX lame. have to wait for inner app to die via keepalive! id:682 gh:683
 
 ps ax | grep -e "$MONGOMARK" | grep -v grep | awk '{print $1}' | xargs kill || true
 sleep 2 # need to make sure these kills take effect

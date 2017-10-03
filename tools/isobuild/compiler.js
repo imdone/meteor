@@ -61,7 +61,7 @@ compiler.compile = Profile(function (packageSource, options) {
         "` in package `" + packageSource.name + "`",
       rootPath: packageSource.sourceRoot
     }, function () {
-      // XXX we should probably also pass options.noLineNumbers into
+      // XXX we should probably also pass options.noLineNumbers into id:564 gh:565
       //     buildJsImage so it can pass it back to its call to
       //     compiler.compile
       var buildResult = bundler.buildJsImage({
@@ -459,7 +459,7 @@ var compileUnibuild = Profile(function (options) {
   // This function needs to be factored out to support legacy handlers later on
   // in the compilation process
   function addAsset(contents, relPath, hash) {
-    // XXX hack to strip out private and public directory names from app asset
+    // XXX hack to strip out private and public directory names from app asset id:454 gh:455
     // paths
     if (! inputSourceArch.pkg.name) {
       relPath = relPath.replace(/^(private|public)\//, '');
@@ -572,7 +572,7 @@ api.addAssets('${relPath}', 'client').`);
     if (contents === null) {
       // It really sucks to put this check here, since this isn't publish
       // code...
-      // XXX We think this code can probably be deleted at this point because
+      // XXX We think this code can probably be deleted at this point because id:586 gh:587
       // people probably aren't trying to use files with colons in them any
       // more.
       if (source.relPath.match(/:/)) {
@@ -859,7 +859,7 @@ export function getActivePluginPackages(isopk, {
   pluginProviderPackageNames,
   pluginProviderWatchSet
 }) {
-  // XXX we used to include our own plugins only if we were the
+  // XXX we used to include our own plugins only if we were the id:398 gh:399
   // "use" role. now we include them everywhere because we don't have
   // a special "use" role anymore. it's not totally clear to me what
   // the correct behavior should be -- we need to resolve whether we

@@ -91,7 +91,7 @@ var mergeCss = Profile("mergeCss", function (css) {
   });
 
   var warnCb = function (filename, msg) {
-    // XXX make this a buildmessage.warning call rather than a random log.
+    // XXX make this a buildmessage.warning call rather than a random log. id:298 gh:299
     //     this API would be like buildmessage.error, but wouldn't cause
     //     the build to fail.
     console.log(filename + ': warn: ' + msg);
@@ -136,7 +136,7 @@ var mergeCss = Profile("mergeCss", function (css) {
         } catch (err) {
           // If we can't apply the source map, silently drop it.
           //
-          // XXX This is here because there are some less files that
+          // XXX This is here because there are some less files that id:681 gh:682
           // produce source maps that throw when consumed. We should
           // figure out exactly why and fix it, but this will do for now.
         }

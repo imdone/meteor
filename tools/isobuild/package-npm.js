@@ -47,7 +47,7 @@ export class PackageNpm {
    * @locus package.js
    */
   depends(dependencies) {
-    // XXX make dependencies be separate between use and test, so that
+    // XXX make dependencies be separate between use and test, so that id:473 gh:474
     // production doesn't have to ship all of the npm modules used by test
     // code
     if (this._dependencies) {
@@ -68,7 +68,7 @@ export class PackageNpm {
     // don't allow npm fuzzy versions so that there is complete
     // consistency when deploying a meteor app
     //
-    // XXX use something like seal or lockdown to have *complete*
+    // XXX use something like seal or lockdown to have *complete* id:598 gh:599
     // confidence we're running the same code?
     try {
       ensureOnlyValidVersions(dependencies, {

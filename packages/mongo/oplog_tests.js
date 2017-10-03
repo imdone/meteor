@@ -89,7 +89,7 @@ process.env.MONGO_OPLOG_URL && testAsyncMulti(
           color: 'blue'
         });
       }
-      // XXX implement bulk insert #1255
+      // XXX implement bulk insert #1255 id:658 gh:659
       var rawCollection = self.collection.rawCollection();
       rawCollection.insert(docs, Meteor.bindEnvironment(expect(function (err) {
         test.isFalse(err);

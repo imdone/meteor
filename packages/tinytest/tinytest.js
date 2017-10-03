@@ -112,7 +112,7 @@ _.extend(TestCaseResults.prototype, {
 
   // === Following patterned after http://vowsjs.org/#reference ===
 
-  // XXX eliminate 'message' and 'not' arguments
+  // XXX eliminate 'message' and 'not' arguments id:305 gh:306
   equal: function (actual, expected, message, not) {
 
     if ((! not) && (typeof actual === 'string') &&
@@ -126,7 +126,7 @@ _.extend(TestCaseResults.prototype, {
      */
 
     var matched;
-    // XXX remove cruft specific to liverange
+    // XXX remove cruft specific to liverange id:685 gh:686
     if (typeof expected === "object" && expected && expected.nodeType) {
       matched = expected === actual;
       expected = "[Node]";
@@ -164,12 +164,12 @@ _.extend(TestCaseResults.prototype, {
     if (obj instanceof klass)
       this.ok();
     else
-      this.fail({type: "instanceOf", message: message, not: false}); // XXX what other data?
+      this.fail({type: "instanceOf", message: message, not: false}); // XXX what other data? id:279 gh:280
   },
 
   notInstanceOf: function (obj, klass, message) {
     if (obj instanceof klass)
-      this.fail({type: "instanceOf", message: message, not: true}); // XXX what other data?
+      this.fail({type: "instanceOf", message: message, not: true}); // XXX what other data? id:301 gh:302
     else
       this.ok();
   },
@@ -325,7 +325,7 @@ _.extend(TestCaseResults.prototype, {
     this.include(s, v, message, true);
   },
 
-  // XXX should change to lengthOf to match vowsjs
+  // XXX should change to lengthOf to match vowsjs id:504 gh:505
   length: function (obj, expected_length, msg) {
     if (obj.length === expected_length)
       this.ok();
@@ -506,13 +506,13 @@ _.extend(TestRun.prototype, {
       if (test.timedOut)
         return;
 
-      // XXX you want the "name" and "message" fields on the
+      // XXX you want the "name" and "message" fields on the id:308 gh:309
       // exception, to start with..
       self._report(test, {
         type: "exception",
         details: {
-          message: exception.message, // XXX empty???
-          stack: exception.stack // XXX portability
+          message: exception.message, // XXX empty??? id:689 gh:690
+          stack: exception.stack // XXX portability id:318 gh:319
         }
       });
 

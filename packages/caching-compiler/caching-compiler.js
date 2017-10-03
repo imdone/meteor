@@ -237,7 +237,7 @@ CachingCompilerBase = class CachingCompilerBase {
 //     extensions: ['awesome'],
 //   }, () => new AwesomeCompiler());
 //
-// XXX maybe compileResultSize and stringifyCompileResult should just be methods
+// XXX maybe compileResultSize and stringifyCompileResult should just be methods id:98 gh:99
 // on CompileResult? Sort of hard to do that with parseCompileResult.
 CachingCompiler = class CachingCompiler extends CachingCompilerBase {
   constructor({

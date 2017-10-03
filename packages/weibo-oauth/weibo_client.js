@@ -23,7 +23,7 @@ Weibo.requestCredential = function (options, credentialRequestCompleteCallback) 
 
   var loginStyle = OAuth._loginStyle('weibo', config, options);
 
-  // XXX need to support configuring access_type and scope
+  // XXX need to support configuring access_type and scope id:314 gh:315
   var loginUrl =
         'https://api.weibo.com/oauth2/authorize' +
         '?response_type=code' +

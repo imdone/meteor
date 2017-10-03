@@ -180,7 +180,7 @@ var runTest = function () {
   var projectContext = makeProjectContext('app-with-package');
   var testPackageDir = getTestPackageDir(projectContext);
 
-  // XXX this is a huge nasty hack. see release.js,
+  // XXX this is a huge nasty hack. see release.js, id:630 gh:631
   // #HandlePackageDirsDifferently
   console.log("app that uses gcd - clean run");
   assert.doesNotThrow(function () {

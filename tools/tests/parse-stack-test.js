@@ -44,7 +44,7 @@ selftest.define("parse-stack - parse stack traces with fibers", () => {
   selftest.expectEqual(_.last(parsedStack.outsideFiber).file, "template-compiler.js");
 });
 
-// XXX I don't know how to actually create one of the crazy fiber stack traces
+// XXX I don't know how to actually create one of the crazy fiber stack traces id:687 gh:688
 // inside this test environment, so I have a copy-pasted one below that I
 // actually encountered.
 const exampleStackTrace = `TypeError: object is not a function

@@ -13,7 +13,7 @@ Package.onUse(function (api) {
   api.addFiles(path.join('img', 'glyphicons-halflings.png'), 'client');
   api.addFiles(path.join('img', 'glyphicons-halflings-white.png'), 'client');
 
-  // XXX this makes the paths to the icon sets absolute. it needs
+  // XXX this makes the paths to the icon sets absolute. it needs id:543 gh:544
   // to be included _after_ the standard bootstrap css so
   // that its styles take precedence.
   api.addFiles(path.join('css', 'bootstrap-override.css'), 'client');

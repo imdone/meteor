@@ -89,7 +89,7 @@ var updateVersions = function (shouldReloadClientProgram) {
     WebAppInternals.generateBoilerplate();
   }
 
-  // XXX COMPAT WITH 0.8.3
+  // XXX COMPAT WITH 0.8.3 id:142 gh:143
   if (! ClientVersions.findOne({current: true})) {
     // To ensure apps with version of Meteor prior to 0.9.0 (in
     // which the structure of documents in `ClientVersions` was

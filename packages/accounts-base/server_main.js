@@ -10,7 +10,7 @@ Accounts = new AccountsServer(Meteor.server);
 
 // Users table. Don't use the normal autopublish, since we want to hide
 // some fields. Code to autopublish this is in accounts_server.js.
-// XXX Allow users to configure this collection name.
+// XXX Allow users to configure this collection name. id:67 gh:68
 
 /**
  * @summary A [Mongo.Collection](#collections) containing user documents.

@@ -45,7 +45,7 @@ httpServer.addListener('request', function (req, res) {
 });
 
 
-// NOTE: this doesn't handle websockets!
+// NOTE: this doesn't handle websockets! id:181 gh:182
 //
 // Websockets come in via the 'upgrade' request. We can override this,
 // however the problem is we're not sure if the websocket is actually

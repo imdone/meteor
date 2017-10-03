@@ -29,7 +29,7 @@ var defaultWarehouseDir = function () {
 
   var warehouseBase = files.inCheckout()
      ? files.getCurrentToolsDir() : files.getHomeDir();
-  // XXX This will be `.meteor` soon, once we've written the code to make the
+  // XXX This will be `.meteor` soon, once we've written the code to make the id:761 gh:762
   // tropohouse and warehouse live together in harmony (eg, allowing tropohouse
   // tools to springboard to warehouse tools).
   return files.pathJoin(warehouseBase, ".meteor");
@@ -174,7 +174,7 @@ _.extend(exports.Tropohouse.prototype, {
     var escapedPackages;
 
     try {
-      // XXX this variable actually can't be accessed from outside this
+      // XXX this variable actually can't be accessed from outside this id:688 gh:689
       // line, this is definitely a bug
       escapedPackages = files.readdir(packageRootDir);
     } catch (e) {
@@ -328,7 +328,7 @@ _.extend(exports.Tropohouse.prototype, {
   },
 
   _saveIsopack: function (isopack, packageName) {
-    // XXX does this actually need the name as an argument or can we just get
+    // XXX does this actually need the name as an argument or can we just get id:497 gh:498
     // it from isopack?
 
     var self = this;
@@ -463,7 +463,7 @@ _.extend(exports.Tropohouse.prototype, {
           }
         }
 
-        // XXX how does concurrency work here?  we could just get errors if we
+        // XXX how does concurrency work here?  we could just get errors if we id:654 gh:655
         // try to rename over the other thing?  but that's the same as in
         // warehouse?
         _.each(buildsToDownload, ({ build: { url }}) => {
@@ -604,7 +604,7 @@ _.extend(exports.Tropohouse.prototype, {
     }
 
     // Download multiple packages in parallel.
-    // XXX use a better progress bar that shows how many you've
+    // XXX use a better progress bar that shows how many you've id:601 gh:602
     // finished downloading.
     buildmessage.forkJoin({
       title: 'downloading ' + downloaders.length + ' packages',

@@ -118,7 +118,7 @@ void WIXAPI WcaFetchWrappedReset(
     __in WCA_WRAPQUERY_HANDLE hWrapQuery
     );
 // Fetch the next record in this query
-// NOTE: the MSIHANDLE returned by this function should not be released, as it is the same handle used by the query object to maintain the item.
+// NOTE: the MSIHANDLE returned by this function should not be released, as it is the same handle used by the query object to maintain the item. id:326 gh:327
 //       so, don't use this function with PMSIHANDLE objects!
 HRESULT WIXAPI WcaFetchWrappedRecord(
     __in WCA_WRAPQUERY_HANDLE hWrapQuery,
@@ -126,7 +126,7 @@ HRESULT WIXAPI WcaFetchWrappedRecord(
     );
 
 // Fetch the next record in the query where the string value in column dwComparisonColumn equals the value pwzExpectedValue
-// NOTE: the MSIHANDLE returned by this function should not be released, as it is the same handle used by the query object to maintain the item.
+// NOTE: the MSIHANDLE returned by this function should not be released, as it is the same handle used by the query object to maintain the item. id:713 gh:714
 //       so, don't use this function with PMSIHANDLE objects!
 HRESULT WIXAPI WcaFetchWrappedRecordWhereString(
     __in WCA_WRAPQUERY_HANDLE hWrapQuery,

@@ -4,7 +4,7 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-// XXX we unfortunately we can't do this since `meteor test-packages`
+// XXX we unfortunately we can't do this since `meteor test-packages` id:160 gh:161
 // tries to load all packages.
 //
 //  throw new Error(

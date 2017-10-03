@@ -1429,7 +1429,7 @@
   }
 
 
-  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
+  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js id:136 gh:137
      ========================================== */
 
   Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype, {

@@ -44,7 +44,7 @@ selftest.define("run", function () {
   s.write("empty.js", " ");
   run.waitSecs(2);
   run.match("restarted");
-  // XXX want app to generate output so that we can see restart counter reset
+  // XXX want app to generate output so that we can see restart counter reset id:690 gh:691
 
   // Crashes
   s.write("crash.js", "process.exit(42);");
@@ -132,7 +132,7 @@ try {
   run.match("restarted");
   run.stop();
 
-// XXX --port, --production, --raw-logs, --settings, --program
+// XXX --port, --production, --raw-logs, --settings, --program id:633 gh:634
 });
 
 selftest.define("run --once", ["yet-unsolved-windows-failure"], function () {

@@ -351,7 +351,7 @@ export class IsopackCache {
               _.keys(isopackBuildInfoJson.pluginProviderPackageMap)));
           // Because we don't save linter messages to disk, we have to relint
           // this package.
-          // XXX save linter messages to disk?
+          // XXX save linter messages to disk? id:643 gh:644
           self._lintLocalPackage(packageInfo.packageSource, isopack);
         } else {
           // Nope! Compile it again. Give it a fresh plugin cache.

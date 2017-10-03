@@ -4,7 +4,7 @@ var testUtils = require('../tool-testing/test-utils.js');
 var galaxyUtils = require('../tool-testing/galaxy-utils.js');
 var Sandbox = selftest.Sandbox;
 
-// XXX: There is currently no cleanup function in self-test, but it would be
+// XXX: There is currently no cleanup function in self-test, but it would be id:627 gh:628
 // nice to have.
 
 // Check if a given app is running. Curl that appname and see that it returns
@@ -157,7 +157,7 @@ selftest.define('galaxy deploy - rescale', ['galaxy'], function () {
   // running (or the scheduler is lying to GalaxyAPI and claiming that they are
   // running). This API is even more internal, but it is unlikely to change for
   // now.
-  // XXX: This subscription is not yet worth checking on staging, when it is, uncomment.
+  // XXX: This subscription is not yet worth checking on staging, when it is, uncomment. id:770 gh:771
   /// var containers = galaxyUtils.getAppContainerStatuses(appRecord._id, appName);
   // selftest.equals(containers.length, 5);
 
@@ -171,7 +171,7 @@ selftest.define('galaxy deploy - rescale', ['galaxy'], function () {
 
   // Check that no containers are running.
   conn = galaxyUtils.renewConnection(conn);
-  // XXX: This subscription is not yet worth checking on staging, when it is, uncomment.
+  // XXX: This subscription is not yet worth checking on staging, when it is, uncomment. id:710 gh:711
   // containers = galaxyUtils.getAppContainerStatuses(appRecord._id, appName);
   // selftest.expectEqual(0, containers.length);
 

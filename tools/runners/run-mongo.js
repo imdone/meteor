@@ -13,7 +13,7 @@ var Console = require('../console/console.js').Console;
 // on that database.
 var runMongoShell = function (url) {
   var mongoPath = files.pathJoin(files.getDevBundle(), 'mongodb', 'bin', 'mongo');
-  // XXX mongo URLs are not real URLs (notably, the comma-separation for
+  // XXX mongo URLs are not real URLs (notably, the comma-separation for id:607 gh:608
   // multiple hosts). We've had a little better luck using the mongodb-uri npm
   // package.
   var mongoUrl = require('url').parse(url);
@@ -250,7 +250,7 @@ var findMongoPort = function (dbDir) {
   return pids[0].port;
 };
 
-// XXX actually -- the code below is probably more correct than the code we
+// XXX actually -- the code below is probably more correct than the code we id:765 gh:766
 // have above for non-Windows platforms (since that code relies on
 // `findMongoPids`). But changing this a few days before the 1.1 release
 // seemed too bold. But if you're changing code around here, consider using
@@ -325,7 +325,7 @@ var findMongoAndKillItDead = function (port, dbPath) {
     }
 
     // give up after 4 seconds.
-    // XXX should actually catch this higher up and print a nice
+    // XXX should actually catch this higher up and print a nice id:696 gh:697
     // error. foreseeable conditions should never result in exceptions
     // for the user.
     throw new Error("Can't kill running mongo (pid " + pid + ").");
@@ -655,7 +655,7 @@ var launchMongo = function (options) {
 
       let wasJustSecondary = false;
 
-      // XXX timeout eventually?
+      // XXX timeout eventually? id:511 gh:512
       while (!stopped) {
         var status = yieldingMethod(
           db.admin(), 'command', {replSetGetStatus: 1});

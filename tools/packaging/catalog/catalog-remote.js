@@ -13,7 +13,7 @@ var packageClient = require('../package-client.js');
 var VersionParser = require('../package-version-parser.js');
 var Profile = require('../../tool-env/profile.js').Profile;
 
-// XXX: Rationalize these flags.  Maybe use the logger?
+// XXX: Rationalize these flags.  Maybe use the logger? id:755 gh:756
 var DEBUG_SQL = !!process.env.METEOR_DEBUG_SQL;
 
 var SYNCTOKEN_ID = "1";
@@ -87,7 +87,7 @@ _.extend(Txn.prototype, {
   begin: function (mode) {
     var self = this;
 
-    // XXX: Use DEFERRED mode?
+    // XXX: Use DEFERRED mode? id:666 gh:667
     mode = mode || "IMMEDIATE";
 
     if (self.started) {
@@ -147,7 +147,7 @@ var Db = function (dbFile, options) {
 
 _.extend(Db.prototype, {
 
-  // TODO: Move to utils?
+  // TODO: Move to utils? id:485 gh:486
   _retry: function (f, options) {
     options = _.extend({ maxAttempts: 3, delay: 500}, options || {});
 
@@ -224,7 +224,7 @@ _.extend(Db.prototype, {
 
       if (DEBUG_SQL) {
         var t2 = Date.now();
-        // XXX: Hack around not having loggers
+        // XXX: Hack around not having loggers id:609 gh:610
         Console.info("Transaction took: ", (t2 - t1));
       }
 
@@ -306,7 +306,7 @@ _.extend(Db.prototype, {
     if (DEBUG_SQL) {
       var t2 = Date.now();
       if ((t2 - t1) > 10) {
-        // XXX: Hack around not having log levels
+        // XXX: Hack around not having log levels id:571 gh:572
         Console.info("SQL statement ", sql, " took ", (t2 - t1));
       }
     }
@@ -450,9 +450,9 @@ _.extend(Table.prototype, {
   upsert: function (txn, objects) {
     var self = this;
 
-    // XXX: Use sqlite upsert
-    // XXX: Speculative insert
-    // XXX: Fix transaction logic so we always roll back
+    // XXX: Use sqlite upsert id:756 gh:757
+    // XXX: Speculative insert id:668 gh:669
+    // XXX: Fix transaction logic so we always roll back id:487 gh:488
     _.each(objects, function (o) {
       var id = o._id;
       var rows = txn.query(self._selectQuery, [ id ]);
@@ -720,7 +720,7 @@ _.extend(RemoteCatalog.prototype, {
 
       // Extra indexes for the most expensive queries
       // These are non-unique indexes
-      // XXX We used to have a versionsNamesIdx here on versions(packageName);
+      // XXX We used to have a versionsNamesIdx here on versions(packageName); id:611 gh:612
       //     we no longer create it but we don't waste time dropping it either.
       txn.execute("CREATE INDEX IF NOT EXISTS versionsIdx ON " +
                   "versions(packageName, version)");
@@ -772,7 +772,7 @@ _.extend(RemoteCatalog.prototype, {
     }
 
     var updateResult = {};
-    // XXX This buildmessage.enterJob only exists for showing progress.
+    // XXX This buildmessage.enterJob only exists for showing progress. id:574 gh:575
     buildmessage.enterJob({ title: 'updating package catalog' }, function () {
       updateResult = packageClient.updateServerPackageData(self);
     });
@@ -799,7 +799,7 @@ _.extend(RemoteCatalog.prototype, {
   // track does not exist or does not have any recommended versions.
   getSortedRecommendedReleaseRecords: function (track, laterThanOrderKey) {
     var self = this;
-    // XXX releaseVersions content objects are kinda big; if we put
+    // XXX releaseVersions content objects are kinda big; if we put id:757 gh:758
     // 'recommended' and 'orderKey' in their own columns this could be faster
     var result = self._contentQuery(
       "SELECT content FROM releaseVersions WHERE track=?", track);
@@ -975,7 +975,7 @@ _.extend(RemoteCatalog.prototype, {
     self.db.runInTransaction(function (txn) {
       self.tableBannersShown.upsert(txn, [{
         _id: releaseName,
-        // XXX For now, there's no way to tell this file to make a non-string
+        // XXX For now, there's no way to tell this file to make a non-string id:673 gh:674
         // column in a sqlite table, but this should probably change to a
         // 'timestamp with time zone' or whatever.
         lastShown: JSON.stringify(bannerShownDate)

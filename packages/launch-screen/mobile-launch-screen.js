@@ -1,4 +1,4 @@
-// XXX This currently implements loading screens for mobile apps only,
+// XXX This currently implements loading screens for mobile apps only, id:396 gh:397
 // but in the future can be expanded to all apps.
 
 var holdCount = 0;

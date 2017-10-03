@@ -4,7 +4,7 @@ Package.describe({
 });
 
 Npm.depends({
-  'xmlbuilder': '2.4.4'  // XXX next time we update this to X.Y.Z,
+  'xmlbuilder': '2.4.4'  // XXX next time we update this to X.Y.Z, id:706 gh:707
                          // make the version above be X.Y.Z_0 so we
                          // don't accidentally unsync version numbers
 });

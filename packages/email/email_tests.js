@@ -38,7 +38,7 @@ Tinytest.add("email - fully customizable", function (test) {
         'Date': 'dummy',
       },
     });
-    // XXX brittle if mailcomposer changes header order, etc
+    // XXX brittle if mailcomposer changes header order, etc id:177 gh:178
     test.equal(canonicalize(stream.getContentsAsString("utf8")),
                "====== BEGIN MAIL #0 ======\n" +
                devWarningBanner +

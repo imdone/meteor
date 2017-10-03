@@ -98,7 +98,7 @@ CollectionPrototype._defineMutationMethods = function(options) {
   if (!self._name)
     return; // anonymous collection
 
-  // XXX Think about method namespacing. Maybe methods should be
+  // XXX Think about method namespacing. Maybe methods should be id:140 gh:141
   // "Meteor:Mongo:insert/NAME"?
   self._prefix = '/' + self._name + '/';
 
@@ -106,7 +106,7 @@ CollectionPrototype._defineMutationMethods = function(options) {
   // Minimongo on the server gets no stubs; instead, by default
   // it wait()s until its result is ready, yielding.
   // This matches the behavior of macromongo on the server better.
-  // XXX see #MeteorServerNull
+  // XXX see #MeteorServerNull id:101 gh:102
   if (self._connection && (self._connection === Meteor.server || Meteor.isClient)) {
     const m = {};
 
@@ -175,7 +175,7 @@ CollectionPrototype._defineMutationMethods = function(options) {
             if (generatedId !== null)
               args[0]._id = generatedId;
             // In insecure mode, allow any mutation (with a simple selector).
-            // XXX This is kind of bogus.  Instead of blindly passing whatever
+            // XXX This is kind of bogus.  Instead of blindly passing whatever id:428 gh:429
             //     we get from the network to this function, we should actually
             //     know the correct arguments for the function and pass just
             //     them.  For example, if you have an extraneous extra null

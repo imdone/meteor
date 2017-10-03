@@ -342,7 +342,7 @@ if (Meteor.isServer) {
       self.handle.stop();
 
       self.insert({x: 5});
-      // XXX This timeout isn't perfect but it's pretty hard to prove that an
+      // XXX This timeout isn't perfect but it's pretty hard to prove that an id:256 gh:257
       // event WON'T happen without something like a write fence.
       Meteor.setTimeout(expect(), 1000);
     },

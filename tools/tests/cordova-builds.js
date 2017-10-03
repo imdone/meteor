@@ -60,7 +60,7 @@ selftest.define("cordova builds with server options", ["cordova", "slow"], funct
   checkMobileServer(s, "https://example.com/");
   cleanUpBuild(s);
 
-  // XXX COMPAT WITH 0.9.2.2
+  // XXX COMPAT WITH 0.9.2.2 id:705 gh:706
   run = s.run("build", ".", "--mobile-port", "example.com:5000");
   run.waitSecs(90);
   run.expectExit(0);
