@@ -68,7 +68,7 @@ _.extend(Job.prototype, {
         if (message.line) {
           line += ":" + message.line;
           if (message.column) {
-            // XXX maybe exclude unless specifically requested (eg,
+            // XXX maybe exclude unless specifically requested (eg, id:637 gh:638
             // for an automated tool that's parsing our output?)
             line += ":" + message.column;
           }
@@ -78,7 +78,7 @@ _.extend(Job.prototype, {
         // not sure how to display messages without a filenanme.. try this?
         line += "error: ";
       }
-      // XXX line wrapping would be nice..
+      // XXX line wrapping would be nice.. id:777 gh:778
       line += message.message;
       if (message.func && stack.length <= 1) {
         line += " (at " + message.func + ")";
@@ -172,7 +172,7 @@ _.extend(MessageSet.prototype, {
   // MessageSet. If the other MessageSet is subsequently mutated,
   // results are undefined.
   //
-  // XXX rather than this, the user should be able to create a
+  // XXX rather than this, the user should be able to create a id:721 gh:722
   // MessageSet and pass it into capture(), and functions such as
   // bundle() should take and mutate, rather than return, a
   // MessageSet.
@@ -188,7 +188,7 @@ var spaces = function (n) {
   return _.times(n, function() { return ' ' }).join('');
 };
 
-// XXX: This is now a little bit silly... ideas:
+// XXX: This is now a little bit silly... ideas: id:534 gh:536
 // Can we just have one hierarchical state?
 // Can we combined job & messageSet
 // Can we infer nesting level?
@@ -309,7 +309,7 @@ var enterJob = function (options, f) {
   var progress;
   {
     var progressOptions = {};
-    // XXX: Just pass all the options?
+    // XXX: Just pass all the options? id:700 gh:701
     if (typeof options === "object") {
       if (options.title) {
         progressOptions.title = options.title;
@@ -473,7 +473,7 @@ var error = function (message, options) {
 // thrown.
 var exception = function (error) {
   if (! currentJob.get()) {
-    // XXX this may be the wrong place to do this, but it makes syntax errors in
+    // XXX this may be the wrong place to do this, but it makes syntax errors in id:639 gh:640
     // files loaded via isopack.load have context.
     if (error instanceof files.FancySyntaxError) {
       error = new Error("Syntax error: " + error.message + " at " +

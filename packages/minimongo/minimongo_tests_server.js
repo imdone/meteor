@@ -359,7 +359,7 @@ Tinytest.add('minimongo - sorter and projection combination', test => {
 
 
 ((() => {
-  // TODO: Tests for "can selector become true by modifier" are incomplete,
+  // TODO: Tests for "can selector become true by modifier" are incomplete, id:624 gh:625
   // absent or test the functionality of "not ideal" implementation (test checks
   // that certain case always returns true as implementation is incomplete)
   // - tests with $and/$or/$nor/$not branches (are absent)
@@ -450,9 +450,9 @@ Tinytest.add('minimongo - sorter and projection combination', test => {
 
     // Regexp
     T({ 'foo.bar': /^[0-9]+$/i }, { $set: {'foo.bar': '01233'} }, 'set of regexp');
-    // XXX this test should be False, should be fixed within improved implementation
+    // XXX this test should be False, should be fixed within improved implementation id:238 gh:239
     T({ 'foo.bar': /^[0-9]+$/i, x: 1 }, { $set: {'foo.bar': '0a1233', x: 1} }, 'set of regexp');
-    // XXX this test should be False, should be fixed within improved implementation
+    // XXX this test should be False, should be fixed within improved implementation id:216 gh:217
     T({ 'foo.bar': /^[0-9]+$/i, x: 1 }, { $unset: {'foo.bar': 1}, $set: { x: 1 } }, 'unset of regexp');
     T({ 'foo.bar': /^[0-9]+$/i, x: 1 }, { $set: { x: 1 } }, "don't touch regexp");
   });
@@ -520,9 +520,9 @@ Tinytest.add('minimongo - sorter and projection combination', test => {
     F({ a: { $lte: 10, $gte: 13, $gt: 3, $lt: 9 }, x: 1 }, { $set: { x: 1 } }, 'set between x and y - dummy - impossible');
     F({ a: { $lte: 10 } }, { $set: { a: Infinity } }, 'Infinity <= 10?');
     T({ a: { $lte: 10 } }, { $set: { a: -Infinity } }, '-Infinity <= 10?');
-    // XXX is this sufficient?
+    // XXX is this sufficient? id:451 gh:452
     T({ a: { $gt: 9.99999999999999, $lt: 10 }, x: 1 }, { $set: { x: 1 } }, 'very close $gt and $lt');
-    // XXX this test should be F, but since it is so hard to be precise in
+    // XXX this test should be F, but since it is so hard to be precise in id:233 gh:234
     // floating point math, the current implementation falls back to T
     T({ a: { $gt: 9.999999999999999, $lt: 10 }, x: 1 }, { $set: { x: 1 } }, 'very close $gt and $lt');
     T({ a: { $eq: 5 } }, { $set: { a: 5 } }, 'set of $eq');
@@ -552,18 +552,18 @@ Tinytest.add('minimongo - sorter and projection combination', test => {
   Tinytest.add('minimongo - can selector become true by modifier - $-nonscalar selectors and simple tests', t => {
     test = t;
     T({ a: { $eq: { x: 5 } } }, { $set: { 'a.x': 5 } }, 'set of $eq');
-    // XXX this test should be F, but it is not implemented yet
+    // XXX this test should be F, but it is not implemented yet id:626 gh:627
     T({ a: { $eq: { x: 5 } } }, { $set: { 'a.x': 4 } }, 'set of $eq');
-    // XXX this test should be F, but it is not implemented yet
+    // XXX this test should be F, but it is not implemented yet id:240 gh:241
     T({ a: { $eq: { x: 5 } } }, { $set: { 'a.y': 4 } }, 'set of $eq');
     T({ a: { $ne: { x: 5 } } }, { $set: { 'a.x': 3 } }, 'set of $ne');
-    // XXX this test should be F, but it is not implemented yet
+    // XXX this test should be F, but it is not implemented yet id:220 gh:221
     T({ a: { $ne: { x: 5 } } }, { $set: { 'a.x': 5 } }, 'set of $ne');
     T({ a: { $in: [{ b: 1 }, { b: 3 }] } }, { $set: { a: { b: 3 } } }, '$in checks');
-    // XXX this test should be F, but it is not implemented yet
+    // XXX this test should be F, but it is not implemented yet id:453 gh:454
     T({ a: { $in: [{ b: 1 }, { b: 3 }] } }, { $set: { a: { v: 3 } } }, '$in checks');
     T({ a: { $ne: { a: 2 } }, x: 1 }, { $set: { x: 1 } }, '$ne dummy');
-    // XXX this test should be F, but it is not implemented yet
+    // XXX this test should be F, but it is not implemented yet id:235 gh:236
     T({ a: { $ne: { a: 2 } } }, { $set: { a: { a: 2 } } }, '$ne object');
   });
 }))();

@@ -283,7 +283,7 @@ export class PackageNamespace {
       return;
     }
 
-    // XXX probably want further type checking
+    // XXX probably want further type checking id:651 gh:652
     pluginInfo[options.name] = options;
   }
 

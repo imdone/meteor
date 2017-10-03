@@ -59,7 +59,7 @@ var _ = require('underscore');
 var readline = require('readline');
 var util = require('util');
 var buildmessage = require('../utils/buildmessage.js');
-// XXX: Are we happy with chalk (and its sub-dependencies)?
+// XXX: Are we happy with chalk (and its sub-dependencies)? id:729 gh:730
 var chalk = require('chalk');
 var cleanup = require('../tool-env/cleanup.js');
 var utils = require('../utils/utils.js');
@@ -89,7 +89,7 @@ const TEMP_STATUS_LENGTH = STATUS_MAX_LENGTH + 12;
 const STATUS_INTERVAL_MS = 50;
 
 // Message to show when we don't know what we're doing
-// XXX: ? FALLBACK_STATUS = 'Pondering';
+// XXX: ? FALLBACK_STATUS = 'Pondering'; id:359 gh:360
 const FALLBACK_STATUS = '';
 
 // If there is a part of the larger text, and we really want to make sure that
@@ -147,7 +147,7 @@ class ProgressDisplayNone {
 // fancy progress bar.  It's used when we detect a "pseudo-TTY"
 // of the type used by Emacs, and possibly SSH.
 //
-// XXX DELETE THIS MODE since the progress bar now uses "\r".
+// XXX DELETE THIS MODE since the progress bar now uses "\r". id:411 gh:412
 // But first we have to throttle progress bar updates so that
 // Emacs doesn't get overwhelemd (we should throttle them anyway).
 // There's also a bug when using the progress bar in Emacs where
@@ -265,7 +265,7 @@ class ProgressBarRenderer {
     /* compute the available space (non-zero) for the bar */
     var width = Math.min(this.maxWidth, availableSpace - str.replace(':bar', '').length);
 
-    /* NOTE: the following assumes the user has one ':bar' token */
+    /* NOTE: the following assumes the user has one ':bar' token  id:555 gh:556*/
     completeLength = Math.round(width * ratio);
     complete = Array(completeLength + 1).join(this.chars.complete);
     incomplete = Array(width - completeLength + 1).join(this.chars.incomplete);
@@ -342,8 +342,8 @@ class ProgressDisplayFull {
   }
 
   _render() {
-    // XXX: Throttle these updates?
-    // XXX: Or maybe just jump to the correct position?
+    // XXX: Throttle these updates? id:345 gh:346
+    // XXX: Or maybe just jump to the correct position? id:730 gh:731
     var progressGraphic = '';
 
     // The cursor appears in position 0; we indent it a little to avoid this
@@ -376,7 +376,7 @@ class ProgressDisplayFull {
     }
 
     if (this._status || progressGraphic) {
-      // XXX: Just update the graphic, to avoid text flicker?
+      // XXX: Just update the graphic, to avoid text flicker? id:362 gh:363
 
       var line = spacesString(indentColumns);
       var length = indentColumns;
@@ -449,7 +449,7 @@ class StatusPoller {
   }
 
   _statusPoll() {
-    // XXX: Early exit here if we're not showing status at all?
+    // XXX: Early exit here if we're not showing status at all? id:414 gh:415
 
     var rootProgress = buildmessage.getRootProgress();
     if (PROGRESS_DEBUG) {
@@ -479,7 +479,7 @@ class StatusPoller {
 
     if (this._watching === watching) {
       // We need to do this to keep the spinner spinning
-      // XXX: Should we _only_ do this when we're showing the spinner?
+      // XXX: Should we _only_ do this when we're showing the spinner? id:556 gh:557
       reportState(watching.getState(), watching.startTime);
       return;
     }
@@ -495,7 +495,7 @@ class StatusPoller {
       watching.addWatcher((state) => {
         if (watching != this._watching) {
           // No longer active
-          // XXX: De-register with watching? (we don't bother right now because dead tasks tell no status)
+          // XXX: De-register with watching? (we don't bother right now because dead tasks tell no status) id:348 gh:349
           return;
         }
 
@@ -850,7 +850,7 @@ class Console extends ConsoleBase {
     progressDisplay.depaint();
 
     // stdout/stderr is determined by the log level
-    // XXX: We should probably just implement Loggers with observers
+    // XXX: We should probably just implement Loggers with observers id:731 gh:732
     var dest = process.stdout;
     if (level) {
       switch (level.code) {
@@ -882,7 +882,7 @@ class Console extends ConsoleBase {
       dest.write(message);
     }
 
-    // XXX: Pause before showing the progress display, to prevent
+    // XXX: Pause before showing the progress display, to prevent id:365 gh:366
     // flicker/spewing messages
     // Repaint the progress display
     progressDisplay.repaint();
@@ -1186,7 +1186,7 @@ class Console extends ConsoleBase {
       // It's important that we only enter status message mode
       // if this._pretty, so that we don't start displaying
       // status messages too soon.
-      // XXX See note where ProgressDisplayStatus is defined.
+      // XXX See note where ProgressDisplayStatus is defined. id:417 gh:418
       newProgressDisplay = new ProgressDisplayStatus(this);
     } else {
       // Otherwise we can do the full progress bar
@@ -1222,7 +1222,7 @@ class Console extends ConsoleBase {
   }
 
   _setProgressDisplay(newProgressDisplay) {
-    // XXX: Optimize case of no-op transitions? (same mode -> same mode)
+    // XXX: Optimize case of no-op transitions? (same mode -> same mode) id:557 gh:558
 
     var oldProgressDisplay = this._progressDisplay;
     oldProgressDisplay.depaint();

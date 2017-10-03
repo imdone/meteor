@@ -9,7 +9,7 @@ if (Meteor.isClient) {
   // By default, try to connect back to the same endpoint as the page
   // was served from.
   //
-  // XXX We should be doing this a different way. Right now we don't
+  // XXX We should be doing this a different way. Right now we don't id:124 gh:125
   // include ROOT_URL_PATH_PREFIX when computing ddpUrl. (We don't
   // include it on the server when computing
   // DDP_DEFAULT_CONNECTION_URL, and we don't include it in our
@@ -65,9 +65,9 @@ if (Meteor.isClient) {
 // Meteor.connection used to be called
 // Meteor.default_connection. Provide backcompat as a courtesy even
 // though it was never documented.
-// XXX COMPAT WITH 0.6.4
+// XXX COMPAT WITH 0.6.4 id:106 gh:107
 Meteor.default_connection = Meteor.connection;
 
 // We should transition from Meteor.connect to DDP.connect.
-// XXX COMPAT WITH 0.6.4
+// XXX COMPAT WITH 0.6.4 id:306 gh:307
 Meteor.connect = DDP.connect;

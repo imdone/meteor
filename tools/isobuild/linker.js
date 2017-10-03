@@ -485,7 +485,7 @@ var writeSymbolTree = function (symbolTree, indent) {
       return '{}';
     }
     var spacing = new Array(indent + 1).join(' ');
-    // XXX prettyprint!
+    // XXX prettyprint! id:594 gh:595
     return "{\n" +
       _.map(node, function (value, key) {
         return spacing + "  " + key + ": " + put(value, indent + 2);

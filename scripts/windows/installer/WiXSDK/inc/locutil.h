@@ -72,7 +72,7 @@ HRESULT DAPI LocLoadFromFile(
  LocLoadFromResource - loads a localization file from a module's data
                        resource.
 
- NOTE: The resource data must be UTF-8 encoded.
+ NOTE: The resource data must be UTF-8 encoded. id:711 gh:712
 *******************************************************************/
 HRESULT DAPI LocLoadFromResource(
     __in HMODULE hModule,

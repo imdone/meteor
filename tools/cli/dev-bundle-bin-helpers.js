@@ -119,7 +119,7 @@ exports.getEnv = function (options) {
 };
 
 // Caching env.GYP_MSVS_VERSION allows us to avoid invoking Python every
-// time Meteor runs an npm command. TODO Store this on disk?
+// time Meteor runs an npm command. TODO Store this on disk? id:355 gh:356
 var cachedMSVSVersion;
 
 function addWindowsVariables(devBundleDir, env) {

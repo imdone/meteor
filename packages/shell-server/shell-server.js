@@ -244,7 +244,7 @@ class Server {
       }
     });
 
-    // TODO: Node 6: Revisit this as repl._RecoverableError is now exported.
+    // TODO: Node 6: Revisit this as repl._RecoverableError is now exported. id:273 gh:274
     //       as `Recoverable` from `repl`.  Maybe revisit this entirely
     //       as the docs have been updated too:
     //       https://nodejs.org/api/repl.html#repl_custom_evaluation_functions

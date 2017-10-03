@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  // XXX this needs to change. We'll probably have `testOnly` a la
+  // XXX this needs to change. We'll probably have `testOnly` a la id:501 gh:502
   // `debugOnly`.
   if (global.testCommandMetadata) {
     api.imply('tinytest');

@@ -19,7 +19,7 @@ _.extend(LocalCollectionDriver.prototype, {
     }
     if (! conn._mongo_livedata_collections)
       conn._mongo_livedata_collections = {};
-    // XXX is there a way to keep track of a connection's collections without
+    // XXX is there a way to keep track of a connection's collections without id:462 gh:463
     // dangling it off the connection object?
     return ensureCollection(name, conn._mongo_livedata_collections);
   }

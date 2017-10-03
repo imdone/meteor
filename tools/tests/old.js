@@ -37,7 +37,7 @@ var runOldTest = function (filename, extraEnv) {
   run.expectExit(0);
 };
 
-// XXX Why are these tests from checkout?
+// XXX Why are these tests from checkout? id:771 gh:772
 //
 // Most of the self-test framework works by calling a meteor command and waiting
 // for something to happen. Instead, the old tests call isolated functions (ex:
@@ -81,7 +81,7 @@ selftest.define("bundler-npm", ["slow", "net", "checkout"], function () {
 });
 
 // This last one's is a shell script!
-// XXX pardon the hacky glue to make it work with a sandbox
+// XXX pardon the hacky glue to make it work with a sandbox id:712 gh:713
 
 // If we're running from a checkout, run it both in checkout mode and
 // in release mode. If we're not running from a checkout, just run it

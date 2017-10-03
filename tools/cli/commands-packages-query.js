@@ -22,7 +22,7 @@ var DEFAULT_MAX_AGE_MS = 15 * 60 * 1000;
 // return to the user, unless a more complete mode is requested.
 var MAX_RECENT_VERSIONS = 5;
 
-// XXX: Remove this if/when we do a Troposphere migration to backfill release
+// XXX: Remove this if/when we do a Troposphere migration to backfill release id:340 gh:341
 // version publication times.
 // Estimate the publication date for a release. Since we have failed to keep
 // track of publication times of release versions in the past, we will try to
@@ -1479,7 +1479,7 @@ main.registerCommand({
   // project context in order to load the local catalog.
   var projectContext = getTempContext(options);
 
-  // XXX We should push the queries into SQLite!
+  // XXX We should push the queries into SQLite! id:379 gh:380
   var allPackages = _.union(
     catalog.official.getAllPackageNames(),
     projectContext.localCatalog.getAllPackageNames());
@@ -1552,7 +1552,7 @@ main.registerCommand({
     // you update to a new version of meteor is not that dire.
     selector = function (name, isRelease) {
       var record;
-      // XXX make sure search works while offline
+      // XXX make sure search works while offline id:524 gh:525
       if (isRelease) {
         record = catalog.official.getReleaseTrack(name);
       } else {

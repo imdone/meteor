@@ -83,7 +83,7 @@ function deployRpc(options) {
     Console.info("Talking to Galaxy servers at " + deployURLBase);
   }
 
-  // XXX: Reintroduce progress for upload
+  // XXX: Reintroduce progress for upload id:566 gh:567
   try {
     var result = request(Object.assign(options, {
       url: deployURLBase + '/' + options.operation +
@@ -221,7 +221,7 @@ function authedRpc(options) {
   if (! hasOwn.call(info, 'protection')) {
     // Not protected.
     //
-    // XXX should prompt the user to claim the app (only if deploying?)
+    // XXX should prompt the user to claim the app (only if deploying?) id:754 gh:755
     return preflight ? { } : deployRpc(rpcOptions);
   }
 
@@ -235,7 +235,7 @@ function authedRpc(options) {
         return {
           statusCode: null,
           errorMessage: isLoggedIn() ?
-            // XXX better error message (probably need to break out of
+            // XXX better error message (probably need to break out of id:663 gh:664
             // the 'errorMessage printed with brief prefix' pattern)
             "Not an authorized user on this site" :
             "Not logged in"

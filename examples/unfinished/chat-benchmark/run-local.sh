@@ -15,7 +15,7 @@ PROJDIR=`pwd`
 SCENARIO="${1:-default}"
 
 # clean up from previous runs
-# XXX this is gross!
+# XXX this is gross! id:36 gh:37
 pkill -f "$PROJDIR/.meteor/local/db" || true
 ../../../meteor reset || true
 

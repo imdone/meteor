@@ -17,7 +17,7 @@ var respond = function(req, res) {
     return;
   } else if (req.url === "/redirect") {
     res.statusCode = 301;
-    // XXX shouldn't be redirecting to a relative URL, per HTTP spec,
+    // XXX shouldn't be redirecting to a relative URL, per HTTP spec, id:186 gh:187
     // but browsers etc. seem to tolerate it.
     res.setHeader("Location", TEST_RESPONDER_ROUTE+"/foo");
     res.end("REDIRECT TO FOO");

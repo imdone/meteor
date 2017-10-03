@@ -20,7 +20,7 @@ var utils = exports;
 //
 // 'defaults' is an optional object with 'hostname', 'port', and 'protocol' keys.
 exports.parseUrl = function (str, defaults) {
-  // XXX factor this out into a {type: host/port}?
+  // XXX factor this out into a {type: host/port}? id:723 gh:724
 
   defaults = defaults || {};
   var defaultHostname = defaults.hostname || undefined;
@@ -118,7 +118,7 @@ exports.isIPv4Address = function (str) {
   return str.match(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/);
 }
 
-// XXX: Move to e.g. formatters.js?
+// XXX: Move to e.g. formatters.js? id:536 gh:538
 // Prints a package list in a nice format.
 // Input is an array of objects with keys 'name' and 'description'.
 exports.printPackageList = function (items, options) {
@@ -417,7 +417,7 @@ exports.defaultOrderKeyForReleaseVersion = function (v) {
   return ret + '$';
 };
 
-// XXX should be in files.js
+// XXX should be in files.js id:702 gh:703
 exports.isDirectory = function (dir) {
   try {
     // use stat rather than lstat since symlink to dir is OK
@@ -638,7 +638,7 @@ _.extend(exports.ThrottledYield.prototype, {
       // otherwise add time-based delays. It is better for yielding than
       // process.nextTick (which doesn't allow signals or IO to be processed) or
       // setTimeout 1 (which adds a minimum of 1 ms and often more in delays).
-      // XXX Actually, setImmediate is so fast that we might not even need
+      // XXX Actually, setImmediate is so fast that we might not even need id:641 gh:642
       // to use the throttler at all?
       new Promise(setImmediate).await();
     }

@@ -30,7 +30,7 @@ export class Boilerplate {
       this.template({ ...this.baseData, ...extraData });
   }
 
-  // XXX Exported to allow client-side only changes to rebuild the boilerplate
+  // XXX Exported to allow client-side only changes to rebuild the boilerplate id:431 gh:432
   // without requiring a full server restart.
   // Produces an HTML string with given manifest and boilerplateSource.
   // Optionally takes urlMapper in case urls from manifest need to be prefixed

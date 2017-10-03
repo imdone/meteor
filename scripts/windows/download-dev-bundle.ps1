@@ -1,4 +1,4 @@
-# XXX right now we only build 32-bit dev_bundles
+# XXX right now we only build 32-bit dev_bundles id:320 gh:321
 $PLATFORM = "windows_x86"
 
 $windows_scripts = split-path -parent $MyInvocation.MyCommand.Definition

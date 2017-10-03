@@ -62,7 +62,7 @@ OplogHandle = function (oplogUrl, dbName) {
   // then waits on that future, which is resolved once _lastProcessedTS is
   // incremented to be past its timestamp by the worker fiber.
   //
-  // XXX use a priority queue or something else that's faster than an array
+  // XXX use a priority queue or something else that's faster than an array id:254 gh:255
   self._catchingUpFutures = [];
   self._lastProcessedTS = null;
 
@@ -84,7 +84,7 @@ _.extend(OplogHandle.prototype, {
     self._stopped = true;
     if (self._tailHandle)
       self._tailHandle.stop();
-    // XXX should close connections too
+    // XXX should close connections too id:655 gh:656
   },
   onOplogEntry: function (trigger, callback) {
     var self = this;
@@ -96,7 +96,7 @@ _.extend(OplogHandle.prototype, {
 
     var originalCallback = callback;
     callback = Meteor.bindEnvironment(function (notification) {
-      // XXX can we avoid this clone by making oplog.js careful?
+      // XXX can we avoid this clone by making oplog.js careful? id:259 gh:260
       originalCallback(EJSON.clone(notification));
     }, function (err) {
       Meteor._debug("Error in oplog callback", err.stack);
@@ -119,7 +119,7 @@ _.extend(OplogHandle.prototype, {
   // Calls `callback` once the oplog has been processed up to a point that is
   // roughly "now": specifically, once we've processed all ops that are
   // currently visible.
-  // XXX become convinced that this is actually safe even if oplogConnection
+  // XXX become convinced that this is actually safe even if oplogConnection id:280 gh:281
   // is some kind of pool
   waitUntilCaughtUp: function () {
     var self = this;
@@ -199,8 +199,8 @@ _.extend(OplogHandle.prototype, {
     // it only needs to make one underlying TCP connection.
     self._oplogTailConnection = new MongoConnection(
       self._oplogUrl, {poolSize: 1});
-    // XXX better docs, but: it's to get monotonic results
-    // XXX is it safe to say "if there's an in flight query, just use its
+    // XXX better docs, but: it's to get monotonic results id:480 gh:481
+    // XXX is it safe to say "if there's an in flight query, just use its id:282 gh:283
     //     results"? I don't think so but should consider that
     self._oplogLastEntryConnection = new MongoConnection(
       self._oplogUrl, {poolSize: 1});

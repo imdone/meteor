@@ -15,7 +15,7 @@ Tinytest.add("accounts - parse urls for accounts-password",
         test.equal(token, fakeToken);
         test.equal(action, hashPart);
 
-        // XXX COMPAT WITH 0.9.3
+        // XXX COMPAT WITH 0.9.3 id:66 gh:67
         if (hashPart === "reset-password") {
           test.equal(Accounts._resetPasswordToken, fakeToken);
         } else if (hashPart === "verify-email") {

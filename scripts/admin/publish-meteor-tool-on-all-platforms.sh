@@ -41,7 +41,7 @@ main () {
   echo "Run the following commands in separate terminal windows:"
   echo
 
-  # XXX there is no os.windows.x86_64 as we don't build for it at the moment
+  # XXX there is no os.windows.x86_64 as we don't build for it at the moment id:331 gh:332
   PLATFORMS=( os.osx.x86_64 os.linux.x86_64 os.linux.x86_32 os.windows.x86_32 )
   for PLATFORM in ${PLATFORMS[@]}; do
     COMMAND="`dirname $0`/publish-meteor-tool-on-arch.sh $GITSHA $PLATFORM $SESSION_FILE"

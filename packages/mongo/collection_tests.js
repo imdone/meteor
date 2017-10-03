@@ -132,7 +132,7 @@ Tinytest.add('collection - calling native find with $reverse hint should reverse
     if (Meteor.isServer) {
       test.equal(fwd, rev.reverse());
     } else {
-      // NOTE: should be documented that hints don't work on client
+      // NOTE: should be documented that hints don't work on client id:249 gh:250
       test.equal(fwd, rev);
     }
   }

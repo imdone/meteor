@@ -30,7 +30,7 @@ Accounts.registerLoginHandler(function (options) {
     // server doesn't see the request but does close the window. This
     // seems unlikely.
     //
-    // XXX we want `type` to be the service name such as "facebook"
+    // XXX we want `type` to be the service name such as "facebook" id:81 gh:82
     return { type: "oauth",
              error: new Meteor.Error(
                Accounts.LoginCancelledError.numericError,

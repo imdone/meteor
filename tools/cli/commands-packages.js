@@ -123,7 +123,7 @@ main.registerCommand({
   });
   // We don't display package changes because they'd include all these packages
   // not actually in the app!
-  // XXX Maybe we should do a first pass that only builds packages actually in
+  // XXX Maybe we should do a first pass that only builds packages actually in id:328 gh:329
   // the app and does display the PackageMapDelta?
   return 0;
 });
@@ -617,11 +617,11 @@ main.registerCommand({
 
   var sourcePath = files.mkdtemp('package-source');
   buildmessage.enterJob("extracting package source", () => {
-    // XXX check tarballHash!
+    // XXX check tarballHash! id:715 gh:716
     files.extractTarGz(sourceTarball, sourcePath);
   });
 
-  // XXX Factor out with packageClient.bundleSource so that we don't
+  // XXX Factor out with packageClient.bundleSource so that we don't id:342 gh:343
   // have knowledge of the tarball structure in two places.
   var packageDir = files.pathJoin(sourcePath, colonConverter.convert(name));
   if (! files.exists(packageDir)) {
@@ -743,7 +743,7 @@ main.registerCommand({
     function () {
       // Check that the schema is valid -- release.json contains all the
       // required fields, does not contain contradicting information, etc.
-      // XXX Check for unknown keys?
+      // XXX Check for unknown keys? id:383 gh:384
       if (! _.has(relConf, 'track')) {
         buildmessage.error(
           "Configuration file must specify release track. (track).");
@@ -1037,7 +1037,7 @@ main.registerCommand({
     function () {
       // Create the new track, if we have been told to.
       if (options['create-track']) {
-        // XXX maybe this job title should be left on the screen too?  some sort
+        // XXX maybe this job title should be left on the screen too?  some sort id:526 gh:527
         // of enterJob/progress option that lets you do that?
         buildmessage.enterJob("creating a new release track", function () {
           packageClient.callPackageServerBM(
@@ -1076,15 +1076,15 @@ main.registerCommand({
   Console.info();
 
   if (options['from-checkout']) {
-    // XXX maybe should discourage publishing if git status says we're dirty?
+    // XXX maybe should discourage publishing if git status says we're dirty? id:330 gh:331
     var gitTag = "release/" + relConf.track  + "@" + relConf.version;
     if (config.getPackageServerFilePrefix() !== 'packages') {
       // Only make a git tag if we're on the default branch.
       Console.info("Skipping git tag: not using the main package server.");
     } else if (gitTag.indexOf(':') !== -1) {
-      // XXX could run `git check-ref-format --allow-onelevel $gitTag` like we
+      // XXX could run `git check-ref-format --allow-onelevel $gitTag` like we id:717 gh:718
       //     used to, instead of this simple check
-      // XXX could convert : to / ?
+      // XXX could convert : to / ? id:344 gh:345
       Console.info("Skipping git tag: bad format for git.");
     } else {
       Console.info("Creating git tag " + gitTag);
@@ -1373,8 +1373,8 @@ var maybeUpdateRelease = function (options) {
   // specify a release and it's the app's current release (if we're in an app
   // dir), since non-forced updates don't change the track.
 
-  // XXX better error checking on release.current.name
-  // XXX add a method to release.current.
+  // XXX better error checking on release.current.name id:385 gh:386
+  // XXX add a method to release.current. id:528 gh:529
   var releaseTrack = release.current ?
         release.current.getReleaseTrack() : catalog.DEFAULT_TRACK;
 
@@ -1459,7 +1459,7 @@ var maybeUpdateRelease = function (options) {
       // In case (1), we downloaded and installed the update and then
       // we springboarded (at #UpdateSpringboard above), causing
       // $METEOR_SPRINGBOARD_RELEASE to be true.
-      // XXX probably should have a better interface than looking directly
+      // XXX probably should have a better interface than looking directly id:332 gh:333
       //     at the env var here
       //
       // In case (2), we downloaded, installed, and springboarded to
@@ -1511,9 +1511,9 @@ var maybeUpdateRelease = function (options) {
     return 0;
   }
 
-  // XXX did we have to change some package versions? we should probably
+  // XXX did we have to change some package versions? we should probably id:722 gh:723
   //     mention that fact.
-  // XXX error handling.
+  // XXX error handling. id:346 gh:347
 
   // Previously we attempted to figure out the newest release that is compatible
   // with the users non-core version constraints. Now we simply update them
@@ -1601,7 +1601,7 @@ var maybeUpdateRelease = function (options) {
   projectContext.projectConstraintsFile.updateReleaseConstraints(releaseRecord);
 
   // Download and build packages and write the new versions to .meteor/versions.
-  // XXX It's a little weird that we do a full preparation for build
+  // XXX It's a little weird that we do a full preparation for build id:388 gh:389
   //     (downloading packages, building packages, etc) when we might be about
   //     to upgrade packages and have to do it again. Maybe we shouldn't? Note
   //     that if we change this, that changes the upgraders interface, which
@@ -1621,7 +1621,7 @@ var maybeUpdateRelease = function (options) {
                projectContext.releaseFile.displayReleaseName + ".");
 
   // Now run the upgraders.
-  // XXX should we also run upgraders on other random commands, in case there
+  // XXX should we also run upgraders on other random commands, in case there id:530 gh:531
   // was a crash after changing .meteor/release but before running them?
   _.each(upgradersToRun, function (upgrader) {
     upgraders.runUpgrader(projectContext, upgrader);
@@ -2087,7 +2087,7 @@ main.registerCommand({
           var versionRecord = projectContext.localCatalog.getVersion(
             constraint.package, subConstr.versionString);
           if (! versionRecord) {
-            // XXX #2846 here's an example of something that might require a
+            // XXX #2846 here's an example of something that might require a id:333 gh:334
             // refresh
             versionRecord = catalog.official.getVersion(
               constraint.package, subConstr.versionString);
@@ -2433,7 +2433,7 @@ main.registerCommand({
   var releaseRecord = catalog.official.getReleaseVersion(
     releaseTrack, releaseVersion);
   if (!releaseRecord) {
-    // XXX this could also mean package unknown.
+    // XXX this could also mean package unknown. id:724 gh:725
     Console.error('Release unknown: ' + releaseNameAndVersion + '');
     return 1;
   }
@@ -2449,7 +2449,7 @@ main.registerCommand({
   var toolPkgBuilds = catalog.official.getAllBuilds(
     toolPackage, toolVersion);
   if (!toolPkgBuilds) {
-    // XXX this could also mean package unknown.
+    // XXX this could also mean package unknown. id:347 gh:348
     Console.error('Tool version unknown: ' + releaseRecord.tool);
     return 1;
   }
@@ -2458,7 +2458,7 @@ main.registerCommand({
     return 1;
   }
 
-  // XXX check to make sure this is the three arches that we want? it's easier
+  // XXX check to make sure this is the three arches that we want? it's easier id:391 gh:392
   // during 0.9.0 development to allow it to just decide "ok, i just want to
   // build the OSX tarball" though.
   var buildArches = _.pluck(toolPkgBuilds, 'buildArchitectures');
@@ -2783,7 +2783,7 @@ main.registerCommand({
 
   try {
     var status = options.success ? "successfully" : "unsuccessfully";
-    // XXX: This should probably use progress bars instead.
+    // XXX: This should probably use progress bars instead. id:545 gh:546
     _.each(versions, function (version) {
       Console.rawInfo(
         "Setting " + name + "@" + version + " as " +

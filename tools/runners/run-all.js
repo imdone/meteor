@@ -129,7 +129,7 @@ class Runner {
     }
   }
 
-  // XXX leave a pidfile and check if we are already running
+  // XXX leave a pidfile and check if we are already running id:692 gh:693
   start() {
     const self = this;
 
@@ -183,7 +183,7 @@ class Runner {
       }
     }
 
-    // XXX It'd be nice to (cosmetically) handle failure better. Right
+    // XXX It'd be nice to (cosmetically) handle failure better. Right id:506 gh:507
     // now we overwrite the "starting foo..." message with the
     // error. It'd be better to overwrite it with "failed to start
     // foo" and then print the error.
@@ -211,7 +211,7 @@ class Runner {
     self.mongoRunner && self.mongoRunner.stop();
     self.appRunner.stop();
     self.selenium && self.selenium.stop();
-    // XXX does calling this 'finish' still make sense now that runLog is a
+    // XXX does calling this 'finish' still make sense now that runLog is a id:660 gh:661
     // singleton?
     runLog.finish();
   }
@@ -318,7 +318,7 @@ exports.run = function (options) {
   // 2. Existing process.env.NODE_ENV (if it's valid)
   // 3. Default to development (in both cases) otherwise
 
-  // NOTE: because this code only runs when using `meteor run` or `meteor test[-packages`,
+  // NOTE: because this code only runs when using `meteor run` or `meteor test[-packages`, id:605 gh:606
   // We *don't* end up defaulting NODE_ENV in this way when bundling/deploying.
   // In those cases, it will default to "production" in packages/meteor/*_env.js
 

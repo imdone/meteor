@@ -140,7 +140,7 @@ Ap._validateLogin = function (connection, attempt) {
     }
     catch (e) {
       attempt.allowed = false;
-      // XXX this means the last thrown error overrides previous error
+      // XXX this means the last thrown error overrides previous error id:51 gh:52
       // messages. Maybe this is surprising to users and we should make
       // overriding errors more explicit. (see
       // https://github.com/meteor/meteor/issues/1960)
@@ -315,7 +315,7 @@ Ap._attemptLogin = function (
   if (!result)
     throw new Error("result is required");
 
-  // XXX A programming error in a login handler can lead to this occuring, and
+  // XXX A programming error in a login handler can lead to this occuring, and id:52 gh:53
   // then we don't call onLogin or onLoginFailure callbacks. Should
   // tryLoginMethod catch this case and turn it into an error?
   if (!result.userId && !result.error)
@@ -544,7 +544,7 @@ Ap._initServerMethods = function () {
   // use. Tests set Accounts._noConnectionCloseDelayForTest to delete tokens
   // immediately instead of using a delay.
   //
-  // XXX COMPAT WITH 0.7.2
+  // XXX COMPAT WITH 0.7.2 id:53 gh:54
   // This single `logoutOtherClients` method has been replaced with two
   // methods, one that you call to get a new token, and another that you
   // call to remove all tokens except your own. The new design allows
@@ -656,7 +656,7 @@ Ap._initServerMethods = function () {
     // Don't let random users configure a service we haven't added yet (so
     // that when we do later add it, it's set up with their configuration
     // instead of ours).
-    // XXX if service configuration is oauth-specific then this code should
+    // XXX if service configuration is oauth-specific then this code should id:54 gh:55
     //     be in accounts-oauth; if it's not then the registry should be
     //     in this package
     if (!(accounts.oauth
@@ -742,7 +742,7 @@ Ap._initServerPublications = function () {
       }
     }, /*suppress autopublish warning*/{is_auto: true});
 
-    // XXX this publish is neither dedup-able nor is it optimized by our special
+    // XXX this publish is neither dedup-able nor is it optimized by our special id:55 gh:56
     // treatment of queries on a specific _id. Therefore this will have O(n^2)
     // run-time performance every time a user document is changed (eg someone
     // logging in). If this is a problem, we can instead write a manual publish
@@ -777,7 +777,7 @@ Ap.addAutopublishFields = function (opts) {
 /// ACCOUNT DATA
 ///
 
-// HACK: This is used by 'meteor-accounts' to get the loginToken for a
+// HACK: This is used by 'meteor-accounts' to get the loginToken for a id:56 gh:57
 // connection. Maybe there should be a public way to do that.
 Ap._getAccountData = function (connectionId, field) {
   var data = this._accountData[connectionId];
@@ -1240,7 +1240,7 @@ function pinEncryptedFieldsToUser(serviceData, userId) {
 // Encrypt unencrypted login service secrets when oauth-encryption is
 // added.
 //
-// XXX For the oauthSecretKey to be available here at startup, the
+// XXX For the oauthSecretKey to be available here at startup, the id:57 gh:58
 // developer must call Accounts.config({oauthSecretKey: ...}) at load
 // time, instead of in a Meteor.startup block, because the startup
 // block in the app code will run after this accounts-base startup
@@ -1269,7 +1269,7 @@ Meteor.startup(function () {
   });
 });
 
-// XXX see comment on Accounts.createUser in passwords_server about adding a
+// XXX see comment on Accounts.createUser in passwords_server about adding a id:58 gh:59
 // second "server options" argument.
 function defaultCreateUserHook(options, user) {
   if (options.profile)
@@ -1284,7 +1284,7 @@ Ap.insertUserDoc = function (options, user) {
   // - prepare an _id, so that you can modify other collections (eg
   // create a first task for every new user)
   //
-  // XXX If the onCreateUser or validateNewUser hooks fail, we might
+  // XXX If the onCreateUser or validateNewUser hooks fail, we might id:59 gh:60
   // end up having modified some other collection
   // inappropriately. The solution is probably to have onCreateUser
   // accept two callbacks - one that gets called before inserting
@@ -1324,7 +1324,7 @@ Ap.insertUserDoc = function (options, user) {
   try {
     userId = this.users.insert(fullUser);
   } catch (e) {
-    // XXX string parsing sucks, maybe
+    // XXX string parsing sucks, maybe id:60 gh:61
     // https://jira.mongodb.org/browse/SERVER-3069 will get fixed one day
     if (e.name !== 'MongoError') throw e;
     if (e.code !== 11000) throw e;
@@ -1332,7 +1332,7 @@ Ap.insertUserDoc = function (options, user) {
       throw new Meteor.Error(403, "Email already exists.");
     if (e.errmsg.indexOf('username') !== -1)
       throw new Meteor.Error(403, "Username already exists.");
-    // XXX better error reporting for services.facebook.id duplicate, etc
+    // XXX better error reporting for services.facebook.id duplicate, etc id:61 gh:62
     throw e;
   }
   return userId;
@@ -1410,7 +1410,7 @@ Ap.updateOrCreateUserFromExternalService = function (
   var selector = {};
   var serviceIdKey = "services." + serviceName + ".id";
 
-  // XXX Temporary special case for Twitter. (Issue #629)
+  // XXX Temporary special case for Twitter. (Issue #629) id:62 gh:63
   //   The serviceData.id will be a string representation of an integer.
   //   We want it to match either a stored string or int representation.
   //   This is to cater to earlier versions of Meteor storing twitter
@@ -1433,14 +1433,14 @@ Ap.updateOrCreateUserFromExternalService = function (
     // We *don't* process options (eg, profile) for update, but we do replace
     // the serviceData (eg, so that we keep an unexpired access token and
     // don't cache old email addresses in serviceData.email).
-    // XXX provide an onUpdateUser hook which would let apps update
+    // XXX provide an onUpdateUser hook which would let apps update id:63 gh:64
     //     the profile too
     var setAttrs = {};
     _.each(serviceData, function (value, key) {
       setAttrs["services." + serviceName + "." + key] = value;
     });
 
-    // XXX Maybe we should re-use the selector above and notice if the update
+    // XXX Maybe we should re-use the selector above and notice if the update id:64 gh:65
     //     touches nothing?
     this.users.update(user._id, {
       $set: setAttrs

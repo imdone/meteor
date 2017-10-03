@@ -36,7 +36,7 @@ function attemptToMatchHash(accounts, hash, success) {
     if (match) {
       token = match[1];
 
-      // XXX COMPAT WITH 0.9.3
+      // XXX COMPAT WITH 0.9.3 id:70 gh:71
       if (urlPart === "reset-password") {
         accounts._resetPasswordToken = token;
       } else if (urlPart === "verify-email") {
@@ -84,7 +84,7 @@ export var AccountsTest = {
   }
 };
 
-// XXX these should be moved to accounts-password eventually. Right now
+// XXX these should be moved to accounts-password eventually. Right now id:69 gh:70
 // this is prevented by the need to set autoLoginEnabled=false, but in
 // some bright future we won't need to do that anymore.
 

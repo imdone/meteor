@@ -9,7 +9,7 @@ import {
   projectionDetails,
 } from './common.js';
 
-// XXX type checking on selectors (graceful error if malformed)
+// XXX type checking on selectors (graceful error if malformed) id:207 gh:208
 
 // LocalCollection: a set of documents that supports queries and modifiers.
 export default class LocalCollection {
@@ -50,13 +50,13 @@ export default class LocalCollection {
   // reactive: if given, and false, don't register with Tracker (default
   // is true)
   //
-  // XXX possibly should support retrieving a subset of fields? and
+  // XXX possibly should support retrieving a subset of fields? and id:184 gh:185
   // have it be a hint (ignored on the client, when not copying the
   // doc?)
   //
-  // XXX sort does not yet support subkeys ('a.b') .. fix that!
-  // XXX add one more sort form: "key"
-  // XXX tests
+  // XXX sort does not yet support subkeys ('a.b') .. fix that! id:427 gh:428
+  // XXX add one more sort form: "key" id:215 gh:216
+  // XXX tests id:593 gh:594
   find(selector, options) {
     // default syntax for everything is to omit the selector argument.
     // but if selector is explicitly passed in as false or undefined, we
@@ -73,7 +73,7 @@ export default class LocalCollection {
       selector = {};
     }
 
-    // NOTE: by setting limit 1 here, we end up using very inefficient
+    // NOTE: by setting limit 1 here, we end up using very inefficient id:210 gh:211
     // code that recomputes the whole query on each update. The upside is
     // that when you reactively depend on a findOne you only get
     // invalidated when the found object changes, not any object in the
@@ -86,7 +86,7 @@ export default class LocalCollection {
     return this.find(selector, options).fetch()[0];
   }
 
-  // XXX possibly enforce that 'undefined' does not appear (we assume
+  // XXX possibly enforce that 'undefined' does not appear (we assume id:188 gh:189
   // this in our handling of null and $exists)
   insert(doc, callback) {
     doc = EJSON.clone(doc);
@@ -333,7 +333,7 @@ export default class LocalCollection {
     this._savedOriginals = new LocalCollection._IdMap;
   }
 
-  // XXX atomicity: if multi is true, and one modification fails, do
+  // XXX atomicity: if multi is true, and one modification fails, do id:430 gh:431
   // we rollback the whole operation, or what?
   update(selector, mod, options, callback) {
     if (! callback && options instanceof Function) {
@@ -408,7 +408,7 @@ export default class LocalCollection {
       const queryResult = matcher.documentMatches(doc);
 
       if (queryResult.result) {
-        // XXX Should we save the original even if mod ends up being a no-op?
+        // XXX Should we save the original even if mod ends up being a no-op? id:217 gh:218
         this._saveOriginal(id, doc);
         this._modifyAndNotify(
           doc,
@@ -635,7 +635,7 @@ LocalCollection.Cursor = Cursor;
 
 LocalCollection.ObserveHandle = ObserveHandle;
 
-// XXX maybe move these into another ObserveHelpers package or something
+// XXX maybe move these into another ObserveHelpers package or something id:599 gh:600
 
 // _CachingChangeObserver is an object which receives observeChanges callbacks
 // and keeps a cache of the current cursor state up to date in this.docs. Users
@@ -682,7 +682,7 @@ LocalCollection._CachingChangeObserver = class _CachingChangeObserver {
             callbacks.added.call(this, id, fields);
           }
 
-          // XXX could `before` be a falsy ID?  Technically
+          // XXX could `before` be a falsy ID?  Technically id:214 gh:215
           // idStringify seems to allow for them -- though
           // OrderedDict won't call stringify on a falsy arg.
           this.docs.putBefore(id, doc, before || null);
@@ -767,14 +767,14 @@ LocalCollection.wrapTransform = transform => {
 
   const wrapped = doc => {
     if (!hasOwn.call(doc, '_id')) {
-      // XXX do we ever have a transform on the oplog's collection? because that
+      // XXX do we ever have a transform on the oplog's collection? because that id:191 gh:192
       // collection has no _id.
       throw new Error('can only transform documents with _id');
     }
 
     const id = doc._id;
 
-    // XXX consider making tracker a weak dependency and checking
+    // XXX consider making tracker a weak dependency and checking id:433 gh:434
     // Package.tracker here
     const transformed = Tracker.nonreactive(() => transform(doc));
 
@@ -798,10 +798,10 @@ LocalCollection.wrapTransform = transform => {
   return wrapped;
 };
 
-// XXX the sorted-query logic below is laughably inefficient. we'll
+// XXX the sorted-query logic below is laughably inefficient. we'll id:219 gh:220
 // need to come up with a better datastructure for this.
 //
-// XXX the logic for observing with a skip or a limit is even more
+// XXX the logic for observing with a skip or a limit is even more id:608 gh:609
 // laughably inefficient. we recompute the whole results every time!
 
 // This binary search puts a value between any equal values, and the first
@@ -1097,19 +1097,19 @@ LocalCollection._isModificationMod = mod => {
   return isModify;
 };
 
-// XXX maybe this should be EJSON.isObject, though EJSON doesn't know about
+// XXX maybe this should be EJSON.isObject, though EJSON doesn't know about id:218 gh:219
 // RegExp
-// XXX note that _type(undefined) === 3!!!!
+// XXX note that _type(undefined) === 3!!!! id:194 gh:195
 LocalCollection._isPlainObject = x => {
   return x && LocalCollection._f._type(x) === 3;
 };
 
-// XXX need a strategy for passing the binding of $ into this
+// XXX need a strategy for passing the binding of $ into this id:435 gh:436
 // function, from the compiled selector
 //
 // maybe just {key.up.to.just.before.dollarsign: array_index}
 //
-// XXX atomicity: if one modification fails, do we roll back the whole
+// XXX atomicity: if one modification fails, do we roll back the whole id:221 gh:222
 // change?
 //
 // options:
@@ -1586,7 +1586,7 @@ const MODIFIERS = {
         throw MinimongoError('$position must be a numeric value', {field});
       }
 
-      // XXX should check to make sure integer
+      // XXX should check to make sure integer id:610 gh:611
       if (arg.$position < 0) {
         throw MinimongoError(
           '$position in $push must be zero or positive',
@@ -1604,7 +1604,7 @@ const MODIFIERS = {
         throw MinimongoError('$slice must be a numeric value', {field});
       }
 
-      // XXX should check to make sure integer
+      // XXX should check to make sure integer id:222 gh:223
       slice = arg.$slice;
     }
 
@@ -1615,10 +1615,10 @@ const MODIFIERS = {
         throw MinimongoError('$sort requires $slice to be present', {field});
       }
 
-      // XXX this allows us to use a $sort whose value is an array, but that's
+      // XXX this allows us to use a $sort whose value is an array, but that's id:198 gh:199
       // actually an extension of the Node driver, so it won't work
       // server-side. Could be confusing!
-      // XXX is it correct that we don't do geo-stuff here?
+      // XXX is it correct that we don't do geo-stuff here? id:438 gh:439
       sortFunction = new Minimongo.Sorter(arg.$sort).getComparator();
 
       toPush.forEach(element => {
@@ -1756,12 +1756,12 @@ const MODIFIERS = {
 
     let out;
     if (arg != null && typeof arg === 'object' && !(arg instanceof Array)) {
-      // XXX would be much nicer to compile this once, rather than
+      // XXX would be much nicer to compile this once, rather than id:223 gh:224
       // for each document we modify.. but usually we're not
       // modifying that many documents, so we'll let it slide for
       // now
 
-      // XXX Minimongo.Matcher isn't up for the job, because we need
+      // XXX Minimongo.Matcher isn't up for the job, because we need id:612 gh:613
       // to permit stuff like {$pull: {a: {$gt: 4}}}.. something
       // like {$gt: 4} is not normally a complete selector.
       // same issue as $elemMatch possibly?
@@ -1844,7 +1844,7 @@ const MODIFIERS = {
     target2[keyparts.pop()] = object;
   },
   $bit(target, field, arg) {
-    // XXX mongo only supports $bit on integers, and we only support
+    // XXX mongo only supports $bit on integers, and we only support id:226 gh:227
     // native javascript numbers (doubles) so far, so we can't support $bit
     throw MinimongoError('$bit is not supported', {field});
   },

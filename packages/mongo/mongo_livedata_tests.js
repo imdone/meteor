@@ -346,7 +346,7 @@ Tinytest.addAsync("mongo-livedata - basics, " + idGeneration, function (test, on
 
   index = 0;
   test.equal(cur.map(function (doc, i, cursor) {
-    // XXX we could theoretically make map run its iterations in parallel or
+    // XXX we could theoretically make map run its iterations in parallel or id:644 gh:645
     // something which would make this fail
     test.equal(i, index++);
     test.isTrue(cursor === cur);
@@ -967,7 +967,7 @@ if (Meteor.isServer) {
     rem({ bar: { $lt: 10 } });
     // State: [ 17:8 18:7 19:6 | ]!
 
-    // XXX the oplog code analyzes the events one by one: one remove after
+    // XXX the oplog code analyzes the events one by one: one remove after id:255 gh:256
     // another. Poll-n-diff code, on the other side, analyzes the batch action
     // of multiple remove. Because of that difference, expected outputs differ.
     if (usesOplog) {
@@ -1478,7 +1478,7 @@ var bin = Base64.decode(
 
 testAsyncMulti('mongo-livedata - document with binary data, ' + idGeneration, [
   function (test, expect) {
-    // XXX probably shouldn't use EJSON's private test symbols
+    // XXX probably shouldn't use EJSON's private test symbols id:272 gh:273
     this.collectionName = Random.id();
     if (Meteor.isClient) {
       Meteor.call('createInsecureCollection', this.collectionName, collectionOptions);
@@ -1839,7 +1839,7 @@ var asyncUpsertTestName = function (useNetwork, useDirectCollection,
 // LocalCollection. On the server, we test mongo-backed collections, for both
 // the Mongo.Collection and the MongoConnection.
 //
-// XXX Rewrite with testAsyncMulti, that would simplify things a lot!
+// XXX Rewrite with testAsyncMulti, that would simplify things a lot! id:472 gh:473
 _.each(Meteor.isServer ? [false] : [true, false], function (useNetwork) {
   _.each(useNetwork ? [false] : [true, false], function (useDirectCollection) {
     _.each([true, false], function (useUpdate) {
@@ -1949,7 +1949,7 @@ _.each(Meteor.isServer ? [false] : [true, false], function (useNetwork) {
               upsert(coll, useUpdate, {_id: 'David'}, {$set: {foo: 2}}, next6);
             });
           } else {
-            // XXX skip this test for now for LocalCollection; the fact that
+            // XXX skip this test for now for LocalCollection; the fact that id:248 gh:249
             // we're in a nested sequence of callbacks means we're inside a
             // Meteor.defer, which means the exception just gets
             // logged. Something should be done about this at some point?  Maybe
@@ -2956,7 +2956,7 @@ Meteor.isServer && Tinytest.add("mongo-livedata - oplog - drop collection/db", f
   test.length(output, 1);
   test.equal(output.shift(), ['added', doc4Id, {a: 'foo', c: 3}]);
 
-  // XXX: this was intermittently failing for unknown reasons.
+  // XXX: this was intermittently failing for unknown reasons. id:646 gh:647
   // Now drop the database. Should remove all docs again.
   // runInFence(function () {
   //   driver.mongo.dropDatabase();

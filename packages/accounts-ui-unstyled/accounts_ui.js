@@ -12,7 +12,7 @@ Accounts.ui._options = {
   forceApprovalPrompt: {}
 };
 
-// XXX refactor duplicated code in this function
+// XXX refactor duplicated code in this function id:416 gh:417
 
 /**
  * @summary Configure the behavior of [`{{> loginButtons}}`](#accountsui).

@@ -178,7 +178,7 @@ $(function () {
   (function () {
     function updateLocalTags() {
       var real = _(Todos.find()).chain().pluck('tags').compact().flatten().uniq().value();
-      real.unshift(null); // XXX fake tag
+      real.unshift(null); // XXX fake tag id:48 gh:49
 
       var computed = _(LocalTags.find()).pluck('tag');
 

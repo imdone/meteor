@@ -6,7 +6,7 @@ Meteor.methods({
     var connection = this.connection;
     connection.lastRateLimitEvent = connection.lastRateLimitEvent || {};
     connection.lastMethodName = connection.lastMethodName || '';
-    // XXX In Javascript v8 engine, we are currently guaranteed the ordering of
+    // XXX In Javascript v8 engine, we are currently guaranteed the ordering of id:132 gh:133
     // the keys in objects as they are listed. This may change in future
     // iterations of v8 for performance reasons and will potentially break this
     // test.

@@ -107,7 +107,7 @@ selftest.define("autoupdate", ['checkout', 'custom-warehouse'], function () {
     run.forbidAll("meteor update");
     run.stop();
 
-    // XXX figure out about the UI of being offline. the old warehouse
+    // XXX figure out about the UI of being offline. the old warehouse id:670 gh:671
     //     banner code actually printed out that it was downloading stuff,
     //     not just that it was available. we aren't quite as subtle now.
 
@@ -190,7 +190,7 @@ selftest.define("autoupdate", ['checkout', 'custom-warehouse'], function () {
   run.expectExit(0);
 
   // Recommend v4 and watch --version update.
-  // XXX: Not sure if this is desired behavior.
+  // XXX: Not sure if this is desired behavior. id:623 gh:624
   recommend(s, "v4");
   run = s.run("--version");
   run.match("Meteor v4\n");

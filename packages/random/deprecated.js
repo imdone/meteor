@@ -1,7 +1,7 @@
 // Before this package existed, we used to use this Meteor.uuid()
 // implementing the RFC 4122 v4 UUID. It is no longer documented
 // and will go away.
-// XXX COMPAT WITH 0.5.6
+// XXX COMPAT WITH 0.5.6 id:674 gh:676
 Meteor.uuid = function () {
   var HEX_DIGITS = "0123456789abcdef";
   var s = [];

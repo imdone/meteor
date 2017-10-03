@@ -1,6 +1,6 @@
 
 // Pick scenario from settings.
-// XXX settings now has public. could move stuff there and avoid this.
+// XXX settings now has public. could move stuff there and avoid this. id:9 gh:10
 var PARAMS = {};
 if (Meteor.isServer) {
   if (!Meteor.settings.params)
@@ -27,7 +27,7 @@ var random = function (n) {
 var randomChars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('');
 var randomString = function (length) {
-  // XXX make more efficient
+  // XXX make more efficient id:21 gh:22
   var ret = '';
   _.times(length, function () {
     ret += Random.choice(randomChars);
@@ -88,7 +88,7 @@ if (Meteor.isServer) {
   Meteor.setInterval(function () {
     var newClients = {};
     var newTotal = 0;
-    // XXX hardcoded time
+    // XXX hardcoded time id:12 gh:13
     var since = +(new Date) - 1000*PARAMS.insertsPerSecond * 5;
     _.each(Collections, function (C) {
       _.each(C.find({when: {$gt: since}}, {fields: {fromProcess: 1, when: 1}}).fetch(), function (d) {
@@ -99,7 +99,7 @@ if (Meteor.isServer) {
     });
     currentClients = _.keys(newClients);
     totalDocs = newTotal;
-  }, 3*1000); // XXX hardcoded time
+  }, 3*1000); // XXX hardcoded time id:16 gh:17
 
   // periodic document cleanup.
   if (PARAMS.maxAgeSeconds) {
@@ -109,7 +109,7 @@ if (Meteor.isServer) {
         preCall('removeMaxAge');
         C.remove({when: {$lt: when}}, postCall('removeMaxAge'));
       });
-      // Clear out 5% of the DB each time, steady state. XXX parameterize?
+      // Clear out 5% of the DB each time, steady state. XXX parameterize? id:32 gh:33
     }, 1000*PARAMS.maxAgeSeconds / 20);
   }
 
@@ -138,7 +138,7 @@ if (Meteor.isServer) {
     update: function (processId, field, value) {
       check([processId, field, value], [String]);
       var modifer = {};
-      modifer[field] = value; // XXX injection attack?
+      modifer[field] = value; // XXX injection attack? id:10 gh:11
 
       var C = pickCollection();
       // update one message.
@@ -158,7 +158,7 @@ if (Meteor.isServer) {
   });
 
 
-  // XXX publish stats
+  // XXX publish stats id:22 gh:23
   // - currentClients.length
   // - serverId
   // - num ddp sessions
@@ -188,7 +188,7 @@ if (Meteor.isClient) {
     return (Session.get('updateAvgs') || []).join(", ");
   };
 
-  // XXX count of how many docs are in local collection?
+  // XXX count of how many docs are in local collection? id:13 gh:14
 
 
   // do stuff periodically
@@ -217,7 +217,7 @@ if (Meteor.isClient) {
 
 
 
-  // XXX very rough per client update rate. we need to measure this
+  // XXX very rough per client update rate. we need to measure this id:17 gh:18
   // better. ideally, on the server we could get the global update rate
   var updateCount = 0;
   var updateHistories = {1: [], 10: [], 100: [], 1000: []};

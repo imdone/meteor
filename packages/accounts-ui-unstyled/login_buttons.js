@@ -40,7 +40,7 @@ displayName = function () {
 // don't cache the output of this function: if called during startup (before
 // oauth packages load) it might not include them all.
 //
-// NOTE: It is very important to have this return password last
+// NOTE: It is very important to have this return password last id:105 gh:106
 // because of the way we render the different providers in
 // login_buttons_dropdown.html
 getLoginServices = function () {
@@ -71,9 +71,9 @@ dropdown = function () {
   return hasPasswordService() || getLoginServices().length > 1;
 };
 
-// XXX improve these. should this be in accounts-password instead?
+// XXX improve these. should this be in accounts-password instead? id:86 gh:87
 //
-// XXX these will become configurable, and will be validated on
+// XXX these will become configurable, and will be validated on id:100 gh:101
 // the server as well.
 validateUsername = function (username) {
   if (username.length >= 3) {

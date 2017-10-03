@@ -1,6 +1,6 @@
 import { DDP, LivedataTest } from "./namespace.js";
 
-// XXX should check error codes
+// XXX should check error codes id:148 gh:149
 var failure = function (test, code, reason) {
   return function (error, result) {
     test.equal(result, undefined);
@@ -10,7 +10,7 @@ var failure = function (test, code, reason) {
         test.instanceOf(error, Meteor.Error);
         code && test.equal(error.error, code);
         reason && test.equal(error.reason, reason);
-        // XXX should check that other keys aren't present.. should
+        // XXX should check that other keys aren't present.. should id:125 gh:126
         // probably use something like the Matcher we used to have
       } else {
         // for normal Javascript errors
@@ -301,7 +301,7 @@ var checkBalances = function (test, a, b) {
 };
 
 // would be nice to have a database-aware test harness of some kind --
-// this is a big hack (and XXX pollutes the global test namespace)
+// this is a big hack (and XXX pollutes the global test namespace) id:358 gh:359
 testAsyncMulti("livedata - compound methods", [
   function (test, expect) {
     if (Meteor.isClient)
@@ -375,7 +375,7 @@ if (Meteor.isClient) {
         Meteor.connection, "objectsWithUsers", messages);
 
       // A helper for testing incoming set and unset messages
-      // XXX should this be extracted as a general helper together with
+      // XXX should this be extracted as a general helper together with id:123 gh:124
       // eavesdropOnCollection?
       var expectMessages = function(expectedAddedMessageCount,
                                     expectedRemovedMessageCount,
@@ -857,7 +857,7 @@ testAsyncMulti("livedata - result by value", [
   }
 ]);
 
-// XXX some things to test in greater detail:
+// XXX some things to test in greater detail: id:538 gh:535
 // staying in simulation mode
 // time warp
 // serialization / beginAsync(true) / beginAsync(false)

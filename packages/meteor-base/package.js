@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 
     // The protocol and client/server libraries that Meteor uses to send data
     'ddp',
-    'livedata', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0.
+    'livedata', // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0. id:579 gh:578
 
     // Runtime support for Meteor 1.5 dynamic import(...) syntax.
     'dynamic-import',

@@ -353,7 +353,7 @@ var callStartupHooks = Profile("Call Meteor.startup hooks", function () {
 
 var runMain = Profile("Run main()", function () {
   // find and run main()
-  // XXX hack. we should know the package that contains main.
+  // XXX hack. we should know the package that contains main. id:698 gh:699
   var mains = [];
   var globalMain;
   if ('main' in global) {
@@ -374,7 +374,7 @@ var runMain = Profile("Run main()", function () {
     process.exit(1);
   }
   var exitCode = mains[0].call({}, process.argv.slice(3));
-  // XXX hack, needs a better way to keep alive
+  // XXX hack, needs a better way to keep alive id:513 gh:514
   if (exitCode !== 'DAEMON')
     process.exit(exitCode);
 

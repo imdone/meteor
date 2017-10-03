@@ -70,7 +70,7 @@ Meteor.clearTimeout = function(x) {
   return clearTimeout(x);
 };
 
-// XXX consider making this guarantee ordering of defer'd callbacks, like
+// XXX consider making this guarantee ordering of defer'd callbacks, like id:407 gh:408
 // Tracker.afterFlush or Node's nextTick (in practice). Then tests can do:
 //    callSomethingThatDefersSomeWork();
 //    Meteor.defer(expect(somethingThatValidatesThatTheWorkHappened));

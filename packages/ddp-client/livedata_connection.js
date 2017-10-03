@@ -15,10 +15,10 @@ if (Meteor.isServer) {
 //   _sockjsOptions: Specifies options to pass through to the sockjs client
 //   onDDPNegotiationVersionFailure: callback when version negotiation fails.
 //
-// XXX There should be a way to destroy a DDP connection, causing all
+// XXX There should be a way to destroy a DDP connection, causing all id:439 gh:440
 // outstanding method calls to fail.
 //
-// XXX Our current way of handling failure and reconnection is great
+// XXX Our current way of handling failure and reconnection is great id:127 gh:128
 // for an app (where we want to tolerate being disconnected as an
 // expect state, and keep trying forever to reconnect) but cumbersome
 // for something like a command line tool that wants to make a
@@ -49,7 +49,7 @@ var Connection = function (url, options) {
 
   // If set, called when we reconnect, queuing method calls _before_ the
   // existing outstanding ones.
-  // NOTE: This feature has been preserved for backwards compatibility. The
+  // NOTE: This feature has been preserved for backwards compatibility. The id:112 gh:113
   // preferred method of setting a callback on reconnect is to use
   // DDP.onReconnect.
   self.onReconnect = null;
@@ -202,7 +202,7 @@ var Connection = function (url, options) {
   //   - ready (has the 'ready' message been received?)
   //   - readyCallback (an optional callback to call when ready)
   //   - errorCallback (an optional callback to call if the sub terminates with
-  //                    an error, XXX COMPAT WITH 1.0.3.1)
+  //                    an error, XXX COMPAT WITH 1.0.3.1) id:309 gh:310
   //   - stopCallback (an optional callback to call when the sub terminates
   //     for any reason, with an error argument if an error triggered the stop)
   self._subscriptions = {};
@@ -240,7 +240,7 @@ var Connection = function (url, options) {
     }
 
     if (msg === null || !msg.msg) {
-      // XXX COMPAT WITH 0.6.6. ignore the old welcome message for back
+      // XXX COMPAT WITH 0.6.6. ignore the old welcome message for back id:114 gh:115
       // compat.  Remove this 'if' once the server stops sending welcome
       // messages (stream_server.js).
       if (! (msg && msg.server_id))
@@ -284,7 +284,7 @@ var Connection = function (url, options) {
 
   var onReset = function () {
     // Send a connect message at the beginning of the stream.
-    // NOTE: reset is called even on the first connection, so this is
+    // NOTE: reset is called even on the first connection, so this is id:460 gh:461
     // the only place we send this message.
     var msg = {msg: 'connect'};
     if (self._lastSessionId)
@@ -538,7 +538,7 @@ _.extend(Connection.prototype, {
       if (_.isFunction(lastParam)) {
         callbacks.onReady = params.pop();
       } else if (lastParam &&
-        // XXX COMPAT WITH 1.0.3.1 onError used to exist, but now we use
+        // XXX COMPAT WITH 1.0.3.1 onError used to exist, but now we use id:130 gh:131
         // onStop with an error callback instead.
         _.any([lastParam.onReady, lastParam.onError, lastParam.onStop],
           _.isFunction)) {
@@ -591,7 +591,7 @@ _.extend(Connection.prototype, {
         }
       }
 
-      // XXX COMPAT WITH 1.0.3.1 we used to have onError but now we call
+      // XXX COMPAT WITH 1.0.3.1 we used to have onError but now we call id:115 gh:116
       // onStop with an optional error argument
       if (callbacks.onError) {
         // Replace existing callback if any, so that errors aren't
@@ -613,7 +613,7 @@ _.extend(Connection.prototype, {
         ready: false,
         readyDeps: new Tracker.Dependency,
         readyCallback: callbacks.onReady,
-        // XXX COMPAT WITH 1.0.3.1 #errorCallback
+        // XXX COMPAT WITH 1.0.3.1 #errorCallback id:350 gh:351
         errorCallback: callbacks.onError,
         stopCallback: callbacks.onStop,
         connection: self,
@@ -777,9 +777,9 @@ _.extend(Connection.prototype, {
     options = options || {};
 
     if (callback) {
-      // XXX would it be better form to do the binding in stream.on,
+      // XXX would it be better form to do the binding in stream.on, id:116 gh:117
       // or caller, instead of here?
-      // XXX improve error message (and how we report it)
+      // XXX improve error message (and how we report it) id:464 gh:465
       callback = Meteor.bindEnvironment(
         callback,
         "delivering result of invoking '" + name + "'"
@@ -1030,7 +1030,7 @@ _.extend(Connection.prototype, {
       // Avoid killing the autoupdate subscription so that developers
       // still get hot code pushes when writing tests.
       //
-      // XXX it's a hack to encode knowledge about autoupdate here,
+      // XXX it's a hack to encode knowledge about autoupdate here, id:133 gh:134
       // but it doesn't seem worth it yet to have a special API for
       // subscriptions to preserve after unit tests.
       if (sub.name !== 'meteor_autoupdate_clientVersions') {
@@ -1183,7 +1183,7 @@ _.extend(Connection.prototype, {
 
     // Mark all named subscriptions which are ready (ie, we already called the
     // ready callback) as needing to be revived.
-    // XXX We should also block reconnect quiescence until unnamed subscriptions
+    // XXX We should also block reconnect quiescence until unnamed subscriptions id:119 gh:120
     //     (eg, autopublish) are done re-publishing to avoid flicker!
     self._subsBeingRevived = {};
     _.each(self._subscriptions, function (sub, id) {
@@ -1336,7 +1336,7 @@ _.extend(Connection.prototype, {
         } else {
           // Nobody's listening for this data. Queue it up until
           // someone wants it.
-          // XXX memory use will grow without bound if you forget to
+          // XXX memory use will grow without bound if you forget to id:352 gh:353
           // create a collection or just don't care about it... going
           // to have to do something about that.
           if (!_.has(self._updatesForUnknownStores, storeName))
@@ -1562,7 +1562,7 @@ _.extend(Connection.prototype, {
     if (!_.has(self._subscriptions, msg.id))
       return;
 
-    // XXX COMPAT WITH 1.0.3.1 #errorCallback
+    // XXX COMPAT WITH 1.0.3.1 #errorCallback id:118 gh:119
     var errorCallback = self._subscriptions[msg.id].errorCallback;
     var stopCallback = self._subscriptions[msg.id].stopCallback;
 
@@ -1573,7 +1573,7 @@ _.extend(Connection.prototype, {
         msgArg.error.error, msgArg.error.reason, msgArg.error.details);
     }
 
-    // XXX COMPAT WITH 1.0.3.1 #errorCallback
+    // XXX COMPAT WITH 1.0.3.1 #errorCallback id:535 gh:537
     if (errorCallback && msg.error) {
       errorCallback(meteorErrorFromMsg(msg));
     }

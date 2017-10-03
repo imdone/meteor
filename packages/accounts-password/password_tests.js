@@ -22,7 +22,7 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) (function () {
 
-  // XXX note, only one test can do login/logout things at once! for
+  // XXX note, only one test can do login/logout things at once! for id:92 gh:93
   // now, that is this test.
 
   Accounts._isolateLoginTokenForTest();
@@ -1422,7 +1422,7 @@ if (Meteor.isServer) (function () {
     });
   });
 
-  // XXX would be nice to test
+  // XXX would be nice to test id:90 gh:91
   // Accounts.config({forbidClientAccountCreation: true})
 
   Tinytest.addAsync(

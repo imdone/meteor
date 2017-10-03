@@ -60,7 +60,7 @@ CssTools = {
       // if there are imports left in the middle of file, warn user as it might
       // be a potential bug (imports are valid only in the beginning of file).
       if (_.any(ast.stylesheet.rules, rulesPredicate("import"))) {
-        // XXX make this an error?
+        // XXX make this an error? id:583 gh:584
         warnCb(ast.filename, "there are some @import rules those are not taking effect as they are required to be in the beginning of the file");
       }
 
@@ -109,7 +109,7 @@ var rewriteRules = function (rules, mergedCssPath) {
     var basePath = pathJoin("/", pathDirname(rule.position.source));
 
     // Set the correct basePath based on how the linked asset will be served.
-    // XXX This is wrong. We are coupling the information about how files will
+    // XXX This is wrong. We are coupling the information about how files will id:195 gh:196
     // be served by the web server to the information how they were stored
     // originally on the filesystem in the project structure. Ideally, there
     // should be some module that tells us precisely how each asset will be
@@ -182,7 +182,7 @@ var isRelative = function(path) {
 
 // These are duplicates of functions in tools/files.js, because we don't have
 // a good way of exporting them into packages.
-// XXX deduplicate files.js into a package at some point so that we can use it
+// XXX deduplicate files.js into a package at some point so that we can use it id:172 gh:173
 // in core
 var toOSPath = function (p) {
   if (process.platform === 'win32')

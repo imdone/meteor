@@ -1,7 +1,7 @@
 var VALID_KEYS = [
   'dropdownVisible',
 
-  // XXX consider replacing these with one key that has an enum for values.
+  // XXX consider replacing these with one key that has an enum for values. id:103 gh:104
   'inSignupFlow',
   'inForgotPasswordFlow',
   'inChangePasswordFlow',
@@ -29,7 +29,7 @@ var validateKey = function (key) {
 
 var KEY_PREFIX = "Meteor.loginButtons.";
 
-// XXX This should probably be package scope rather than exported
+// XXX This should probably be package scope rather than exported id:97 gh:98
 // (there was even a comment to that effect here from before we had
 // namespacing) but accounts-ui-viewer uses it, so leave it as is for
 // now

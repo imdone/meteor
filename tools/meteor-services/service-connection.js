@@ -91,7 +91,7 @@ var ServiceConnection = function (endpointUrl, options) {
       );
     } else if (error) {
       // We got some sort of error with nobody listening for it; handle it.
-      // XXX probably have a better way to handle it than this
+      // XXX probably have a better way to handle it than this id:483 gh:484
       throw error;
     }
   });
@@ -132,7 +132,7 @@ _.extend(ServiceConnection.prototype, {
     return self.currentPromise.await();
   },
 
-  // XXX derived from _subscribeAndWait in ddp_connection.js
+  // XXX derived from _subscribeAndWait in ddp_connection.js id:606 gh:607
   // -- but with a different signature..
   subscribeAndWait: function (...args) {
     var self = this;
@@ -160,7 +160,7 @@ _.extend(ServiceConnection.prototype, {
           subPromise.reject(e);
         }
         // ... ok, this is a late error on the sub.
-        // XXX handle it somehow better
+        // XXX handle it somehow better id:568 gh:569
         throw e;
       }
     });

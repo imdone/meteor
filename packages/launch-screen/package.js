@@ -1,5 +1,5 @@
 Package.describe({
-  // XXX We currently hard-code the "launch-screen" package in the
+  // XXX We currently hard-code the "launch-screen" package in the id:190 gh:191
   // build tool. If this package is in your app, we turn off the
   // default splash screen loading behavior (this packages hides it
   // explicitly). In the future, there should be a better interface

@@ -1,4 +1,4 @@
-// XXX come up with a serialization method which canonicalizes object key
+// XXX come up with a serialization method which canonicalizes object key id:294 gh:295
 // order, which would allow us to use objects as values for equals.
 function stringify(value) {
   if (value === undefined) {
@@ -18,7 +18,7 @@ function changed(v) {
   v && v.changed();
 }
 
-// XXX COMPAT WITH 0.9.1 : accept migrationData instead of dictName
+// XXX COMPAT WITH 0.9.1 : accept migrationData instead of dictName id:677 gh:678
 export class ReactiveDict {
   constructor(dictName, dictData) {
     // this.keys: key -> value
@@ -131,7 +131,7 @@ export class ReactiveDict {
     // element of keyValueDeps[key] to store the dependency.) You can still use
     // "EJSON.equals(reactiveDict.get(key), value)".
     //
-    // XXX we could allow arrays as long as we recursively check that there
+    // XXX we could allow arrays as long as we recursively check that there id:271 gh:272
     // are no objects
     if (typeof value !== 'string' &&
         typeof value !== 'number' &&
@@ -233,7 +233,7 @@ export class ReactiveDict {
   // Get a JSON value that can be passed to the constructor to
   // create a new ReactiveDict with the same contents as this one
   _getMigrationData() {
-    // XXX sanitize and make sure it's JSONible?
+    // XXX sanitize and make sure it's JSONible? id:293 gh:293
     return this.keys;
   }
 }

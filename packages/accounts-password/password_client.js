@@ -48,7 +48,7 @@ Meteor.loginWithPassword = function (selector, password, callback) {
         // The "reason" string should match the error thrown in the
         // password login handler in password_server.js.
 
-        // XXX COMPAT WITH 0.8.1.3
+        // XXX COMPAT WITH 0.8.1.3 id:72 gh:73
         // If this user's last login was with a previous version of
         // Meteor that used SRP, then the server throws this error to
         // indicate that we should try again. The error includes the
@@ -79,7 +79,7 @@ Accounts._hashPassword = function (password) {
   };
 };
 
-// XXX COMPAT WITH 0.8.1.3
+// XXX COMPAT WITH 0.8.1.3 id:74 gh:75
 // The server requested an upgrade from the old SRP password format,
 // so supply the needed SRP identity to login. Options:
 //   - upgradeError: the error object that the server returned to tell
@@ -173,7 +173,7 @@ Accounts.changePassword = function (oldPassword, newPassword, callback) {
       if (error || !result) {
         if (error && error.error === 400 &&
             error.reason === 'old password format') {
-          // XXX COMPAT WITH 0.8.1.3
+          // XXX COMPAT WITH 0.8.1.3 id:84 gh:85
           // The server is telling us to upgrade from SRP to bcrypt, as
           // in Meteor.loginWithPassword.
           srpUpgradePath({

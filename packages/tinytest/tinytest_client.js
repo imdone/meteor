@@ -73,7 +73,7 @@ Tinytest._runTestsEverywhere = function (onReport, onComplete, pathPrefix, optio
 
   Meteor.call('tinytest/run', runId, pathPrefix, function (error, result) {
     if (error)
-      // XXX better report error
+      // XXX better report error id:303 gh:304
       throw new Error("Test server returned an error");
   });
 

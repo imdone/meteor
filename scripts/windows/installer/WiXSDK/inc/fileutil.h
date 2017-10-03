@@ -36,7 +36,7 @@ enum FILE_ARCHITECTURE
 enum FILE_ENCODING
 {
     FILE_ENCODING_UNSPECIFIED = 0,
-    // TODO: distinguish between non-BOM utf-8 and ANSI in the future?
+    // TODO: distinguish between non-BOM utf-8 and ANSI in the future? id:325 gh:326
     FILE_ENCODING_UTF8,
     FILE_ENCODING_UTF8_WITH_BOM,
     FILE_ENCODING_UTF16,

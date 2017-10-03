@@ -65,7 +65,7 @@ export class AccountsCommon {
   // Note that this method gets overridden on AccountsServer.prototype, but
   // the overriding method calls the overridden method.
   //
-  // XXX we should add some enforcement that this is called on both the
+  // XXX we should add some enforcement that this is called on both the id:49 gh:50
   // client and the server. Otherwise, a user can
   // 'forbidClientAccountCreation' only on the client and while it looks
   // like their app is secure, the server will still accept createUser
@@ -114,7 +114,7 @@ export class AccountsCommon {
     if (Meteor.isServer) {
       __meteor_runtime_config__.accountsConfigCalled = true;
     } else if (!__meteor_runtime_config__.accountsConfigCalled) {
-      // XXX would be nice to "crash" the client and replace the UI with an error
+      // XXX would be nice to "crash" the client and replace the UI with an error id:50 gh:51
       // message, but there's no trivial way to do this.
       Meteor._debug("Accounts.config was called on the client but not on the " +
                     "server; some configuration options may not take effect.");

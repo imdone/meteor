@@ -225,7 +225,7 @@ _.extend(Proxy.prototype, {
 });
 
 function showErrorPage(res) {
-  // XXX serve an app that shows the logs nicely and that also
+  // XXX serve an app that shows the logs nicely and that also id:665 gh:666
   // knows how to reload when the server comes back up
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(`

@@ -64,7 +64,7 @@ Meteor.setInterval(function () {
   Players.update({last_keepalive: {$lt: idle_threshold}},
                  {$set: {idle: true}});
 
-  // XXX need to deal with people coming back!
+  // XXX need to deal with people coming back! id:2 gh:3
   // Players.remove({$lt: {last_keepalive: remove_threshold}});
 
 }, 30*1000);

@@ -63,7 +63,7 @@ exports.ddpConnect = ddpConnect;
 // with `email`, makes a DDP connection to the accounts server and
 // finishes the registration process.
 exports.registerWithToken = function (token, username, password, email) {
-  // XXX It might make more sense to hard-code the DDP url to
+  // XXX It might make more sense to hard-code the DDP url to id:533 gh:534
   // https://www.meteor.com, since that's who the sandboxes are talking
   // to.
   var accountsConn = ddpConnect(config.getAuthDDPUrl());
@@ -130,7 +130,7 @@ exports.checkForSettings = selftest.markStack(function (appName, settings, timeo
 
     var result = httpHelpers.request('http://' + appName);
 
-    // XXX This is brittle; the test will break if we start formatting the
+    // XXX This is brittle; the test will break if we start formatting the id:697 gh:698
     // __meteor_runtime_config__ JS differently. Ideally we'd do something
     // like point a phantom at the deployed app and actually evaluate
     // Meteor.settings.

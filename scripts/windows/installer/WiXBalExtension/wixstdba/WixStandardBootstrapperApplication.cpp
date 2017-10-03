@@ -2438,7 +2438,7 @@ LExit:
 									else if (CSTR_EQUAL == ::CompareStringW(LOCALE_NEUTRAL, 0, sczControlState, -1, L"hide", -1))
 									{
 										BalLog(BOOTSTRAPPER_LOG_LEVEL_STANDARD, "Hide control %ls", pControl->sczName);
-										// TODO: This doesn't work
+										// TODO: This doesn't work id:707 gh:708
 										ThemeShowControl(m_pTheme, pControl->wId, SW_HIDE);
 									}
 								}
@@ -2464,7 +2464,7 @@ LExit:
 				ThemeShowControl(m_pTheme, WIXSTDBA_CONTROL_LOGUSER_OR_MAIL_EDIT, false);
 				ThemeShowControl(m_pTheme, WIXSTDBA_CONTROL_LOGPASS_EDIT, false);
 
-				// XXX why do we need this??
+				// XXX why do we need this?? id:334 gh:335
 				ThemeControlEnable(m_pTheme, WIXSTDBA_CONTROL_LOGUSER_OR_MAIL_LABEL, true);
 				ThemeControlEnable(m_pTheme, WIXSTDBA_CONTROL_LOGPASS_LABEL, true);
 				ThemeControlEnable(m_pTheme, WIXSTDBA_CONTROL_LOGUSER_OR_MAIL_EDIT, true);
@@ -3014,7 +3014,7 @@ LExit:
 			hr = ThemeGetTextControl(m_pTheme, WIXSTDBA_CONTROL_INSTALLFOLDER_EDITBOX, &sczPath);
 			ExitOnFailure(hr, "Failed to get text from folder edit box.");
 
-			// TODO: verify the path is valid.
+			// TODO: verify the path is valid. id:322 gh:323
 
 			hr = m_pEngine->SetVariableString(WIXSTDBA_VARIABLE_INSTALL_FOLDER, sczPath);
 			ExitOnFailure(hr, "Failed to set the install folder.");

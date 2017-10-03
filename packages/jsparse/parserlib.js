@@ -1,6 +1,6 @@
 ///// TOKENIZER AND PARSER COMBINATORS
 
-// XXX track line/col position, for errors and maybe token info
+// XXX track line/col position, for errors and maybe token info id:569 gh:570
 
 var isArray = function (obj) {
   return obj && (typeof obj === 'object') && (typeof obj.length === 'number');

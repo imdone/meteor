@@ -331,7 +331,7 @@ export class CordovaBuilder {
         height: height
       };
 
-      // XXX special case for Android
+      // XXX special case for Android id:732 gh:733
       if (androidMatch) {
         attributes.density =
           androidMatch[2].substr(0, 4) + '-' + androidMatch[1];
@@ -351,7 +351,7 @@ export class CordovaBuilder {
       const suppliedFilename = _.last(suppliedPath.split(files.pathSep));
       let extension = _.last(suppliedFilename.split('.'));
 
-      // XXX special case for 9-patch png's
+      // XXX special case for 9-patch png's id:369 gh:370
       if (suppliedFilename.match(/\.9\.png$/)) {
         extension = '9.png';
       }
@@ -427,7 +427,7 @@ export class CordovaBuilder {
     const runtimeConfig = {
       meteorRelease: meteorRelease,
       ROOT_URL: mobileServerUrl,
-      // XXX propagate it from this.options?
+      // XXX propagate it from this.options? id:419 gh:420
       ROOT_URL_PATH_PREFIX: '',
       DDP_DEFAULT_CONNECTION_URL: mobileServerUrl,
       autoupdateVersionCordova: autoupdateVersion,

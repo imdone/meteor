@@ -38,7 +38,7 @@ _.extend(DDPServer._Crossbar.prototype, {
   // Returns a listen handle, which is an object with a method
   // stop(). Call stop() to stop listening.
   //
-  // XXX It should be legal to call fire() from inside a listen()
+  // XXX It should be legal to call fire() from inside a listen() id:128 gh:129
   // callback?
   listen: function (trigger, callback) {
     var self = this;

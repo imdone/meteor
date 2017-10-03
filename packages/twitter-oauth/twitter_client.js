@@ -1,5 +1,5 @@
 // Request Twitter credentials for the user
-// @param options {optional}  XXX support options.requestPermissions
+// @param options {optional}  XXX support options.requestPermissions id:510 gh:511
 // @param credentialRequestCompleteCallback {Function} Callback function to call on
 //   completion. Takes one argument, credentialToken on success, or Error on
 //   error.

@@ -3,7 +3,7 @@
 // scenarios.
 
 var PARAMS = {};
-// XXX settings now has public. could move stuff there and avoid this.
+// XXX settings now has public. could move stuff there and avoid this. id:15 gh:16
 if (Meteor.isServer) {
   if (!Meteor.settings.params)
     throw new Error("Must set scenario with Meteor.settings");
@@ -28,7 +28,7 @@ var random = function (n) {
 var randomChars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('');
 var randomString = function (length) {
-  // XXX make more efficient
+  // XXX make more efficient id:24 gh:25
   var ret = '';
   _.times(length, function () {
     ret += Random.choice(randomChars);
@@ -56,8 +56,8 @@ if (Meteor.isServer) {
   });
 
   // periodic document cleanup.
-  // XXX only needs to run on one server.
-  // XXX do we even need this with room deletion?
+  // XXX only needs to run on one server. id:19 gh:20
+  // XXX do we even need this with room deletion? id:20 gh:21
   if (PARAMS.messageHistorySeconds) {
     Meteor.setInterval(function () {
       var when = +(new Date) - PARAMS.messageHistorySeconds*1000;
@@ -66,7 +66,7 @@ if (Meteor.isServer) {
   }
 
   // periodic room cleanup.
-  // XXX only needs to run on one server.
+  // XXX only needs to run on one server. id:35 gh:36
   if (PARAMS.roomHistorySeconds) {
     Meteor.setInterval(function () {
       var when = +(new Date) - PARAMS.roomHistorySeconds*1000;
@@ -120,7 +120,7 @@ if (Meteor.isServer) {
   });
 
 
-  // XXX publish stats
+  // XXX publish stats id:23 gh:24
   // - currentClients.length
   // - serverId
   // - num ddp sessions
@@ -134,7 +134,7 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
   var myRooms = [];
   Meteor.subscribe("rooms", processId, function () {
-    // XXX should autorun to change rooms? meh.
+    // XXX should autorun to change rooms? meh. id:25 gh:26
     var r = Rooms.find({}, {limit: PARAMS.roomsPerClient}).fetch();
     _.each(r, function (room) {
       Meteor.subscribe("messages", room._id);
@@ -157,7 +157,7 @@ if (Meteor.isClient) {
     return (Session.get('updateAvgs') || []).join(", ");
   };
 
-  // XXX count of how many docs are in local collection. don't 
+  // XXX count of how many docs are in local collection. don't  id:26 gh:27
 
   // do stuff periodically
   Meteor.setInterval(function () {
@@ -180,7 +180,7 @@ if (Meteor.isClient) {
   }, PARAMS.talkativePeriodSeconds * 1000);
 
 
-  // XXX very rough per client update rate. we need to measure this
+  // XXX very rough per client update rate. we need to measure this id:30 gh:31
   // better. ideally, on the server we could get the global update rate
   var updateCount = 0;
   var updateHistories = {1: [], 10: [], 100: [], 1000: []};

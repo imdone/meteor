@@ -113,7 +113,7 @@ StreamServer = function () {
     });
     self.open_sockets.push(socket);
 
-    // XXX COMPAT WITH 0.6.6. Send the old style welcome message, which
+    // XXX COMPAT WITH 0.6.6. Send the old style welcome message, which id:371 gh:372
     // will force old clients to reload. Remove this once we're not
     // concerned about people upgrading from a pre-0.7.0 release. Also,
     // remove the clause in the client that ignores the welcome message

@@ -22,7 +22,7 @@ Accounts.onEmailVerificationLink(function (token, done) {
     }
 
     done();
-    // XXX show something if there was an error.
+    // XXX show something if there was an error. id:95 gh:96
   });
 });
 
@@ -239,7 +239,7 @@ var updateSaveDisabled = function () {
 // template should be defined in the service's package
 Template._configureLoginServiceDialog.templateForService = function(serviceName) {
   serviceName = serviceName || loginButtonsSession.get('configureLoginServiceDialogServiceName');
-  // XXX Service providers should be able to specify their configuration
+  // XXX Service providers should be able to specify their configuration id:421 gh:422
   // template name.
   return Template['configureLoginServiceDialogFor' +
                   (serviceName === 'meteor-developer' ?
@@ -268,7 +268,7 @@ Template._configureLoginServiceDialog.helpers({
   }
 });
 
-// XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js
+// XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js id:108 gh:109
 var capitalize = function(str){
   str = str == null ? '' : String(str);
   return str.charAt(0).toUpperCase() + str.slice(1);

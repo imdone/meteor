@@ -12,7 +12,7 @@ Tinytest.add("minifier-css - simple css minification", function (test) {
   t('*.my-class { color: #fff; }', '.my-class{color:#fff}', 'removing universal selector');
   t('p > *.my-class { color: #fff; }', 'p>.my-class{color:#fff}', 'removing optional whitespace around ">" in selector');
   t('p +  *.my-class { color: #fff; }', 'p+.my-class{color:#fff}', 'removing optional whitespace around "+" in selector');
-  // XXX url parsing is difficult to support at the moment
+  // XXX url parsing is difficult to support at the moment id:202 gh:203
   t('a {\n\
   font:12px \'Helvetica\',"Arial",\'Nautica\';\n\
   background:url("/some/nice/picture.png");\n}',

@@ -127,7 +127,7 @@ export default class Matcher {
 
 // helpers used by compiled selector code
 LocalCollection._f = {
-  // XXX for _all and _in, consider building 'inquery' at compile time..
+  // XXX for _all and _in, consider building 'inquery' at compile time.. id:200 gh:201
   _type(v) {
     if (typeof v === 'number') {
       return 1;
@@ -173,7 +173,7 @@ LocalCollection._f = {
     // object
     return 3;
 
-    // XXX support some/all of these:
+    // XXX support some/all of these: id:440 gh:441
     // 14, symbol
     // 15, javascript code with scope
     // 16, 18: 32-bit/64-bit integer
@@ -191,9 +191,9 @@ LocalCollection._f = {
   // types
   _typeorder(t) {
     // http://www.mongodb.org/display/DOCS/What+is+the+Compare+Order+for+BSON+Types
-    // XXX what is the correct sort position for Javascript code?
+    // XXX what is the correct sort position for Javascript code? id:225 gh:226
     // ('100' in the matrix below)
-    // XXX minkey/maxkey
+    // XXX minkey/maxkey id:614 gh:615
     return [
       -1,  // (not a type)
       1,   // number
@@ -240,7 +240,7 @@ LocalCollection._f = {
       return oa < ob ? -1 : 1;
     }
 
-    // XXX need to implement this if we implement Symbol or integers, or
+    // XXX need to implement this if we implement Symbol or integers, or id:229 gh:230
     // Timestamp
     if (ta !== tb) {
       throw Error('Missing type coercion logic in _cmp');
@@ -330,7 +330,7 @@ LocalCollection._f = {
       return 0;
 
     if (ta === 11) // regexp
-      throw Error('Sorting not supported on regular expression'); // XXX
+      throw Error('Sorting not supported on regular expression'); // XXX id:203 gh:204
 
     // 13: javascript code
     // 14: symbol
@@ -341,7 +341,7 @@ LocalCollection._f = {
     // 255: minkey
     // 127: maxkey
     if (ta === 13) // javascript code
-      throw Error('Sorting not supported on Javascript code'); // XXX
+      throw Error('Sorting not supported on Javascript code'); // XXX id:443 gh:444
 
     throw Error('Unknown type to sort');
   },

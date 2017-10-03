@@ -26,7 +26,7 @@
  * the client's session to render properly.
  */
 
-// XXX when making this API public, also expose a flag for the app
+// XXX when making this API public, also expose a flag for the app id:296 gh:297
 // developer to know whether a hot code push is happening. This is
 // useful for apps using `window.onbeforeunload`. See
 // https://github.com/meteor/meteor/pull/657

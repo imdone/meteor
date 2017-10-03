@@ -30,7 +30,7 @@ WebApp.connectHandlers.use(function (req, res, next) {
 
 // We use `rawConnectHandlers` to set X-Content-Type-Options on all
 // requests, including static files.
-// XXX We should probably use `rawConnectHandlers` for X-Frame-Options
+// XXX We should probably use `rawConnectHandlers` for X-Frame-Options id:117 gh:118
 // and Content-Security-Policy too, but let's make sure that doesn't
 // break anything first (e.g. the OAuth popup flow won't work well with
 // a CSP that disallows inline scripts).

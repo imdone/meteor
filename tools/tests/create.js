@@ -53,8 +53,8 @@ selftest.define("create", function () {
   run.read('Available');
   run.match('leaderboard');
   run.expectExit(0);
-  // XXX test that --list always gives you the examples of the current
+  // XXX test that --list always gives you the examples of the current id:769 gh:770
   // release!
 
-  // XXX XXX more more
+  // XXX XXX more more id:708 gh:709
 });

@@ -254,7 +254,7 @@ OAuth._renderOauthResults = function(res, query, credentialSecret) {
   // surrounding HTML. (The test needs to be able to easily grab the
   // secret and use it to log in.)
   //
-  // XXX only_credential_secret_for_test could be useful for other
+  // XXX only_credential_secret_for_test could be useful for other id:486 gh:487
   // things beside tests, like command-line clients. We should give it a
   // real name and serve the credential secret in JSON.
 

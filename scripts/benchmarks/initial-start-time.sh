@@ -34,5 +34,5 @@ done
 
 cd $checkout_dir
 
-# XXX are we going to rm -rf our whole disk by accident here?
+# XXX are we going to rm -rf our whole disk by accident here? id:319 gh:320
 rm -rf "$app_dir"

@@ -42,7 +42,7 @@ Package.onUse(function (api) {
 
   api.addFiles('oauth_common.js');
 
-  // XXX COMPAT WITH 0.8.0
+  // XXX COMPAT WITH 0.8.0 id:288 gh:289
   api.export('Oauth');
   api.addFiles('deprecated.js', ['client', 'server']);
 });

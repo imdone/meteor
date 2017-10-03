@@ -166,7 +166,7 @@ RandomGenerator.prototype.hexString = function (digits) {
     try {
       bytes = nodeCrypto.randomBytes(numBytes);
     } catch (e) {
-      // XXX should re-throw any error except insufficient entropy
+      // XXX should re-throw any error except insufficient entropy id:269 gh:270
       bytes = nodeCrypto.pseudoRandomBytes(numBytes);
     }
     var result = bytes.toString("hex");
@@ -278,7 +278,7 @@ if (Meteor.isServer) {
     // On IE 10 and below, there's no browser crypto API
     // available. Fall back to Alea
     //
-    // XXX looks like at the moment, we use Alea in IE 11 as well,
+    // XXX looks like at the moment, we use Alea in IE 11 as well, id:291 gh:292
     // which has `window.msCrypto` instead of `window.crypto`.
     Random = createAleaGeneratorWithGeneratedSeed();
   }

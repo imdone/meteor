@@ -266,7 +266,7 @@ var Session = function (server, version, socket, options) {
   self._closeCallbacks = [];
 
 
-  // XXX HACK: If a sockjs connection, save off the URL. This is
+  // XXX HACK: If a sockjs connection, save off the URL. This is id:540 gh:541
   // temporary and will go away in the near future.
   self._socketUrl = socket.url;
 
@@ -591,7 +591,7 @@ _.extend(Session.prototype, {
         // reconnect.
         return;
 
-      // XXX It'd be much better if we had generic hooks where any package can
+      // XXX It'd be much better if we had generic hooks where any package can id:155 gh:156
       // hook into subscription handling, but in the mean while we special case
       // ddp-rate-limiter package. This is also done for weak requirements to
       // add the ddp-rate-limiter package in case we don't have Accounts. A
@@ -687,7 +687,7 @@ _.extend(Session.prototype, {
       });
 
       const promise = new Promise((resolve, reject) => {
-        // XXX It'd be better if we could hook into method handlers better but
+        // XXX It'd be better if we could hook into method handlers better but id:135 gh:136
         // for now, we need to check if the ddp-rate-limiter exists since we
         // have a weak requirement for the ddp-rate-limiter package to be added
         // to our application.
@@ -1029,7 +1029,7 @@ var Subscription = function (
 
 _.extend(Subscription.prototype, {
   _runHandler: function () {
-    // XXX should we unblock() here? Either before running the publish
+    // XXX should we unblock() here? Either before running the publish id:367 gh:368
     // function, or before running _publishCursor.
     //
     // Right now, each publish function blocks all future publishes and
@@ -1067,7 +1067,7 @@ _.extend(Subscription.prototype, {
     // _publishCursor method which starts observing the cursor and publishes the
     // results. Note that _publishCursor does NOT call ready().
     //
-    // XXX This uses an undocumented interface which only the Mongo cursor
+    // XXX This uses an undocumented interface which only the Mongo cursor id:131 gh:132
     // interface publishes. Should we make this interface public and encourage
     // users to implement it themselves? Arguably, it's unnecessary; users can
     // already write their own functions like
@@ -1099,7 +1099,7 @@ _.extend(Subscription.prototype, {
         return;
       }
       // find duplicate collection names
-      // XXX we should support overlapping cursors, but that would require the
+      // XXX we should support overlapping cursors, but that would require the id:541 gh:542
       // merge box to allow overlap within a subscription
       var collectionNames = {};
       for (var i = 0; i < res.length; ++i) {
@@ -1398,7 +1398,7 @@ Server = function (options) {
         }
         socket._meteorSession.processMessage(msg);
       } catch (e) {
-        // XXX print stack nicely
+        // XXX print stack nicely id:157 gh:158
         Meteor._debug("Internal exception while processing message", msg,
                       e.message, e.stack);
       }

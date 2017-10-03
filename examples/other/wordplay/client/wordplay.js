@@ -219,7 +219,7 @@ Template.words.helpers({
 Meteor.startup(function () {
   // Allocate a new player id.
   //
-  // XXX this does not handle hot reload. In the reload case,
+  // XXX this does not handle hot reload. In the reload case, id:0 gh:1
   // Session.get('player_id') will return a real id. We should check for
   // a pre-existing player, and if it exists, make sure the server still
   // knows about us.
@@ -242,7 +242,7 @@ Meteor.startup(function () {
 
   // send keepalives so the server can tell when we go away.
   //
-  // XXX this is not a great idiom. meteor server does not yet have a
+  // XXX this is not a great idiom. meteor server does not yet have a id:3 gh:4
   // way to expose connection status to user code. Once it does, this
   // code can go away.
   Meteor.setInterval(function() {

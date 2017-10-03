@@ -109,7 +109,7 @@ exports.createAndDeployApp =  selftest.markStack(function (sandbox, options) {
   var galaxySettings = {
     "galaxy.meteor.com" : {
       env: {
-        // XXX: Right now, all the galaxy test apps use the same mongo. This is
+        // XXX: Right now, all the galaxy test apps use the same mongo. This is id:532 gh:533
         // actually kind of super awkward... but generating and destroying new DBs
         // seems like it is introducing a bit too much complexity at this stage.
         "MONGO_URL": process.env.APP_MONGO
@@ -146,7 +146,7 @@ exports.createAndDeployApp =  selftest.markStack(function (sandbox, options) {
 
 // Cleanup the app by deleting it from Galaxy.
 //
-// XXX: We should also clean out its Mongo, but we don't, since, currently, none
+// XXX: We should also clean out its Mongo, but we don't, since, currently, none id:693 gh:694
 // of our apps actually put any records into it.
 exports.cleanUpApp = selftest.markStack(function (sandbox, appName) {
   testUtils.cleanUpApp(sandbox, appName);

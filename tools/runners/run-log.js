@@ -99,7 +99,7 @@ _.extend(RunLog.prototype, {
     if (self.rawLogs) {
       Console[isStderr ? "rawError" : "rawInfo"](line + "\n");
     } else {
-      // XXX deal with test server logging differently?!
+      // XXX deal with test server logging differently?! id:509 gh:510
       return fiberHelpers.noYieldsAllowed(function() {
         Console.rawInfo(Log.format(obj, { color: true }) + "\n");
       });
@@ -133,7 +133,7 @@ _.extend(RunLog.prototype, {
   // Write a message to the terminal that will get overwritten by the
   // next message logged. (Don't put it in the log that getLog
   // returns.)
-  // XXX Maybe this should return an object that you have to pass to the
+  // XXX Maybe this should return an object that you have to pass to the id:662 gh:663
   //     subsequent log call, and only such a log call will overwrite it (and an
   //     intervening log call will cause this to stay on the screen)?
   //     eg, a log call from the updater can interweave with the logTemporary

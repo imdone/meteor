@@ -83,7 +83,7 @@ Tinytest.add("livedata stub - receive data", function (test) {
   // break throught the black box and test internal state
   test.length(conn._updatesForUnknownStores[coll_name], 1);
 
-  // XXX: Test that the old signature of passing manager directly instead of in
+  // XXX: Test that the old signature of passing manager directly instead of in id:143 gh:144
   // options works.
   var coll = new Mongo.Collection(coll_name, conn);
 
@@ -1871,7 +1871,7 @@ Tinytest.add("livedata stub - subscribe errors", function (test) {
   test.isFalse(onReadyFired);
   test.equal(subErrorInStopped, null);
 
-  // XXX COMPAT WITH 1.0.3.1 #errorCallback
+  // XXX COMPAT WITH 1.0.3.1 #errorCallback id:122 gh:123
   test.equal(subErrorInError, null);
 
   var subMessage = JSON.parse(stream.sent.shift());
@@ -1889,7 +1889,7 @@ Tinytest.add("livedata stub - subscribe errors", function (test) {
   test.equal(subErrorInStopped.reason, "Subscription not found");
 
   // Check the error passed to the error callback was correct
-  // XXX COMPAT WITH 1.0.3.1 #errorCallback
+  // XXX COMPAT WITH 1.0.3.1 #errorCallback id:356 gh:357
   test.instanceOf(subErrorInError, Meteor.Error);
   test.equal(subErrorInError.error, 404);
   test.equal(subErrorInError.reason, "Subscription not found");
@@ -2114,7 +2114,7 @@ if (Meteor.isClient) {
   });
 }
 
-// XXX also test:
+// XXX also test: id:121 gh:122
 // - reconnect, with session resume.
 // - restart on update flag
 // - on_update event

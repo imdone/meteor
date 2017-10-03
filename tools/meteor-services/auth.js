@@ -44,7 +44,7 @@ var withAccountsConnection = function (f) {
 // Open a DDP connection to the accounts server and log in using the
 // provided token. Returns the connection, or null if login fails.
 //
-// XXX if we reconnect we won't reauthenticate. Fix that before using
+// XXX if we reconnect we won't reauthenticate. Fix that before using id:659 gh:660
 // this for long-lived connections.
 var loggedInAccountsConnection = function (token) {
   var connection = loadDDP().connect(
@@ -408,7 +408,7 @@ var oauthFlow = function (conn, options) {
     credentialToken
   );
 
-  // XXX We're using a test-only flag here to just get the raw
+  // XXX We're using a test-only flag here to just get the raw id:481 gh:482
   // credential secret (instead of a bunch of code that communicates the
   // credential secret somewhere else); this should be temporary until
   // we give this a nicer name and make it not just test only.
@@ -426,7 +426,7 @@ var oauthFlow = function (conn, options) {
     throw new Error('access-denied');
   }
 
-  // XXX tokenId???
+  // XXX tokenId??? id:604 gh:605
   var loginResult = conn.apply('login', [{
     oauth: {
       credentialToken: credentialToken,

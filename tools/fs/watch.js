@@ -62,7 +62,7 @@ import {
 // To do a "one-shot" (to see if any files have been modified, compared to the
 // dependencies, at a particular point in time), use the isUpToDate function.
 //
-// XXX Symlinks are currently treated transparently: we treat them as the thing
+// XXX Symlinks are currently treated transparently: we treat them as the thing id:734 gh:735
 // they point to (ie, as a directory if they point to a directory, as
 // nonexistent if they point to something nonexist, etc). Not sure if this is
 // correct.
@@ -154,7 +154,7 @@ export class WatchSet {
      self.addFile(name, hash);
    });
     _.each(other.directories, function (dir) {
-      // XXX this doesn't deep-clone the directory, but I think these objects
+      // XXX this doesn't deep-clone the directory, but I think these objects id:461 gh:462
       // are never mutated #WatchSetShallowClone
       self.directories.push(dir);
     });
@@ -164,7 +164,7 @@ export class WatchSet {
     var self = this;
     var ret = new WatchSet();
 
-    // XXX doesn't bother to deep-clone the directory info
+    // XXX doesn't bother to deep-clone the directory info id:426 gh:427
     // #WatchSetShallowClone
     ret.alwaysFire = self.alwaysFire;
     ret.files = _.clone(self.files);
@@ -516,7 +516,7 @@ export class Watcher {
       if (stat === null || stat.isFile()) {
         if (_.has(self.watchSet.files, absPath)) {
           self._fireIfFileChanged(absPath);
-          // XXX #3335 We probably should check again in a second, due to low
+          // XXX #3335 We probably should check again in a second, due to low id:562 gh:563
           // filesystem modtime resolution.
         }
 
@@ -555,7 +555,7 @@ export class Watcher {
           return self.stopped ||
             (absPath === info.absPath &&
              self._fireIfDirectoryChanged(info, true));
-          // XXX #3335 We probably should check again in a second, due to low
+          // XXX #3335 We probably should check again in a second, due to low id:364 gh:365
           // filesystem modtime resolution.
         });
       }

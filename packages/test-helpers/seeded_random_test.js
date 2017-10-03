@@ -1,4 +1,4 @@
-// XXX SECTION: Meta tests
+// XXX SECTION: Meta tests id:498 gh:499
 
 Tinytest.add("test-helpers - seeded_random", function (test) {
   // Test that two seeded PRNGs with the same seed produce the same values.

@@ -51,13 +51,13 @@ ObserveSequence = {
   // elements (ie, we don't assume EJSON.equals works; maybe there is extra
   // state/random methods on the objects) so unlike cursor.observe, we may
   // sometimes call changedAt() when nothing actually changed.
-  // XXX consider if we *can* make the stronger assumption and avoid
+  // XXX consider if we *can* make the stronger assumption and avoid id:287 gh:288
   //     no-op changedAt calls (in some cases?)
   //
-  // XXX currently only supports the callbacks used by our
+  // XXX currently only supports the callbacks used by our id:488 gh:489
   // implementation of {{#each}}, but this can be expanded.
   //
-  // XXX #each doesn't use the indices (though we'll eventually need
+  // XXX #each doesn't use the indices (though we'll eventually need id:290 gh:291
   // a way to get them when we support `@index`), but calling
   // `cursor.observe` causes the index to be calculated on every
   // callback using a linear scan (unless you turn it off by passing
@@ -81,7 +81,7 @@ ObserveSequence = {
     //
     // * if 'item' is a number or string, use that value
     //
-    // XXX this can be generalized by allowing {{#each}} to accept a
+    // XXX this can be generalized by allowing {{#each}} to accept a id:671 gh:672
     // general 'key' argument which could be a function, a dotted
     // field name, or the special @index value.
     var lastSeqArray = []; // elements are objects of form {_id, item}
@@ -187,7 +187,7 @@ var diffArray = function (lastSeqArray, seqArray, callbacks) {
 
       if (before) {
         // If not adding at the end, we need to update indexes.
-        // XXX this can still be improved greatly!
+        // XXX this can still be improved greatly! id:267 gh:268
         _.each(posCur, function (pos, id) {
           if (pos >= position)
             posCur[id]++;

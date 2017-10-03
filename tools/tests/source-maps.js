@@ -41,7 +41,7 @@ selftest.define("source maps from an app", ['checkout', 'custom-warehouse'], fun
   });
 
   s.cd("myapp");
-  s.set("METEOR_TEST_TMP", files.convertToOSPath(files.mkdtemp()));  // XXX why?
+  s.set("METEOR_TEST_TMP", files.convertToOSPath(files.mkdtemp()));  // XXX why? id:775 gh:776
   run = s.run("run");
   run.waitSecs(10);
   run.match(matchPathRegexp('at throw\\.js:3\\b'));
@@ -100,7 +100,7 @@ selftest.define("source maps from a build plugin implementation", ['checkout', '
   s.cd("myapp");
   var run = s.run("run");
   run.waitSecs(10);
-  // XXX This is wrong! The path on disk is
+  // XXX This is wrong! The path on disk is id:719 gh:720
   // packages/build-plugin/build-plugin.js, but at some point we switched to the
   // servePath which is based on the *plugin*'s "package" name.
   run.match(matchPathRegexp('packages/build-plugin-itself/build-plugin\\.js:2:'));

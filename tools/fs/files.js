@@ -95,7 +95,7 @@ files.cwd = function () {
 // directory. If so, return the top-level app directory.
 files.findAppDir = function (filepath) {
   var isAppDir = function (filepath) {
-    // XXX once we are done with the transition to engine, this should
+    // XXX once we are done with the transition to engine, this should id:357 gh:358
     // change to: `return files.exists(path.join(filepath, '.meteor',
     // 'release'))`
 
@@ -187,12 +187,12 @@ files.getToolsVersion = function () {
       var isopackJson = files.readFile(isopackJsonPath);
       parsed = JSON.parse(isopackJson);
 
-      // XXX "isopack-1" is duplicate of isopack.currentFormat
+      // XXX "isopack-1" is duplicate of isopack.currentFormat id:733 gh:734
       parsed = parsed["isopack-1"]; // get the right format from the JSON
       return parsed.name + '@' + parsed.version;
     }
 
-    // XXX COMPAT WITH 0.9.3
+    // XXX COMPAT WITH 0.9.3 id:392 gh:393
     var unipackageJsonPath = files.pathJoin(files.getCurrentToolsDir(),
       '..',  // get out of tool, back to package
       'unipackage.json');
@@ -1152,7 +1152,7 @@ files.runJavaScript = function (code, options) {
     try {
       // See #runInThisContext
       //
-      // XXX it'd be nice to runInNewContext so that the code can't mess
+      // XXX it'd be nice to runInNewContext so that the code can't mess id:423 gh:424
       // with our globals, but objects that come out of runInNewContext
       // have bizarro antimatter prototype chains and break 'instanceof
       // Array'. for now, steer clear
@@ -1187,7 +1187,7 @@ files.runJavaScript = function (code, options) {
         err.message = parseError.message;
 
         if (parsedSourceMap) {
-          // XXX this duplicates code in computeGlobalReferences
+          // XXX this duplicates code in computeGlobalReferences id:560 gh:561
           var consumer2 = new sourcemap.SourceMapConsumer(parsedSourceMap);
           var original = consumer2.originalPositionFor(parseError.loc);
           if (original.source) {
@@ -1797,7 +1797,7 @@ wrapDestructiveFsFunc("chmod");
 
 wrapFsFunc("open", [0]);
 
-// XXX this doesn't give you the second argument to the callback
+// XXX this doesn't give you the second argument to the callback id:361 gh:362
 wrapFsFunc("read", []);
 wrapFsFunc("write", []);
 wrapFsFunc("close", []);

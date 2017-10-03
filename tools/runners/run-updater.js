@@ -8,8 +8,8 @@ var Updater = function () {
   self.timer = null;
 };
 
-// XXX make it take a runLog?
-// XXX need to deal with updater writing messages (bypassing old
+// XXX make it take a runLog? id:618 gh:619
+// XXX need to deal with updater writing messages (bypassing old id:766 gh:767
 // stdout interception.. maybe it should be global after all..)
 _.extend(Updater.prototype, {
   start: function () {

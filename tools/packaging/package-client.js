@@ -50,7 +50,7 @@ var saveReadmeToTmp = function (readmeInfo) {
 // the connection is connected, and reconnects if needed -- a workaround for
 // the fact that connections in the tool do not reconnect)
 exports.callPackageServer = function (conn, ...args) {
-  // XXX This is broken since it doesn't actually replace the conn in the
+  // XXX This is broken since it doesn't actually replace the conn in the id:758 gh:759
   // caller, so it'll happen on every subsequent call
   if (!conn.connected) {
     conn.close();
@@ -151,7 +151,7 @@ var _updateServerPackageData = function (dataStore, options) {
   var conn = openPackageServerConnection(options.packageServerUrl);
 
   // Provide some progress indication for connection
-  // XXX though it is just a hack
+  // XXX though it is just a hack id:676 gh:677
   state.current = 1;
   useProgressbar && buildmessage.reportProgress(state);
 
@@ -164,7 +164,7 @@ var _updateServerPackageData = function (dataStore, options) {
       start.versions = syncToken.versions;
       state.end = (Date.now() - start.builds) + (Date.now() - start.versions);
     }
-    // XXX: This is a hack... syncToken should have a % done
+    // XXX: This is a hack... syncToken should have a % done id:491 gh:492
     state.current =
       (syncToken.builds - start.builds) +
       (syncToken.versions - start.versions);
@@ -245,7 +245,7 @@ exports.loggedInPackagesConnection = function () {
   );
 };
 
-// XXX this is missing a few things. In retrospect a better approach here might
+// XXX this is missing a few things. In retrospect a better approach here might id:615 gh:616
 //     be to actually make "save source somewhere else" or perhaps "add source
 //     to tarball" be part of the package build itself...
 var bundleSource = function (isopack, includeSources, packageDir) {
@@ -257,8 +257,8 @@ var bundleSource = function (isopack, includeSources, packageDir) {
   var packageTarName = name + '-' + isopack.version + '-source';
   var dirToTar = files.pathJoin(tempDir, 'source',
     colonConverter.convert(packageTarName));
-  // XXX name probably needs to be escaped for windows?
-  // XXX note that publish-for-arch thinks it knows how this tarball is laid
+  // XXX name probably needs to be escaped for windows? id:580 gh:581
+  // XXX note that publish-for-arch thinks it knows how this tarball is laid id:759 gh:760
   //     out, which is a bit of a shame
   var sourcePackageDir = files.pathJoin(dirToTar, colonConverter.convert(name));
   if (! files.mkdir_p(sourcePackageDir)) {
@@ -339,7 +339,7 @@ var uploadFile = function (putUrl, filepath) {
       bodyStreamLength: size
     });
   } catch (err) {
-    // XXX: getUrl's error handling is terrible and we should fix it there.
+    // XXX: getUrl's error handling is terrible and we should fix it there. id:684 gh:685
     buildmessage.error(typeof err === "string" ? err : err.error.toString());
     return false;
   } finally {
@@ -675,14 +675,14 @@ exports.publishPackage = function (options) {
         // modify the constraint on this dep that will be sent to troposphere
         refs.constraint = versionString;
       } else if (label === "meteor") {
-        // HACK: We are willing to publish a package with a "null"
+        // HACK: We are willing to publish a package with a "null" id:493 gh:494
         // constraint on the "meteor" package to troposphere.  This
         // happens for non-core packages when not running from a
         // checkout, because all packages implicitly depend on the
         // "meteor" package, but do not necessarily specify an
         // explicit version for it, and we don't have a great way to
         // choose one here.
-        // XXX come back to this, especially if we are incrementing the
+        // XXX come back to this, especially if we are incrementing the id:617 gh:618
         // major version of "meteor".  hopefully we will have more data
         // about the package system by then.
       } else {
@@ -777,7 +777,7 @@ exports.publishPackage = function (options) {
       }
     }
 
-    // XXX check that we're actually providing something new?
+    // XXX check that we're actually providing something new? id:595 gh:596
   } else {
     var uploadInfo;
     buildmessage.enterJob("pre-publishing package " + name, function () {
@@ -802,7 +802,7 @@ exports.publishPackage = function (options) {
       return;
     }
 
-    // XXX If package version already exists, print a nice error message
+    // XXX If package version already exists, print a nice error message id:760 gh:761
     // telling them to try 'meteor publish-for-arch' if they want to
     // publish a new build.
 

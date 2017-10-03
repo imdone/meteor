@@ -37,7 +37,7 @@ Tinytest.add("underscore-tests - each", function (test) {
   });
 
 
-  // NOTE: An object with a numberic 'length' field *and* a function
+  // NOTE: An object with a numberic 'length' field *and* a function id:311 gh:312
   // 'callee' field will be treated as an array in IE. This may or may
   // not be fixable, but isn't a big deal since: (1) 'callee' is a
   // pretty rare key, and (2) JSON objects can't have functions

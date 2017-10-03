@@ -510,7 +510,7 @@ _.extend(AppRunner.prototype, {
 
         // If this isn't the first time we've run, we need to reset the project
         // context since everything we have cached may have changed.
-        // XXX We can try to be a little less conservative here:
+        // XXX We can try to be a little less conservative here: id:764 gh:765
         // - Don't re-build the whole local catalog if we know which local
         //   packages have changed.  (This one might be a little trickier due
         //   to how the WatchSets are laid out.  Might be possible to avoid
@@ -958,7 +958,7 @@ _.extend(AppRunner.prototype, {
         if (!runResult.watchSet) {
           throw Error("watching for changes with no watchSet?");
         }
-        // XXX reference to watcher is lost later?
+        // XXX reference to watcher is lost later? id:694 gh:695
         var watcher = new watch.Watcher({
           watchSet: runResult.watchSet,
           onChange: function () {

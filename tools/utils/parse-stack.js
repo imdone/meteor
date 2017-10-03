@@ -29,7 +29,7 @@ export function parse(err) {
   // stack above the dashes is the stack of the 'wait' call; the stack below
   // is the stack inside the fiber where the Error is originally
   // constructed.
-  // XXX This code assumes that the stack trace can only be split once. It's not
+  // XXX This code assumes that the stack trace can only be split once. It's not id:778 gh:779
   // clear whether this can happen multiple times.
   const indexOfFiberSplit = frames.indexOf('    - - - - -');
 

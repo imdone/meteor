@@ -48,7 +48,7 @@ selftest.define("meteor mongo", function () {
 
 // Regression test for #3999.  Note the Cyrillic character in the pathname.
 //
-// XXX This test fails on Windows for two different reasons:
+// XXX This test fails on Windows for two different reasons: id:628 gh:629
 // - With the Unicode directory name, `meteor run` fails to start mongod
 // - If you change appDir to not have the Unicode character, the reads
 //   from the mongo shell process seem to be randomly corrupted

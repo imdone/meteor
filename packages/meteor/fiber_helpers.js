@@ -28,8 +28,8 @@ Meteor._DoubleEndedQueue = Npm.require('meteor-deque');
 // you're calling runTask from a nested Fiber).
 //
 // Somewhat inspired by async.queue, but specific to blocking tasks.
-// XXX break this out into an NPM module?
-// XXX could maybe use the npm 'schlock' module instead, which would
+// XXX break this out into an NPM module? id:404 gh:403
+// XXX could maybe use the npm 'schlock' module instead, which would id:199 gh:200
 //     also support multiple concurrent "read" tasks
 //
 Meteor._SynchronousQueue = function () {

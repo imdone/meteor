@@ -1,6 +1,6 @@
 import { DDP, LivedataTest } from "./namespace.js";
 
-// XXX from Underscore.String (http://epeli.github.com/underscore.string/)
+// XXX from Underscore.String (http://epeli.github.com/underscore.string/) id:129 gh:130
 var startsWith = function(str, starts) {
   return str.length >= starts.length &&
     str.substring(0, starts.length) === starts;
@@ -53,7 +53,7 @@ var translateUrl =  function(url, newSchemeBase, subPath) {
     url = newSchemeBase + "://" + url;
   }
 
-  // XXX This is not what we should be doing: if I have a site
+  // XXX This is not what we should be doing: if I have a site id:360 gh:361
   // deployed at "/foo", then DDP.connect("/") should actually connect
   // to "/", not to "/foo". "/" is an absolute path. (Contrast: if
   // deployed at "/foo", it would be reasonable for DDP.connect("bar")

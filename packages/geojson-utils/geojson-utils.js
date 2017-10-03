@@ -194,7 +194,7 @@
   // adapted from http://paulbourke.net/geometry/polyarea/javascript.txt
   gju.area = function (polygon) {
     var area = 0;
-    // TODO: polygon holes at coordinates[1]
+    // TODO: polygon holes at coordinates[1] id:561 gh:562
     var points = polygon.coordinates[0];
     var j = points.length - 1;
     var p1, p2;
@@ -220,7 +220,7 @@
   gju.centroid = function (polygon) {
     var f, x = 0,
       y = 0;
-    // TODO: polygon holes at coordinates[1]
+    // TODO: polygon holes at coordinates[1] id:180 gh:181
     var points = polygon.coordinates[0];
     var j = points.length - 1;
     var p1, p2;

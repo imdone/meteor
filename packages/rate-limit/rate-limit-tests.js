@@ -16,7 +16,7 @@
 // * matchRule tests that have various levels of similarity in input and rule
 // * generateKeyString tests for various matches creating appropriate string
 //
-// XXX These tests should be refactored to use Tinytest.add instead of
+// XXX These tests should be refactored to use Tinytest.add instead of id:492 gh:493
 // testAsyncMulti as they're all on the server. Any future tests should be
 // written that way.
 Tinytest.add('rate limit tests - Check empty constructor creation',

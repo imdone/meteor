@@ -134,7 +134,7 @@ OplogObserveDriver = function (options) {
     ));
   });
 
-  // XXX ordering w.r.t. everything else?
+  // XXX ordering w.r.t. everything else? id:475 gh:476
   self._stopHandles.push(listenAll(
     self._cursorDescription, function (notification) {
       // If we're not in a pre-fire write fence, we don't have to do anything.
@@ -206,7 +206,7 @@ _.extend(OplogObserveDriver.prototype, {
       // element to the buffer, we might want to save it in memory to reduce the
       // amount of Mongo lookups in the future.
       if (self._limit && self._published.size() > self._limit) {
-        // XXX in theory the size of published is no more than limit+1
+        // XXX in theory the size of published is no more than limit+1 id:250 gh:251
         if (self._published.size() !== self._limit + 1) {
           throw new Error("After adding to published, " +
                           (self._published.size() - self._limit) +
@@ -409,7 +409,7 @@ _.extend(OplogObserveDriver.prototype, {
           // publish or the changed but matching doc will stay in published
           // anyways.
           //
-          // XXX: We rely on the emptiness of buffer. Be sure to maintain the
+          // XXX: We rely on the emptiness of buffer. Be sure to maintain the id:649 gh:650
           // fact that buffer can't be empty if there are matching documents not
           // published. Notably, we don't want to schedule repoll and continue
           // relying on this property.
@@ -593,7 +593,7 @@ _.extend(OplogObserveDriver.prototype, {
         if (self._unpublishedBuffer && self._unpublishedBuffer.has(id))
           throw new Error("insert found for already-existing ID in buffer");
 
-        // XXX what if selector yields?  for now it can't but later it could
+        // XXX what if selector yields?  for now it can't but later it could id:257 gh:258
         // have $where
         if (self._matcher.documentMatches(op.o).result)
           self._addMatching(op.o);
@@ -673,10 +673,10 @@ _.extend(OplogObserveDriver.prototype, {
   // This function may not block, because it is called from an oplog entry
   // handler.
   //
-  // XXX We should call this when we detect that we've been in FETCHING for "too
+  // XXX We should call this when we detect that we've been in FETCHING for "too id:276 gh:277
   // long".
   //
-  // XXX We should call this when we detect Mongo failover (since that might
+  // XXX We should call this when we detect Mongo failover (since that might id:476 gh:477
   // mean that some of the oplog entries we have processed have been rolled
   // back). The Node Mongo driver is in the middle of a bunch of huge
   // refactorings, including the way that it notifies you when primary
@@ -721,8 +721,8 @@ _.extend(OplogObserveDriver.prototype, {
       // into unpublished buffer to reduce additional Mongo lookups in cases
       // when documents are removed from the published set and need a
       // replacement.
-      // XXX needs more thought on non-zero skip
-      // XXX 2 is a "magic number" meaning there is an extra chunk of docs for
+      // XXX needs more thought on non-zero skip id:252 gh:253
+      // XXX 2 is a "magic number" meaning there is an extra chunk of docs for id:652 gh:653
       // buffer if such is needed.
       var cursor = self._cursorForQuery({ limit: self._limit * 2 });
       try {
@@ -843,7 +843,7 @@ _.extend(OplogObserveDriver.prototype, {
   // callbacks on the multiplexer.
   // Replace self._unpublishedBuffer with newBuffer.
   //
-  // XXX This is very similar to LocalCollection._diffQueryUnorderedChanges. We
+  // XXX This is very similar to LocalCollection._diffQueryUnorderedChanges. We id:258 gh:259
   // should really: (a) Unify IdMap and OrderedDict into Unordered/OrderedDict
   // (b) Rewrite diff.js to use these classes instead of arrays and objects.
   _publishNewResults: function (newResults, newBuffer) {
@@ -876,7 +876,7 @@ _.extend(OplogObserveDriver.prototype, {
 
       // Sanity-check that everything we tried to put into _published ended up
       // there.
-      // XXX if this is slow, remove it later
+      // XXX if this is slow, remove it later id:278 gh:279
       if (self._published.size() !== newResults.size()) {
         throw Error(
           "The Mongo server and the Meteor query disagree on how " +
@@ -990,7 +990,7 @@ OplogObserveDriver.cursorSupported = function (cursorDescription, matcher) {
   //   - $near (has "interesting" properties in MongoDB, like the possibility
   //            of returning an ID multiple times, though even polling maybe
   //            have a bug there)
-  //           XXX: once we support it, we would need to think more on how we
+  //           XXX: once we support it, we would need to think more on how we id:478 gh:479
   //           initialize the comparators when we create the driver.
   return !matcher.hasWhere() && !matcher.hasGeoQuery();
 };

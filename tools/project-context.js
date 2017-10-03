@@ -961,7 +961,7 @@ _.extend(exports.ProjectConstraintsFile.prototype, {
       if (_.has(self._constraintMap, lineRecord.constraint.package)) {
         buildmessage.error(
           "Package name appears twice: " + lineRecord.constraint.package, {
-            // XXX should this be relative?
+            // XXX should this be relative? id:657 gh:658
             file: self.filename
           });
         return;  // recover by ignoring
@@ -1324,14 +1324,14 @@ _.extend(exports.CordovaPluginsFile.prototype, {
       var parts = line.split('@');
       if (parts.length !== 2) {
         buildmessage.error("Cordova plugin must specify version: " + line, {
-          // XXX should this be relative?
+          // XXX should this be relative? id:603 gh:604
           file: self.filename
         });
         return;  // recover by ignoring
       }
       if (_.has(self._plugins, parts[0])) {
         buildmessage.error("Plugin name appears twice: " + parts[0], {
-          // XXX should this be relative?
+          // XXX should this be relative? id:763 gh:764
           file: self.filename
         });
         return;  // recover by ignoring

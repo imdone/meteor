@@ -78,7 +78,7 @@ var showInvalidArchMsg = function (arch) {
 export function parseServerOptionsForRunCommand(options, runTargets) {
   const parsedServerUrl = parsePortOption(options.port);
 
-  // XXX COMPAT WITH 0.9.2.2 -- the 'mobile-port' option is deprecated
+  // XXX COMPAT WITH 0.9.2.2 -- the 'mobile-port' option is deprecated id:335 gh:336
   const mobileServerOption = options['mobile-server'] || options['mobile-port'];
   let parsedMobileServerUrl;
   if (mobileServerOption) {
@@ -181,7 +181,7 @@ main.registerCommand({
 // actually a specific release, we print to stderr and exit non-zero,
 // while if there is a release we print to stdout and exit zero
 // (making this useful to scripts).
-// XXX: What does this mean in our new release-free world?
+// XXX: What does this mean in our new release-free world? id:725 gh:726
 main.registerCommand({
   name: '--version',
   requiresRelease: false,
@@ -252,7 +252,7 @@ var runCommandOptions = {
   options: {
     port: { type: String, short: "p", default: DEFAULT_PORT },
     'mobile-server': { type: String },
-    // XXX COMPAT WITH 0.9.2.2
+    // XXX COMPAT WITH 0.9.2.2 id:349 gh:350
     'mobile-port': { type: String },
     'app-port': { type: String },
     'debug-port': { type: String },
@@ -814,7 +814,7 @@ var buildCommands = {
     "server-only": { type: Boolean },
     'mobile-settings': { type: String },
     server: { type: String },
-    // XXX COMPAT WITH 0.9.2.2
+    // XXX COMPAT WITH 0.9.2.2 id:397 gh:398
     "mobile-port": { type: String },
     // Indicates whether these build is running headless, e.g. in a
     // continuous integration building environment, where visual niceties
@@ -834,7 +834,7 @@ main.registerCommand(_.extend({ name: 'build' }, buildCommands),
 // Deprecated -- identical functionality to 'build' with one exception: it
 // doesn't output a directory with all builds but rather only one tarball with
 // server/client programs.
-// XXX COMPAT WITH 0.9.1.1
+// XXX COMPAT WITH 0.9.1.1 id:547 gh:548
 main.registerCommand(_.extend({ name: 'bundle', hidden: true
                               }, buildCommands),
     function (options) {
@@ -856,10 +856,10 @@ var buildCommand = function (options) {
     // automated builds.
     Console.setHeadless(true);
   }
-  // XXX output, to stderr, the name of the file written to (for human
+  // XXX output, to stderr, the name of the file written to (for human id:337 gh:338
   // comfort, especially since we might change the name)
 
-  // XXX name the root directory in the bundle based on the basename
+  // XXX name the root directory in the bundle based on the basename id:726 gh:727
   // of the file, not a constant 'bundle' (a bit obnoxious for
   // machines, but worth it for humans)
 
@@ -908,11 +908,11 @@ on an OS X system.");
     }
 
     if (!_.isEmpty(cordovaPlatforms)) {
-      // XXX COMPAT WITH 0.9.2.2 -- the --mobile-port option is deprecated
+      // XXX COMPAT WITH 0.9.2.2 -- the --mobile-port option is deprecated id:351 gh:352
       const mobileServerOption = options.server || options["mobile-port"];
       if (!mobileServerOption) {
         // For Cordova builds, require '--server'.
-        // XXX better error message?
+        // XXX better error message? id:400 gh:401
         Console.error(
           "Supply the server hostname and port in the --server option " +
             "for mobile app builds.");
@@ -958,7 +958,7 @@ ${Console.command("meteor build ../output")}`,
     outputPath: bundlePath,
     buildOptions: {
       minifyMode: options.debug ? 'development' : 'production',
-      // XXX is this a good idea, or should linux be the default since
+      // XXX is this a good idea, or should linux be the default since id:549 gh:550
       //     that's where most people are deploying
       //     default?  i guess the problem with using DEPLOY_ARCH as default
       //     is then 'meteor bundle' with no args fails if you have any local
@@ -1177,7 +1177,7 @@ main.registerCommand({
       require('../runners/run-mongo.js').findMongoPort;
     var mongoPort = findMongoPort(files.pathJoin(options.appDir, ".meteor", "local", "db"));
 
-    // XXX detect the case where Meteor is running, but MONGO_URL was
+    // XXX detect the case where Meteor is running, but MONGO_URL was id:339 gh:340
     // specified?
 
     if (! mongoPort) {
@@ -1252,7 +1252,7 @@ main.registerCommand({
                  "MONGO_URL will NOT be reset.");
   }
 
-  // XXX detect the case where Meteor is running the app, but
+  // XXX detect the case where Meteor is running the app, but id:727 gh:728
   // MONGO_URL was set, so we don't see a Mongo process
   var findMongoPort = require('../runners/run-mongo.js').findMongoPort;
   var isRunning = !! findMongoPort(files.pathJoin(options.appDir, ".meteor", "local", "db"));
@@ -1447,7 +1447,7 @@ testCommandOptions = {
   options: {
     port: { type: String, short: "p", default: DEFAULT_PORT },
     'mobile-server': { type: String },
-    // XXX COMPAT WITH 0.9.2.2
+    // XXX COMPAT WITH 0.9.2.2 id:353 gh:354
     'mobile-port': { type: String },
     'debug-port': { type: String },
     'no-release-check': { type: Boolean },
@@ -1632,7 +1632,7 @@ function doTestCommand(options) {
     // packages subdirectory, not the test runner app's empty one.
     projectContextOptions.explicitlyAddedLocalPackageDirs = packagesByPath;
 
-    // XXX Because every run uses a new app with its own IsopackCache directory,
+    // XXX Because every run uses a new app with its own IsopackCache directory, id:405 gh:406
     //     this always does a clean build of all packages. Maybe we can speed up
     //     repeated test-packages calls with some sort of shared or semi-shared
     //     isopack cache that's specific to test-packages?  See #3012.
@@ -2005,7 +2005,7 @@ main.registerCommand({
   if (result.response.statusCode === 401 &&
       body && body.error === "invalid_credential") {
     Console.error("You must be logged in to list your organizations.");
-    // XXX It would be nice to do a username/password prompt here like
+    // XXX It would be nice to do a username/password prompt here like id:551 gh:552
     // we do for the other orgs commands.
     return 1;
   }
@@ -2088,7 +2088,7 @@ main.registerCommand({
 // self-test
 ///////////////////////////////////////////////////////////////////////////////
 
-// XXX we should find a way to make self-test fully self-contained, so that it
+// XXX we should find a way to make self-test fully self-contained, so that it id:341 gh:342
 // ignores "packageDirs" (ie, it shouldn't fail just because you happen to be
 // sitting in an app with packages that don't build)
 
@@ -2373,7 +2373,7 @@ main.registerCommand({
     });
 
     sshCommand.on('exit', function (code, signal) {
-      // XXX: We should process the signal in some way, but I am not sure we
+      // XXX: We should process the signal in some way, but I am not sure we id:728 gh:729
       // care right now.
       resolve(signal ? 1 : code);
     });

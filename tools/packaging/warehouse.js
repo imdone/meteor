@@ -361,7 +361,7 @@ _.extend(warehouse, {
   // this function is also used by bless-release.js
   downloadToolsToWarehouse: function (
       toolsVersion, platform, warehouseDirectory, dontWriteFreshFile) {
-    // XXX this sucks. We store all the tarballs in memory. This is huge.
+    // XXX this sucks. We store all the tarballs in memory. This is huge. id:500 gh:501
     // We should instead stream packages in parallel. Since the node stream
     // API is in flux, we should probably wait a bit.
     // http://blog.nodejs.org/2012/12/20/streams2/

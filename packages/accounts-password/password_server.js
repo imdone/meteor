@@ -223,7 +223,7 @@ var checkForCaseInsensitiveDuplicates = function (fieldName, displayName, fieldV
   }
 };
 
-// XXX maybe this belongs in the check package
+// XXX maybe this belongs in the check package id:85 gh:86
 var NonEmptyString = Match.Where(function (x) {
   check(x, String);
   return x.length > 0;
@@ -326,7 +326,7 @@ Accounts.registerLoginHandler("password", function (options) {
 // login handler (above), which throws an error telling the client to
 // try the SRP upgrade path.
 //
-// XXX COMPAT WITH 0.8.1.3
+// XXX COMPAT WITH 0.8.1.3 id:75 gh:76
 Accounts.registerLoginHandler("password", function (options) {
   if (!options.srp || !options.password) {
     return undefined; // don't handle
@@ -426,7 +426,7 @@ Accounts.setUsername = function (userId, newUsername) {
 // password. `oldPassword` and `newPassword` should be objects with keys
 // `digest` and `algorithm` (representing the SHA256 of the password).
 //
-// XXX COMPAT WITH 0.8.1.3
+// XXX COMPAT WITH 0.8.1.3 id:76 gh:77
 // Like the login method, if the user hasn't been upgraded from SRP to
 // bcrypt yet, then this method will throw an 'old password format'
 // error. The client should call the SRP upgrade login handler and then
@@ -510,7 +510,7 @@ Accounts.setPassword = function (userId, newPlaintextPassword, options) {
 
   var update = {
     $unset: {
-      'services.password.srp': 1, // XXX COMPAT WITH 0.8.1.3
+      'services.password.srp': 1, // XXX COMPAT WITH 0.8.1.3 id:77 gh:78
       'services.password.reset': 1
     },
     $set: {'services.password.bcrypt': hashPassword(newPlaintextPassword)}
@@ -637,7 +637,7 @@ Accounts.generateVerificationToken = function (userId, email, extraTokenData) {
   var token = Random.secret();
   var tokenRecord = {
     token: token,
-    // TODO: This should probably be renamed to "email" to match reset token record.
+    // TODO: This should probably be renamed to "email" to match reset token record. id:89 gh:90
     address: email,
     when: new Date()
   };
@@ -779,7 +779,7 @@ Meteor.methods({resetPassword: function (token, newPassword) {
 
       var hashed = hashPassword(newPassword);
 
-      // NOTE: We're about to invalidate tokens on the user, who we might be
+      // NOTE: We're about to invalidate tokens on the user, who we might be id:87 gh:88
       // logged in as. Make sure to avoid logging ourselves out if this
       // happens. But also make sure not to leave the connection in a state
       // of having a bad token set if things fail.
@@ -841,7 +841,7 @@ Meteor.methods({resetPassword: function (token, newPassword) {
  * @importFromPackage accounts-base
  */
 Accounts.sendVerificationEmail = function (userId, email, extraTokenData) {
-  // XXX Also generate a link using which someone can delete this
+  // XXX Also generate a link using which someone can delete this id:78 gh:79
   // account if they own said address but weren't those who created
   // this account.
 
@@ -1107,7 +1107,7 @@ Meteor.methods({createUser: function (options) {
 //
 // returns userId or throws an error if it can't create
 //
-// XXX add another argument ("server options") that gets sent to onCreateUser,
+// XXX add another argument ("server options") that gets sent to onCreateUser, id:79 gh:80
 // which is always empty when called from the createUser method? eg, "admin:
 // true", which we want to prevent the client from setting, but which a custom
 // method calling Accounts.createUser could set?
@@ -1115,7 +1115,7 @@ Meteor.methods({createUser: function (options) {
 Accounts.createUser = function (options, callback) {
   options = _.clone(options);
 
-  // XXX allow an optional callback?
+  // XXX allow an optional callback? id:80 gh:81
   if (callback) {
     throw new Error("Accounts.createUser with callback not supported on the server yet.");
   }

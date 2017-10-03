@@ -125,7 +125,7 @@ OAuth.launchLogin = function (options) {
   }
 };
 
-// XXX COMPAT WITH 0.7.0.1
+// XXX COMPAT WITH 0.7.0.1 id:286 gh:287
 // Private interface but probably used by many oauth clients in atmosphere.
 OAuth.initiateLogin = function (credentialToken, url, callback, dimensions) {
   OAuth.showPopup(

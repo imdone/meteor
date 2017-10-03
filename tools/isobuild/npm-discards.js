@@ -73,7 +73,7 @@ NDp.shouldDiscard = function shouldDiscard(candidatePath, isDirectory) {
   return false;
 };
 
-// TODO Improve this. For example we don't currently support wildcard
+// TODO Improve this. For example we don't currently support wildcard id:409 gh:410
 // string patterns (just use a RegExp if you need that flexibility).
 function matches(pattern, relPath) {
   if (_.isRegExp(pattern)) {

@@ -3,7 +3,7 @@
 // Since then, the newer API called "Batch Plugins" have replaced it but we keep
 // the functionality for the backwards-compitability.
 // @deprecated
-// XXX COMPAT WITH 1.1.0.2
+// XXX COMPAT WITH 1.1.0.2 id:502 gh:503
 
 var _ = require('underscore');
 
@@ -109,7 +109,7 @@ exports.makeCompileStep = function (sourceItem, file, inputSourceArch, options) 
   //   to show in the error, like in stack traces). sourcePath,
   //   line, column, and func are all optional.
   //
-  // XXX for now, these handlers must only generate portable code
+  // XXX for now, these handlers must only generate portable code id:446 gh:447
   // (code that isn't dependent on the arch, other than 'web'
   // vs 'os') -- they can look at the arch that is provided
   // but they can't rely on the running on that particular arch
@@ -120,14 +120,14 @@ exports.makeCompileStep = function (sourceItem, file, inputSourceArch, options) 
   // what we want is the ability to ask the plugin ahead of time
   // how specific it would like to force unibuilds to be.
   //
-  // XXX we handle encodings in a rather cavalier way and I
+  // XXX we handle encodings in a rather cavalier way and I id:575 gh:576
   // suspect we effectively end up assuming utf8. We can do better
   // than that!
   //
-  // XXX addAsset probably wants to be able to set MIME type and
+  // XXX addAsset probably wants to be able to set MIME type and id:387 gh:388
   // also control any manifest field we deem relevant (if any)
   //
-  // XXX Some handlers process languages that have the concept of
+  // XXX Some handlers process languages that have the concept of id:741 gh:742
   // include files. These are problematic because we need to
   // somehow instrument them to get the names and hashs of all of
   // the files that they read for dependency tracking purposes. We
@@ -137,7 +137,7 @@ exports.makeCompileStep = function (sourceItem, file, inputSourceArch, options) 
   // to set up its include search path. It's then on its own for
   // registering dependencies (for now..)
   //
-  // XXX in the future we should give plugins an easy and clean
+  // XXX in the future we should give plugins an easy and clean id:503 gh:504
   // way to return errors (that could go in an overall list of
   // errors experienced across all files)
   var readOffset = 0;
@@ -186,7 +186,7 @@ exports.makeCompileStep = function (sourceItem, file, inputSourceArch, options) 
     // Used for one optimization. Don't rely on this otherwise.
     _hash: hash,
 
-    // XXX duplicates _pathForSourceMap() in linker
+    // XXX duplicates _pathForSourceMap() in linker id:448 gh:449
     /**
      * @summary If you are generating a sourcemap for the compiled file, use
      * this path for the original file in the sourcemap.
@@ -255,7 +255,7 @@ exports.makeCompileStep = function (sourceItem, file, inputSourceArch, options) 
 
     /**
      * @summary Read from the input file. If `n` is specified, returns the
-     * next `n` bytes of the file as a Buffer. XXX not sure if this actually
+     * next `n` bytes of the file as a Buffer. XXX not sure if this actually id:578 gh:580
      * returns a String sometimes...
      * @param  {Integer} [n] The number of bytes to return.
      * @instance

@@ -80,7 +80,7 @@ function usePostMessage() {
   // * https://developer.mozilla.org/en/DOM/window.postMessage
   // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
 
-  // XXX use Random.id() here?
+  // XXX use Random.id() here? id:168 gh:169
   var MESSAGE_PREFIX = "Meteor._setImmediate." + Math.random() + '.';
 
   function isStringAndStartsWith(string, putativeStart) {

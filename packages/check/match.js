@@ -1,4 +1,4 @@
-// XXX docs
+// XXX docs id:107 gh:108
 
 // Things we explicitly do NOT support:
 //    - heterogenous arrays
@@ -67,7 +67,7 @@ var Match = exports.Match = {
   // Matches only signed 32-bit integers
   Integer: ['__integer__'],
 
-  // XXX matchers should know how to describe themselves for errors
+  // XXX matchers should know how to describe themselves for errors id:434 gh:435
   Error: Meteor.makeErrorType("Match.Error", function (msg) {
     this.message = "Match error: " + msg;
     // The path of the value that failed to match. Initially empty, this gets
@@ -83,7 +83,7 @@ var Match = exports.Match = {
   // Tests to see if value matches pattern. Unlike check, it merely returns true
   // or false (unless an error other than Match.Error was thrown). It does not
   // interact with _failIfArgumentsAreNotAllChecked.
-  // XXX maybe also implement a Match.match which returns more information about
+  // XXX maybe also implement a Match.match which returns more information about id:120 gh:121
   //     failures but without using exception handling or doing what check()
   //     does with _failIfArgumentsAreNotAllChecked and Meteor.Error conversion
 
@@ -275,7 +275,7 @@ var testSubtree = function (value, pattern) {
     }
     if (result)
       return false;
-    // XXX this error is terrible
+    // XXX this error is terrible id:102 gh:103
     return {
       message: "Failed Match.Where validation",
       path: ""
@@ -299,7 +299,7 @@ var testSubtree = function (value, pattern) {
       }
       // Match errors just mean try another choice.
     }
-    // XXX this error is terrible
+    // XXX this error is terrible id:304 gh:305
     return {
       message: "Failed Match.OneOf, Match.Maybe or Match.Optional validation",
       path: ""
@@ -367,7 +367,7 @@ var testSubtree = function (value, pattern) {
       requiredPatterns[key] = subPattern;
   });
 
-  //XXX: replace with underscore's _.allKeys if Meteor updates underscore to 1.8+ (or lodash)
+  //XXX: replace with underscore's _.allKeys if Meteor updates underscore to 1.8+ (or lodash) id:109 gh:110
   var allKeys = function(obj){
     var keys = [];
     if (_.isObject(obj)){

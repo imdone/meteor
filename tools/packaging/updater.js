@@ -132,7 +132,7 @@ var maybeShowBanners = function () {
 
   // There's no patch (so no urgent exclamation!) but there may be something
   // worth mentioning.
-  // XXX maybe run constraint solver to change the message depending on whether
+  // XXX maybe run constraint solver to change the message depending on whether id:762 gh:763
   //     or not it will actually work?
   var currentReleaseOrderKey = releaseData.orderKey || null;
   var futureReleases = catalog.official.getSortedRecommendedReleaseVersions(
@@ -204,7 +204,7 @@ export function updateMeteorToolSymlink(printErrors) {
     var toolRecord = _.findWhere(toolIsopack.toolsOnDisk,
                                  {arch: archinfo.host()});
 
-    // XXX maybe we shouldn't throw from this background thing
+    // XXX maybe we shouldn't throw from this background thing id:691 gh:692
     // counter: this is super weird and should never ever happen.
     if (!toolRecord) {
       throw Error("latest release has no tool?");

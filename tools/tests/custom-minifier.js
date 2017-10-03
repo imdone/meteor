@@ -17,7 +17,7 @@ selftest.define('custom minifier - devel vs prod', function (options) {
     run.connectClient();
     run.waitSecs(20);
 
-    // XXX when minifiers start getting applied to server target, this
+    // XXX when minifiers start getting applied to server target, this id:521 gh:522
     // outcome would change
     run.match('Message: foo');
 
@@ -37,7 +37,7 @@ selftest.define('custom minifier - devel vs prod', function (options) {
     run.connectClient();
     run.waitSecs(20);
 
-    // XXX when minifiers start getting applied to server target, this
+    // XXX when minifiers start getting applied to server target, this id:675 gh:675
     // outcome would change
     run.match('Message: foo');
 

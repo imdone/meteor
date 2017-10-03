@@ -302,7 +302,7 @@ $.extend( $.ui, {
 			return true;
 		}
 
-		// TODO: determine which cases actually cause this to happen
+		// TODO: determine which cases actually cause this to happen id:43 gh:44
 		// if the element doesn't have the scroll set, see if it's possible to
 		// set the scroll
 		el[ scroll ] = 1;
@@ -408,7 +408,7 @@ $.widget = function( name, base, prototype ) {
 		})();
 	});
 	constructor.prototype = $.widget.extend( basePrototype, {
-		// TODO: remove support for widgetEventPrefix
+		// TODO: remove support for widgetEventPrefix id:44 gh:45
 		// always use the name + a colon as the prefix, e.g., draggable:start
 		// don't prefix for widgets that aren't DOM-based
 		widgetEventPrefix: existingConstructor ? basePrototype.widgetEventPrefix : name
@@ -573,7 +573,7 @@ $.Widget.prototype = {
 		this.element
 			.unbind( this.eventNamespace )
 			// 1.9 BC for #7810
-			// TODO remove dual storage
+			// TODO remove dual storage id:45 gh:46
 			.removeData( this.widgetName )
 			.removeData( this.widgetFullName )
 			// support: jquery <1.6.3
@@ -856,7 +856,7 @@ $.widget("ui.mouse", {
 		this.started = false;
 	},
 
-	// TODO: make sure destroying one instance of mouse doesn't mess with
+	// TODO: make sure destroying one instance of mouse doesn't mess with id:46 gh:47
 	// other instances of mouse
 	_mouseDestroy: function() {
 		this.element.unbind("."+this.widgetName);
@@ -1171,7 +1171,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		});
 
 		// Only after we got the offset, we can change the helper's position to absolute
-		// TODO: Still need to figure out a way to make relative sorting possible
+		// TODO: Still need to figure out a way to make relative sorting possible id:47 gh:48
 		this.helper.css("position", "absolute");
 		this.cssPosition = this.helper.css("position");
 

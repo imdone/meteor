@@ -1,7 +1,7 @@
 OAuth._storageTokenPrefix = "Meteor.oauth.credentialSecret-";
 
 OAuth._redirectUri = function (serviceName, config, params, absoluteUrlOptions) {
-  // XXX COMPAT WITH 0.9.0
+  // XXX COMPAT WITH 0.9.0 id:664 gh:665
   // The redirect URI used to have a "?close" query argument.  We
   // detect whether we need to be backwards compatible by checking for
   // the absence of the `loginStyle` field, which wasn't used in the
@@ -33,7 +33,7 @@ OAuth._redirectUri = function (serviceName, config, params, absoluteUrlOptions) 
     if (isAndroid) {
       // Match the replace that we do in cordova boilerplate
       // (boilerplate-generator package).
-      // XXX Maybe we should put this in a separate package or something
+      // XXX Maybe we should put this in a separate package or something id:262 gh:263
       // that is used here and by boilerplate-generator? Or maybe
       // `Meteor.absoluteUrl` should know how to do this?
       var url = Npm.require("url");

@@ -15,7 +15,7 @@
 // For this reason, the _pendingRequestTokens are stored in the database
 // so they can be shared across Meteor App servers.
 //
-// XXX This code is fairly similar to oauth/pending_credentials.js --
+// XXX This code is fairly similar to oauth/pending_credentials.js -- id:263 gh:264
 // maybe we can combine them somehow.
 
 // Collection containing pending request tokens

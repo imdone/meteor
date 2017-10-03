@@ -23,7 +23,7 @@ MongoInternals.NpmModules = {
 // Older version of what is now available via
 // MongoInternals.NpmModules.mongodb.module.  It was never documented, but
 // people do use it.
-// XXX COMPAT WITH 1.0.3.2
+// XXX COMPAT WITH 1.0.3.2 id:243 gh:244
 MongoInternals.NpmModule = MongoDB;
 
 // This is used to add or remove EJSON from the beginning of everything nested
@@ -44,7 +44,7 @@ var replaceNames = function (filter, thing) {
 
 // Ensure that EJSON.clone keeps a Timestamp as a Timestamp (instead of just
 // doing a structural clone).
-// XXX how ok is this? what if there are multiple copies of MongoDB loaded?
+// XXX how ok is this? what if there are multiple copies of MongoDB loaded? id:640 gh:641
 MongoDB.Timestamp.prototype.clone = function () {
   // Timestamps should be immutable.
   return this;
@@ -221,7 +221,7 @@ MongoConnection.prototype.close = function() {
   if (! self.db)
     throw Error("close called before Connection created?");
 
-  // XXX probably untested
+  // XXX probably untested id:251 gh:252
   var oplogHandle = self._oplogHandle;
   self._oplogHandle = null;
   if (oplogHandle)
@@ -302,7 +302,7 @@ MongoConnection.prototype._onFailover = function (callback) {
 var writeCallback = function (write, refresh, callback) {
   return function (err, result) {
     if (! err) {
-      // XXX We don't have to run this on error, right?
+      // XXX We don't have to run this on error, right? id:268 gh:269
       try {
         refresh();
       } catch (refreshErr) {
@@ -743,7 +743,7 @@ _.each(["insert", "update", "remove", "dropCollection", "dropDatabase"], functio
   };
 });
 
-// XXX MongoConnection.upsert() does not return the id of the inserted document
+// XXX MongoConnection.upsert() does not return the id of the inserted document id:465 gh:466
 // unless you set it explicitly in the selector or modifier (as a replacement
 // doc).
 MongoConnection.prototype.upsert = function (collectionName, selector, mod,
@@ -880,7 +880,7 @@ _.each(['forEach', 'map', 'fetch', 'count'], function (method) {
 // Since we don't actually have a "nextObject" interface, there's really no
 // reason to have a "rewind" interface.  All it did was make multiple calls
 // to fetch/map/forEach return nothing the second time.
-// XXX COMPAT WITH 0.8.1
+// XXX COMPAT WITH 0.8.1 id:245 gh:246
 Cursor.prototype.rewind = function () {
 };
 
@@ -924,7 +924,7 @@ Cursor.prototype.observeChanges = function (callbacks) {
   ];
   var ordered = LocalCollection._observeChangesCallbacksAreOrdered(callbacks);
 
-  // XXX: Can we find out if callbacks are from observe?
+  // XXX: Can we find out if callbacks are from observe? id:642 gh:643
   var exceptionName = ' observe/observeChanges callback'; 
   methods.forEach(function (method) {
     if (callbacks[method] && typeof callbacks[method] == "function") {
@@ -1054,7 +1054,7 @@ _.extend(SynchronousCursor.prototype, {
     }
   },
 
-  // XXX Allow overlapping callback executions if callback yields.
+  // XXX Allow overlapping callback executions if callback yields. id:253 gh:254
   map: function (callback, thisArg) {
     var self = this;
     var res = [];
@@ -1226,7 +1226,7 @@ MongoConnection.prototype._observeChanges = function (
           matcher = new Minimongo.Matcher(cursorDescription.selector);
           return true;
         } catch (e) {
-          // XXX make all compilation errors MinimongoError or something
+          // XXX make all compilation errors MinimongoError or something id:270 gh:271
           //     so that this doesn't ignore unrelated exceptions
           return false;
         }
@@ -1243,7 +1243,7 @@ MongoConnection.prototype._observeChanges = function (
                                         { matcher: matcher });
           return true;
         } catch (e) {
-          // XXX make all compilation errors MinimongoError or something
+          // XXX make all compilation errors MinimongoError or something id:468 gh:469
           //     so that this doesn't ignore unrelated exceptions
           return false;
         }
@@ -1362,7 +1362,7 @@ MongoConnection.prototype._observeChangesTailable = function (
   });
 };
 
-// XXX We probably need to find a better way to expose this. Right now
+// XXX We probably need to find a better way to expose this. Right now id:246 gh:247
 // it's only used by tests, but in fact you need it in normal
 // operation to interact with capped collections.
 MongoInternals.MongoTimestamp = MongoDB.Timestamp;

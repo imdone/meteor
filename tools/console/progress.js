@@ -26,7 +26,7 @@ var Progress = function (options) {
     self._title = self._title[0].toUpperCase() + self._title.slice(1);
   }
 
-  // XXX: Should we have a strict/mdg mode that enables this test?
+  // XXX: Should we have a strict/mdg mode that enables this test? id:354 gh:355
   //if (!self._title && self._parent) {
   //  throw new Error("No title passed");
   //}

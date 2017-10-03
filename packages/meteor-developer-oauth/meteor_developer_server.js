@@ -19,7 +19,7 @@ OAuth.registerService("meteor-developer", 2, null, function (query) {
   return {
     serviceData: serviceData,
     options: {profile: {name: serviceData.username}}
-    // XXX use username for name until meteor accounts has a profile with a name
+    // XXX use username for name until meteor accounts has a profile with a name id:189 gh:190
   };
 });
 

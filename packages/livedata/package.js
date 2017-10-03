@@ -7,7 +7,7 @@ Package.onUse(function (api) {
   api.use("ddp");
   api.imply("ddp");
 
-  // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0.
+  // XXX COMPAT WITH PACKAGES BUILT FOR 0.9.0. id:573 gh:574
   //
   // (in particular, packages that have a weak dependency on this
   // package, since then exported symbols live on the

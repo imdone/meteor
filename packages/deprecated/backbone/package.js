@@ -4,7 +4,7 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  // XXX Backbone requires either jquery or zepto
+  // XXX Backbone requires either jquery or zepto id:141 gh:142
   api.use(["jquery", "json", "underscore"]);
 
   api.addFiles("backbone.js");

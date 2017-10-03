@@ -45,7 +45,7 @@ var packageJson = {
     "rimraf": "2.6.1",
     "glob": "7.0.6",
     ignore: "3.3.5",
-    // XXX: When we update this, see if it fixes this Github issue:
+    // XXX: When we update this, see if it fixes this Github issue: id:518 gh:519
     // https://github.com/jgm/CommonMark/issues/276 . If it does, remove the
     // workaround from the tool.
     "commonmark": "0.15.0",
